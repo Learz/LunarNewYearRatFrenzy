@@ -27,6 +27,14 @@ public class @RatControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""MoveCancelled"",
+                    ""type"": ""Button"",
+                    ""id"": ""6df78c06-a075-4af5-8b41-05b5af6bb44b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=1)""
+                },
+                {
                     ""name"": ""Jump"",
                     ""type"": ""Button"",
                     ""id"": ""a7082025-6b63-423c-9ee1-c1e5eb085bd3"",
@@ -164,6 +172,72 @@ public class @RatControls : IInputActionCollection, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e66853a2-3ad7-4a2e-8269-e22fe0eb71ac"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveCancelled"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""cb96be3d-cc1c-4fda-ab3b-7db0709ae197"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveCancelled"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""08bef79b-a473-4b57-b236-06230b2e05f4"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveCancelled"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""5e1dcb16-9fc2-42ca-b8ff-52ab68e6f85e"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveCancelled"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""a2c738a3-4e65-4c87-a281-8b85a01997dc"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveCancelled"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""42b22caf-1bdb-43ad-bd2c-b75856294496"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveCancelled"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -173,6 +247,7 @@ public class @RatControls : IInputActionCollection, IDisposable
         // DefaultRat
         m_DefaultRat = asset.FindActionMap("DefaultRat", throwIfNotFound: true);
         m_DefaultRat_Move = m_DefaultRat.FindAction("Move", throwIfNotFound: true);
+        m_DefaultRat_MoveCancelled = m_DefaultRat.FindAction("MoveCancelled", throwIfNotFound: true);
         m_DefaultRat_Jump = m_DefaultRat.FindAction("Jump", throwIfNotFound: true);
         m_DefaultRat_Interact = m_DefaultRat.FindAction("Interact", throwIfNotFound: true);
     }
@@ -225,6 +300,7 @@ public class @RatControls : IInputActionCollection, IDisposable
     private readonly InputActionMap m_DefaultRat;
     private IDefaultRatActions m_DefaultRatActionsCallbackInterface;
     private readonly InputAction m_DefaultRat_Move;
+    private readonly InputAction m_DefaultRat_MoveCancelled;
     private readonly InputAction m_DefaultRat_Jump;
     private readonly InputAction m_DefaultRat_Interact;
     public struct DefaultRatActions
@@ -232,6 +308,7 @@ public class @RatControls : IInputActionCollection, IDisposable
         private @RatControls m_Wrapper;
         public DefaultRatActions(@RatControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_DefaultRat_Move;
+        public InputAction @MoveCancelled => m_Wrapper.m_DefaultRat_MoveCancelled;
         public InputAction @Jump => m_Wrapper.m_DefaultRat_Jump;
         public InputAction @Interact => m_Wrapper.m_DefaultRat_Interact;
         public InputActionMap Get() { return m_Wrapper.m_DefaultRat; }
@@ -246,6 +323,9 @@ public class @RatControls : IInputActionCollection, IDisposable
                 @Move.started -= m_Wrapper.m_DefaultRatActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_DefaultRatActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_DefaultRatActionsCallbackInterface.OnMove;
+                @MoveCancelled.started -= m_Wrapper.m_DefaultRatActionsCallbackInterface.OnMoveCancelled;
+                @MoveCancelled.performed -= m_Wrapper.m_DefaultRatActionsCallbackInterface.OnMoveCancelled;
+                @MoveCancelled.canceled -= m_Wrapper.m_DefaultRatActionsCallbackInterface.OnMoveCancelled;
                 @Jump.started -= m_Wrapper.m_DefaultRatActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_DefaultRatActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_DefaultRatActionsCallbackInterface.OnJump;
@@ -259,6 +339,9 @@ public class @RatControls : IInputActionCollection, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @MoveCancelled.started += instance.OnMoveCancelled;
+                @MoveCancelled.performed += instance.OnMoveCancelled;
+                @MoveCancelled.canceled += instance.OnMoveCancelled;
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
@@ -272,6 +355,7 @@ public class @RatControls : IInputActionCollection, IDisposable
     public interface IDefaultRatActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnMoveCancelled(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
     }
