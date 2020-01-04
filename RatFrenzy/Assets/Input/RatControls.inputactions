@@ -14,6 +14,14 @@
                     "interactions": ""
                 },
                 {
+                    "name": "MoveCancelled",
+                    "type": "Button",
+                    "id": "6df78c06-a075-4af5-8b41-05b5af6bb44b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press(behavior=1)"
+                },
+                {
                     "name": "Jump",
                     "type": "Button",
                     "id": "a7082025-6b63-423c-9ee1-c1e5eb085bd3",
@@ -151,6 +159,72 @@
                     "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e66853a2-3ad7-4a2e-8269-e22fe0eb71ac",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveCancelled",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "2D Vector",
+                    "id": "cb96be3d-cc1c-4fda-ab3b-7db0709ae197",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveCancelled",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "08bef79b-a473-4b57-b236-06230b2e05f4",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveCancelled",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "5e1dcb16-9fc2-42ca-b8ff-52ab68e6f85e",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveCancelled",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "a2c738a3-4e65-4c87-a281-8b85a01997dc",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveCancelled",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "42b22caf-1bdb-43ad-bd2c-b75856294496",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveCancelled",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }
