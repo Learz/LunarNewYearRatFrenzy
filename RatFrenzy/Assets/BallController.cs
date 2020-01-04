@@ -30,6 +30,7 @@ public class BallController : MonoBehaviour
             realSpeed = speed * 10;
             realJumpHeight = jumpHeight;
             ratYOffset = 0.5f;
+            gameObject.layer = 9;
         }
         else
         {

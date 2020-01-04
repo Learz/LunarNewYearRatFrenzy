@@ -299,7 +299,7 @@ MonoBehaviour:
   sumoSpeed: 3
   jumpHeight: 500
   sumoJumpHeight: 200
-  isSumo: 1
+  isSumo: 0
   ball: {fileID: 6522522817620286585}
   rat: {fileID: 1391645031400972000}
 --- !u!1 &6522522817620286585
