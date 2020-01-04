@@ -6,6 +6,7 @@ public class BallController : MonoBehaviour
 {
     public RatManager mgr;
     public float speed, jumpHeight;
+    public bool isJumping;
     private Rigidbody rb;
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,15 @@ public class BallController : MonoBehaviour
     }
     public void Jump()
     {
-        rb.AddForce(Vector3.up * jumpHeight);
+        if (!isJumping)
+        {
+            rb.AddForce(Vector3.up * jumpHeight);
+            isJumping = true;
+        }
+
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        isJumping = false;
     }
 }
