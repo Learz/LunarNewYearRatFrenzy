@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mgr: {fileID: 5847085833489905871}
-  speed: 5
+  speed: 3
   jumpHeight: 200
   isJumping: 0
 --- !u!1 &6522522817620286585
