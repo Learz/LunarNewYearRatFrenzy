@@ -15,4 +15,9 @@ MonoBehaviour:
   CategoryName: General
   DatabaseType: 2
   Names:
+  - MainMenu
+  - PauseMenu
+  - PlayerSelection
+  - Settings
   - Unnamed
+  - QuitMenu
