@@ -1,19 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class RatManager : MonoBehaviour
 {
     [SerializeField]
     public RatControls controls;
-    private Vector2 move;
-    private bool jump, interact;
+    public Vector2 move { get; private set; }
+    public bool jump { get; private set; }
+    public bool interact { get; private set; }
+    public RatInputEvent onJump = new RatInputEvent(), onInteract = new RatInputEvent();
     // Start is called before the first frame update
     void Start()
     {
 
         controls.DefaultRat.Move.performed += ctx => move = ctx.ReadValue<Vector2>();
         controls.DefaultRat.Move.performed += ctx => PlayerMoving();
+        controls.DefaultRat.Move.canceled += ctx => move = Vector2.zero;
         controls.DefaultRat.Jump.performed += ctx => Jump();
 
         // Ça c'est facultatif
@@ -24,11 +28,6 @@ public class RatManager : MonoBehaviour
         controls.DefaultRat.Interact.canceled += ctx => interact = false;
 
     }
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     private void PlayerMoving()
     {
         Debug.Log("Moved : " + move);
@@ -36,10 +35,12 @@ public class RatManager : MonoBehaviour
     void Jump()
     {
         Debug.Log("Jump");
+        onJump.Invoke();
     }
     void Interact()
     {
         Debug.Log("Interact");
+        onInteract.Invoke();
     }
     private void OnEnable()
     {
@@ -51,3 +52,6 @@ public class RatManager : MonoBehaviour
         controls.DefaultRat.Disable();
     }
 }
+
+[System.Serializable]
+public class RatInputEvent : UnityEvent { };
