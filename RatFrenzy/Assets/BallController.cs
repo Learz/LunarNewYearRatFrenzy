@@ -11,7 +11,6 @@ public class BallController : GenericController
     public GameObject ball;
     public GameObject rat;
 
-    private bool isJumping;
     private Animator rAnim;
     private Vector3 vel;
     private float ratYOffset;
@@ -35,7 +34,7 @@ public class BallController : GenericController
 
     protected override void Jump()
     {
-        if (!isJumping)
+        if (!isJumping && isGrounded)
         {
             rb.AddForce(Vector3.up * jumpHeight);
             isJumping = true;
@@ -82,11 +81,10 @@ public class BallController : GenericController
         rAnim.SetFloat("velocity", rb.velocity.magnitude);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    protected override void OnCollisionEnter(Collision collision)
     {
-        isJumping = false;
+        base.OnCollisionEnter(collision);
         rAnim.SetBool("isJumping", isJumping);
     }
-
 
 }

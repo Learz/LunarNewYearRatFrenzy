@@ -7,6 +7,7 @@ public class GenericController : MonoBehaviour
 {
     public GameManager.PlayerIdentity identity;
     protected RatManager mgr;
+    protected bool isJumping, isGrounded;
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -51,5 +52,15 @@ public class GenericController : MonoBehaviour
             mgr.onJump.AddListener(Jump);
             mgr.onInteract.AddListener(Attack);
         }
+    }
+    protected virtual void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.layer == 10 && !isGrounded) isGrounded = true;
+        isJumping = false;
+    }
+
+    protected virtual void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.layer == 10 && isGrounded) isGrounded = false;
     }
 }
