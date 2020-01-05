@@ -49,6 +49,14 @@ public class @RatControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""fe7e211b-5d15-4331-8d2a-ccf350c758d2"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -238,6 +246,28 @@ public class @RatControls : IInputActionCollection, IDisposable
                     ""action"": ""MoveCancelled"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""04c79590-04c4-4904-a029-cd128752645f"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d58e87fd-b0e7-4ed1-9c5d-71e37b321a27"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -250,6 +280,7 @@ public class @RatControls : IInputActionCollection, IDisposable
         m_DefaultRat_MoveCancelled = m_DefaultRat.FindAction("MoveCancelled", throwIfNotFound: true);
         m_DefaultRat_Jump = m_DefaultRat.FindAction("Jump", throwIfNotFound: true);
         m_DefaultRat_Interact = m_DefaultRat.FindAction("Interact", throwIfNotFound: true);
+        m_DefaultRat_Pause = m_DefaultRat.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -303,6 +334,7 @@ public class @RatControls : IInputActionCollection, IDisposable
     private readonly InputAction m_DefaultRat_MoveCancelled;
     private readonly InputAction m_DefaultRat_Jump;
     private readonly InputAction m_DefaultRat_Interact;
+    private readonly InputAction m_DefaultRat_Pause;
     public struct DefaultRatActions
     {
         private @RatControls m_Wrapper;
@@ -311,6 +343,7 @@ public class @RatControls : IInputActionCollection, IDisposable
         public InputAction @MoveCancelled => m_Wrapper.m_DefaultRat_MoveCancelled;
         public InputAction @Jump => m_Wrapper.m_DefaultRat_Jump;
         public InputAction @Interact => m_Wrapper.m_DefaultRat_Interact;
+        public InputAction @Pause => m_Wrapper.m_DefaultRat_Pause;
         public InputActionMap Get() { return m_Wrapper.m_DefaultRat; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -332,6 +365,9 @@ public class @RatControls : IInputActionCollection, IDisposable
                 @Interact.started -= m_Wrapper.m_DefaultRatActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_DefaultRatActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_DefaultRatActionsCallbackInterface.OnInteract;
+                @Pause.started -= m_Wrapper.m_DefaultRatActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_DefaultRatActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_DefaultRatActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_DefaultRatActionsCallbackInterface = instance;
             if (instance != null)
@@ -348,6 +384,9 @@ public class @RatControls : IInputActionCollection, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -358,5 +397,6 @@ public class @RatControls : IInputActionCollection, IDisposable
         void OnMoveCancelled(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

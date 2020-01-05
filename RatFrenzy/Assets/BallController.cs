@@ -11,7 +11,6 @@ public class BallController : GenericController
     public GameObject ball;
     public GameObject rat;
 
-
     private bool isJumping;
     private Animator rAnim;
     private Vector3 vel;

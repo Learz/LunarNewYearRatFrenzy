@@ -21,3 +21,6 @@ MonoBehaviour:
   - Settings
   - Unnamed
   - QuitMenu
+  - Score
+  - GameSelect
+  - InGame
