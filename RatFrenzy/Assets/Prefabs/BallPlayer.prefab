@@ -137,8 +137,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5847085833489905868}
-  - component: {fileID: 5847085833489905871}
-  - component: {fileID: -4466672638652194064}
   m_Layer: 0
   m_Name: BallPlayer
   m_TagString: Untagged
@@ -162,63 +160,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5847085833489905871
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5847085833489905870}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c21e9ca72396e9498ea62742252062c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onJump:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5847085835112647427}
-        m_MethodName: Jump
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onInteract:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &-4466672638652194064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5847085833489905870}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 070a1bdc4e85a234bb7989488c1a3bda,
-    type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: DefaultRat
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &5847085835112647429
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,7 +235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f461794deb1cf2543adc8b24e40839bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mgr: {fileID: 5847085833489905871}
+  identity: 0
   speed: 15
   sumoSpeed: 3
   jumpHeight: 500
@@ -302,6 +243,7 @@ MonoBehaviour:
   isSumo: 0
   ball: {fileID: 6522522817620286585}
   rat: {fileID: 1391645031400972000}
+  mgr: {fileID: 0}
 --- !u!1 &6522522817620286585
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,11 +362,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5847085833489905868}
     m_Modifications:
-    - target: {fileID: -6057140222963153312, guid: 05b82c218e7b06d4abed4a0fb6bb75ab,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 321e76ed4e2c30248bcd386e84dfd4ff, type: 2}
     - target: {fileID: -4216859302048453862, guid: 05b82c218e7b06d4abed4a0fb6bb75ab,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -500,11 +437,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: rat
       objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 05b82c218e7b06d4abed4a0fb6bb75ab,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 900225445694425559, guid: 05b82c218e7b06d4abed4a0fb6bb75ab,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -512,13 +444,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 900225445694425559, guid: 05b82c218e7b06d4abed4a0fb6bb75ab,
         type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.22227627
+      propertyPath: m_LocalRotation.y
+      value: 0.06931653
       objectReference: {fileID: 0}
     - target: {fileID: 900225445694425559, guid: 05b82c218e7b06d4abed4a0fb6bb75ab,
         type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.06931653
+      propertyPath: m_LocalRotation.z
+      value: 0.22227627
       objectReference: {fileID: 0}
     - target: {fileID: 900225445694425559, guid: 05b82c218e7b06d4abed4a0fb6bb75ab,
         type: 3}

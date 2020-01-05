@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -45,6 +46,18 @@ public class GameManager : MonoBehaviour
         if (players[(int)id] != null) return players[(int)id].GetComponent<RatManager>();
         else return null;
     }
+    public static void LoadNextScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        // TODO : LoadScreen with Input mapping chart
+    }
+    public static void LoadSceneID(int index)
+    {
+        SceneManager.LoadScene(index);
+        // TODO : LoadScreen with Input mapping chart
+    }
+
+    // Instantiate a test manager for scene prototyping
     public static void CreateTestManager()
     {
         if (instance != null) return;

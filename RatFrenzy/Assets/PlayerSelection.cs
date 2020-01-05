@@ -61,7 +61,6 @@ public class PlayerSelection : MonoBehaviour
         }
         countdown.text = "";
         Debug.Log("Game started");
-        playerSelectionView.Hide();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        GameManager.LoadNextScene();
     }
 }

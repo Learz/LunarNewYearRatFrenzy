@@ -8,12 +8,13 @@ public class BallController : MonoBehaviour
     public GameManager.PlayerIdentity identity;
     public float speed, sumoSpeed, jumpHeight, sumoJumpHeight;
     public bool isSumo;
+    public Rigidbody rb;
     public GameObject ball;
     public GameObject rat;
 
     public RatManager mgr;
     private bool isJumping;
-    private Rigidbody rb;
+
     private Animator rAnim;
     private Vector3 vel;
     private float realSpeed, realJumpHeight, ratYOffset;
@@ -22,7 +23,7 @@ public class BallController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        if (rb == null) rb = GetComponentInChildren<Rigidbody>();
         rAnim = rat.GetComponent<Animator>();
         if (mgr == null)
         {
@@ -31,7 +32,7 @@ public class BallController : MonoBehaviour
             GameManager.instance.playerJoined.AddListener(PlayerJoined);
 
             mgr = GameManager.instance.GetRatManager(identity);
-            if (mgr == null) transform.parent.gameObject.SetActive(false);
+            if (mgr == null) this.gameObject.SetActive(false);
             else
             {
                 mgr.onJump.AddListener(Jump);
@@ -104,7 +105,7 @@ public class BallController : MonoBehaviour
     //Animates the angle and mecanim state of the rat
     private void AnimateRat()
     {
-        rat.transform.position = transform.position - new Vector3(0, ratYOffset, 0);
+        rat.transform.position = ball.transform.position - new Vector3(0, ratYOffset, 0);
 
 
         if (rb.velocity.magnitude > 0.01)
@@ -135,7 +136,7 @@ public class BallController : MonoBehaviour
         if (input.playerIndex == (int)identity)
         {
             mgr = input.GetComponent<RatManager>();
-            transform.parent.gameObject.SetActive(true);
+            this.gameObject.SetActive(true);
             mgr.onJump.AddListener(Jump);
             mgr.onInteract.AddListener(Attack);
         }
