@@ -13,7 +13,14 @@ public class RatManager : MonoBehaviour
     private float cooldown = 0.5f;
     private bool interactCooldown;
     public RatInputEvent onJump = new RatInputEvent(), onInteract = new RatInputEvent();
+    private PlayerInput playerInput;
 
+    private void Start()
+    {
+        DontDestroyOnLoad(this);
+        playerInput = GetComponent<PlayerInput>();
+        this.name = "Player " + (playerInput.playerIndex + 1);
+    }
     private void OnMove(InputValue value)
     {
         move = value.Get<Vector2>();
