@@ -61,6 +61,7 @@ public class PlayerSelection : MonoBehaviour
         }
         countdown.text = "";
         Debug.Log("Game started");
+        
         GameManager.LoadNextScene();
     }
 }

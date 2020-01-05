@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
         Player3 = 2,
         Player4 = 3
     };
+    private int[] scores;
     // Start is called before the first frame update
     void Awake()
     {
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(this);
         players = new PlayerInput[4];
+        scores = new int[4];
     }
     void OnPlayerJoined(PlayerInput input)
     {
@@ -46,6 +48,10 @@ public class GameManager : MonoBehaviour
         if (players[(int)id] != null) return players[(int)id].GetComponent<RatManager>();
         else return null;
     }
+
+    public void AddPoints(PlayerIdentity id) => scores[(int)id]++;
+    public void AddPoints(PlayerIdentity id, int ammount) => scores[(int)id] += ammount;
+
     public static void LoadNextScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

@@ -7,14 +7,12 @@ public class BallController : GenericController
 {
 
     public float speed, sumoSpeed, jumpHeight, sumoJumpHeight;
-    public bool isSumo;
-    public Rigidbody rb;
+
+    private Rigidbody rb;
     public GameObject ball;
     public GameObject rat;
 
-
     private bool isJumping;
-
     private Animator rAnim;
     private Vector3 vel;
     private float realSpeed, realJumpHeight, ratYOffset;
@@ -27,7 +25,7 @@ public class BallController : GenericController
         if (rb == null) rb = GetComponent<Rigidbody>();
         rAnim = rat.GetComponent<Animator>();
 
-        rAnim.SetBool("isSumo", isSumo);
+        rAnim.SetBool("isSumo", true);
         /*if (!isSumo)
         {
             ball.SetActive(false);
