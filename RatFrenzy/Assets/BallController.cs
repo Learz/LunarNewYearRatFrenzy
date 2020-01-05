@@ -6,16 +6,15 @@ using UnityEngine.InputSystem;
 public class BallController : GenericController
 {
 
-    public float speed, sumoSpeed, jumpHeight, sumoJumpHeight;
-
-    private Rigidbody rb;
+    public float speed, jumpHeight;
+    public Rigidbody rb;
     public GameObject ball;
     public GameObject rat;
 
     private bool isJumping;
     private Animator rAnim;
     private Vector3 vel;
-    private float realSpeed, realJumpHeight, ratYOffset;
+    private float ratYOffset;
 
     private const float defaultDrag = 20;
     // Start is called before the first frame update
@@ -25,24 +24,6 @@ public class BallController : GenericController
         if (rb == null) rb = GetComponent<Rigidbody>();
         rAnim = rat.GetComponent<Animator>();
 
-        rAnim.SetBool("isSumo", true);
-        /*if (!isSumo)
-        {
-            ball.SetActive(false);
-            rb.drag = defaultDrag;
-            realSpeed = speed * 10;
-            realJumpHeight = jumpHeight;
-            ratYOffset = 0.5f;
-            gameObject.layer = 9;
-        }
-        else
-        {
-            realSpeed = sumoSpeed;
-            realJumpHeight = sumoJumpHeight;
-            ratYOffset = 0.45f;
-        }*/
-        realSpeed = sumoSpeed;
-        realJumpHeight = sumoJumpHeight;
         ratYOffset = 0.45f;
     }
 
@@ -56,13 +37,7 @@ public class BallController : GenericController
     {
         if (!isJumping)
         {
-            /*if (!isSumo)
-            {
-                rb.drag = 1;
-                realSpeed = speed;
-            }
-            */
-            rb.AddForce(Vector3.up * realJumpHeight);
+            rb.AddForce(Vector3.up * jumpHeight);
             isJumping = true;
             rAnim.SetBool("isJumping", isJumping);
         }
@@ -86,7 +61,7 @@ public class BallController : GenericController
         Vector3 movement = new Vector3(mgr.move.x, 0.0f, mgr.move.y);
         dir = Camera.main.transform.TransformDirection(movement);
         dir.y = 0;
-        rb.AddForce(dir * realSpeed);
+        rb.AddForce(dir * speed);
         Debug.DrawRay(transform.position, dir, Color.green);
     }
 
@@ -111,11 +86,6 @@ public class BallController : GenericController
     {
         isJumping = false;
         rAnim.SetBool("isJumping", isJumping);
-        /*if (!isSumo)
-        {
-            rb.drag = defaultDrag;
-            realSpeed = speed * 10;
-        }*/
     }
 
 
