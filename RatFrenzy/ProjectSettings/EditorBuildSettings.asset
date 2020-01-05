@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/sumoarena.unity
     guid: 7e50a73ec62f38b40ae38ed67bfba53d
+  - enabled: 1
+    path: Assets/Scenes/empty.unity
+    guid: 9ffb836cd018c0249b50b5b129130e14
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 3385625d645ba8f4891239b805ddf6c4,
       type: 2}

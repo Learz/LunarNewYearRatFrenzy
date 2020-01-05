@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using Doozy.Engine.UI;
 
 public class RatManager : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class RatManager : MonoBehaviour
     private bool interactCooldown;
     public RatInputEvent onMove = new RatInputEvent(), onJump = new RatInputEvent(), onInteract = new RatInputEvent();
     private PlayerInput playerInput;
+    public UIButton escape;
 
     private void Start()
     {
@@ -43,6 +45,11 @@ public class RatManager : MonoBehaviour
             interactCooldown = true;
         }
 
+    }
+    private void OnPause(InputValue value)
+    {
+        if (value.isPressed)
+            escape.ExecuteClick();
     }
     private void InteractCooldown()
     {

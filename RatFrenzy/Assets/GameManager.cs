@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Doozy.Engine.Nody;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -9,6 +10,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance { get; private set; }
     public PlayerInputManager inputManager;
+    public GraphController graph;
     public PlayerEvent playerJoined = new PlayerEvent();
     public PlayerEvent playerLeft = new PlayerEvent();
     public int numPlayers;
@@ -25,7 +27,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         if (instance != null) throw new System.Exception("Game Manager already exists!");
-
+        if (graph == null) graph = GetComponent<GraphController>();
         instance = this;
         DontDestroyOnLoad(this);
         players = new PlayerInput[4];
@@ -52,15 +54,17 @@ public class GameManager : MonoBehaviour
     public void AddPoints(PlayerIdentity id) => scores[(int)id]++;
     public void AddPoints(PlayerIdentity id, int ammount) => scores[(int)id] += ammount;
 
-    public static void LoadNextScene()
+    public void LoadNextScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         // TODO : LoadScreen with Input mapping chart
     }
-    public static void LoadSceneID(int index)
+    public void LoadSceneID(int index)
     {
         SceneManager.LoadScene(index);
         // TODO : LoadScreen with Input mapping chart
+        //graph.Graph.ActiveNode.
+        //graph.GoToNodeByName("InGame");
     }
 
     // Instantiate a test manager for scene prototyping
@@ -69,6 +73,11 @@ public class GameManager : MonoBehaviour
         if (instance != null) return;
         Debug.Log("Creating game manager");
         Instantiate(Resources.Load("GameManager"));
+    }
+    public void OnReturnToMenu()
+    {
+        Debug.Log("Unloading active scene");
+        SceneManager.LoadSceneAsync(SceneManager.sceneCountInBuildSettings - 1);
     }
 }
 public class PlayerEvent : UnityEvent<PlayerInput> { };

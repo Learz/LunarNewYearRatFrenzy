@@ -46,12 +46,26 @@ public class PlayerUI : MonoBehaviour
             }
         }
     }
-
     public void PlayerLeft()
     {
         playerIsConnected = false;
         playerDisconnected.SetActive(true);
         playerReady.SetActive(false);
         playerJoined.SetActive(false);
+    }
+    private void OnEnable()
+    {
+        if (playerInput != null)
+        {
+            playerInput.currentActionMap.actionTriggered += actionTriggered;
+            playerIsReady = false;
+            playerReady.SetActive(false);
+            playerDisconnected.SetActive(false);
+            playerJoined.SetActive(true);
+        }
+    }
+    private void OnDisable()
+    {
+        if (playerInput != null) playerInput.currentActionMap.actionTriggered -= actionTriggered;
     }
 }

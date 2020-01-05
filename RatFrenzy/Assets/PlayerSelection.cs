@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Doozy.Engine.UI;
+using Doozy.Engine.Nody;
 
 public class PlayerSelection : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class PlayerSelection : MonoBehaviour
     public TMPro.TMP_Text countdown;
     private IEnumerator co;
     private int readyPlayers = 0, numPlayers = 0;
+    public UIButton startGame;
     // Start is called before the first frame update
     void Start()
     {
@@ -61,7 +63,16 @@ public class PlayerSelection : MonoBehaviour
         }
         countdown.text = "";
         Debug.Log("Game started");
-        
-        GameManager.LoadNextScene();
+
+        GameManager.instance.LoadNextScene();
+        startGame.ExecuteClick();
+        playerSelectionView.Hide();
+        co = null;
+    }
+    private void OnDisable()
+    {
+        StopCoroutine(co);
+        co = null;
+        countdown.text = "";
     }
 }
