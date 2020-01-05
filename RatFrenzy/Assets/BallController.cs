@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class BallController : MonoBehaviour
+public class BallController : GenericController
 {
-    public GameManager.PlayerIdentity identity;
+
     public float speed, sumoSpeed, jumpHeight, sumoJumpHeight;
     public bool isSumo;
     public Rigidbody rb;
     public GameObject ball;
     public GameObject rat;
 
-    public RatManager mgr;
+
     private bool isJumping;
 
     private Animator rAnim;
@@ -21,24 +21,16 @@ public class BallController : MonoBehaviour
 
     private const float defaultDrag = 20;
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
+        base.Start();
+        if (mgr != null)
+        {
+            mgr.onJump.AddListener(Jump);
+            mgr.onInteract.AddListener(Attack);
+        }
         if (rb == null) rb = GetComponentInChildren<Rigidbody>();
         rAnim = rat.GetComponent<Animator>();
-        if (mgr == null)
-        {
-            // Create Manager if it doesn't exist. Used for testing scenes.
-            if (GameManager.instance == null) GameManager.CreateTestManager();
-            GameManager.instance.playerJoined.AddListener(PlayerJoined);
-
-            mgr = GameManager.instance.GetRatManager(identity);
-            if (mgr == null) this.gameObject.SetActive(false);
-            else
-            {
-                mgr.onJump.AddListener(Jump);
-                mgr.onInteract.AddListener(Attack);
-            }
-        }
 
         rAnim.SetBool("isSumo", isSumo);
         if (!isSumo)
@@ -64,7 +56,7 @@ public class BallController : MonoBehaviour
         AnimateRat();
     }
 
-    public void Jump()
+    protected override void Jump()
     {
         if (!isJumping)
         {
@@ -81,12 +73,12 @@ public class BallController : MonoBehaviour
 
     }
 
-    public void Attack()
+    protected override void Attack()
     {
 
     }
 
-    public void Grab()
+    protected override void Grab()
     {
 
     }
@@ -130,13 +122,11 @@ public class BallController : MonoBehaviour
         }
     }
 
-    // This method enables the controller when the corresponding player joins. This is used for testing.
-    private void PlayerJoined(PlayerInput input)
+    protected override void PlayerJoined(PlayerInput input)
     {
-        if (input.playerIndex == (int)identity)
+        base.PlayerJoined(input);
+        if (mgr != null)
         {
-            mgr = input.GetComponent<RatManager>();
-            this.gameObject.SetActive(true);
             mgr.onJump.AddListener(Jump);
             mgr.onInteract.AddListener(Attack);
         }
