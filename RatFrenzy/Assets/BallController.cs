@@ -1,15 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class BallController : MonoBehaviour
 {
-    public RatManager mgr;
+    public GameManager.PlayerIdentity identity;
     public float speed, sumoSpeed, jumpHeight, sumoJumpHeight;
     public bool isSumo;
     public GameObject ball;
     public GameObject rat;
 
+    public RatManager mgr;
     private bool isJumping;
     private Rigidbody rb;
     private Animator rAnim;
@@ -22,7 +24,20 @@ public class BallController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rAnim = rat.GetComponent<Animator>();
-        if (mgr == null) throw new System.Exception("Error: Rat manager not defined");
+        if (mgr == null)
+        {
+            // Create Manager if it doesn't exist. Used for testing scenes.
+            if (GameManager.instance == null) GameManager.CreateTestManager();
+            GameManager.instance.playerJoined.AddListener(PlayerJoined);
+
+            mgr = GameManager.instance.GetRatManager(identity);
+            if (mgr == null) transform.parent.gameObject.SetActive(false);
+            else
+            {
+                mgr.onJump.AddListener(Jump);
+                mgr.onInteract.AddListener(Attack);
+            }
+        }
 
         rAnim.SetBool("isSumo", isSumo);
         if (!isSumo)
@@ -52,12 +67,12 @@ public class BallController : MonoBehaviour
     {
         if (!isJumping)
         {
-            if(!isSumo)
+            if (!isSumo)
             {
                 rb.drag = 1;
                 realSpeed = speed;
             }
-            
+
             rb.AddForce(Vector3.up * realJumpHeight);
             isJumping = true;
             rAnim.SetBool("isJumping", isJumping);
@@ -84,16 +99,14 @@ public class BallController : MonoBehaviour
         dir.y = 0;
         rb.AddForce(dir * realSpeed);
         Debug.DrawRay(transform.position, dir, Color.green);
-
-        
     }
 
     //Animates the angle and mecanim state of the rat
     private void AnimateRat()
     {
-        rat.transform.position = transform.position - new Vector3(0,ratYOffset,0);
+        rat.transform.position = transform.position - new Vector3(0, ratYOffset, 0);
 
-        
+
         if (rb.velocity.magnitude > 0.01)
         {
             vel = rb.velocity;
@@ -113,6 +126,18 @@ public class BallController : MonoBehaviour
         {
             rb.drag = defaultDrag;
             realSpeed = speed * 10;
+        }
+    }
+
+    // This method enables the controller when the corresponding player joins. This is used for testing.
+    private void PlayerJoined(PlayerInput input)
+    {
+        if (input.playerIndex == (int)identity)
+        {
+            mgr = input.GetComponent<RatManager>();
+            transform.parent.gameObject.SetActive(true);
+            mgr.onJump.AddListener(Jump);
+            mgr.onInteract.AddListener(Attack);
         }
     }
 }
