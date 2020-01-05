@@ -23,7 +23,7 @@ AnimatorState:
   m_Motion: {fileID: 3026873175335451509, guid: 05b82c218e7b06d4abed4a0fb6bb75ab,
     type: 3}
   m_Tag: 
-  m_SpeedParameter: Velocity
+  m_SpeedParameter: velocity
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
@@ -36,7 +36,7 @@ AnimatorController:
   m_Name: BallAnimator
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: Velocity
+  - m_Name: velocity
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
