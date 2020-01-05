@@ -24,16 +24,11 @@ public class BallController : GenericController
     protected override void Start()
     {
         base.Start();
-        if (mgr != null)
-        {
-            mgr.onJump.AddListener(Jump);
-            mgr.onInteract.AddListener(Attack);
-        }
-        if (rb == null) rb = GetComponentInChildren<Rigidbody>();
+        if (rb == null) rb = GetComponent<Rigidbody>();
         rAnim = rat.GetComponent<Animator>();
 
         rAnim.SetBool("isSumo", isSumo);
-        if (!isSumo)
+        /*if (!isSumo)
         {
             ball.SetActive(false);
             rb.drag = defaultDrag;
@@ -47,7 +42,10 @@ public class BallController : GenericController
             realSpeed = sumoSpeed;
             realJumpHeight = sumoJumpHeight;
             ratYOffset = 0.45f;
-        }
+        }*/
+        realSpeed = sumoSpeed;
+        realJumpHeight = sumoJumpHeight;
+        ratYOffset = 0.45f;
     }
 
     void FixedUpdate()
@@ -60,12 +58,12 @@ public class BallController : GenericController
     {
         if (!isJumping)
         {
-            if (!isSumo)
+            /*if (!isSumo)
             {
                 rb.drag = 1;
                 realSpeed = speed;
             }
-
+            */
             rb.AddForce(Vector3.up * realJumpHeight);
             isJumping = true;
             rAnim.SetBool("isJumping", isJumping);
@@ -115,20 +113,12 @@ public class BallController : GenericController
     {
         isJumping = false;
         rAnim.SetBool("isJumping", isJumping);
-        if (!isSumo)
+        /*if (!isSumo)
         {
             rb.drag = defaultDrag;
             realSpeed = speed * 10;
-        }
+        }*/
     }
 
-    protected override void PlayerJoined(PlayerInput input)
-    {
-        base.PlayerJoined(input);
-        if (mgr != null)
-        {
-            mgr.onJump.AddListener(Jump);
-            mgr.onInteract.AddListener(Attack);
-        }
-    }
+
 }
