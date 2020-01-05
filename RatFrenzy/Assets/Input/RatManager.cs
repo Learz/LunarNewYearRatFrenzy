@@ -12,7 +12,7 @@ public class RatManager : MonoBehaviour
     public bool interact { get; private set; }
     private float cooldown = 0.5f;
     private bool interactCooldown;
-    public RatInputEvent onJump = new RatInputEvent(), onInteract = new RatInputEvent();
+    public RatInputEvent onMove = new RatInputEvent(), onJump = new RatInputEvent(), onInteract = new RatInputEvent();
     private PlayerInput playerInput;
 
     private void Start()
@@ -24,6 +24,7 @@ public class RatManager : MonoBehaviour
     private void OnMove(InputValue value)
     {
         move = value.Get<Vector2>();
+        onMove.Invoke();
     }
     private void OnMoveCancelled()
     {
@@ -31,14 +32,12 @@ public class RatManager : MonoBehaviour
     }
     private void OnJump()
     {
-        Debug.Log("Jump!");
         onJump.Invoke();
     }
     private void OnInteract()
     {
         if (!interactCooldown)
         {
-            Debug.Log("Interact!");
             onInteract.Invoke();
             Invoke("InteractCooldown", cooldown);
             interactCooldown = true;

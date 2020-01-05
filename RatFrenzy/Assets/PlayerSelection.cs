@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Doozy.Engine.UI;
 
 public class PlayerSelection : MonoBehaviour
 {
     public static PlayerSelection instance { get; private set; }
+    public UIView playerSelectionView;
     public PlayerUI[] players;
     public TMPro.TMP_Text countdown;
     private IEnumerator co;
@@ -32,7 +35,7 @@ public class PlayerSelection : MonoBehaviour
     public void PlayerReady()
     {
         readyPlayers = 0;
-        foreach(PlayerUI player in players)
+        foreach (PlayerUI player in players)
         {
             if (player.playerIsReady) readyPlayers++;
         }
@@ -58,5 +61,7 @@ public class PlayerSelection : MonoBehaviour
         }
         countdown.text = "";
         Debug.Log("Game started");
+        playerSelectionView.Hide();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
