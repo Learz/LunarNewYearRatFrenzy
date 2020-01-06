@@ -48,11 +48,6 @@ public class BallController : GenericController
 
     }
 
-    protected override void Grab()
-    {
-
-    }
-
     //Moves the Sphere RigidBody
     private void MoveBall()
     {
