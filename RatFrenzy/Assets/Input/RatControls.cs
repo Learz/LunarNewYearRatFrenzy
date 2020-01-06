@@ -40,7 +40,7 @@ public class @RatControls : IInputActionCollection, IDisposable
                     ""id"": ""a7082025-6b63-423c-9ee1-c1e5eb085bd3"",
                     ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Press(behavior=2)""
                 },
                 {
                     ""name"": ""Interact"",
@@ -48,7 +48,7 @@ public class @RatControls : IInputActionCollection, IDisposable
                     ""id"": ""6aa138a9-b590-4b11-b879-b5714e7d2ce0"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Press(behavior=2)""
                 },
                 {
                     ""name"": ""Pause"",

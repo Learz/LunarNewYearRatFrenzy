@@ -11,9 +11,11 @@ public class RatManager : MonoBehaviour
     public Vector2 move { get; private set; }
     public bool jump { get; private set; }
     public bool interact { get; private set; }
-    private float cooldown = 0.5f;
-    private bool interactCooldown;
-    public RatInputEvent onMove = new RatInputEvent(), onJump = new RatInputEvent(), onInteract = new RatInputEvent();
+    public RatInputEvent onMove = new RatInputEvent(),
+        onJumpDown = new RatInputEvent(),
+        onJumpUp = new RatInputEvent(),
+        onInteractDown = new RatInputEvent(),
+        onInteractUp = new RatInputEvent();
     private PlayerInput playerInput;
     public UIButton escape;
 
@@ -32,28 +34,21 @@ public class RatManager : MonoBehaviour
     {
         move = Vector2.zero;
     }
-    private void OnJump()
+    private void OnJump(InputValue value)
     {
-        onJump.Invoke();
+        if (value.isPressed) onJumpDown.Invoke();
+        else onJumpUp.Invoke();
     }
-    private void OnInteract()
+    private void OnInteract(InputValue value)
     {
-        if (!interactCooldown)
-        {
-            onInteract.Invoke();
-            Invoke("InteractCooldown", cooldown);
-            interactCooldown = true;
-        }
+        if (value.isPressed) onInteractDown.Invoke();
+        else onInteractUp.Invoke();
 
     }
     private void OnPause(InputValue value)
     {
         if (value.isPressed)
             escape.ExecuteClick();
-    }
-    private void InteractCooldown()
-    {
-        interactCooldown = false;
     }
 
 }

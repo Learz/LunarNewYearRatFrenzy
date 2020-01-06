@@ -32,7 +32,7 @@ public class BallController : GenericController
         AnimateRat();
     }
 
-    protected override void Jump()
+    protected override void JumpPressed()
     {
         if (!isJumping && isGrounded)
         {
@@ -43,12 +43,7 @@ public class BallController : GenericController
 
     }
 
-    protected override void Attack()
-    {
-
-    }
-
-    protected override void Grab()
+    protected override void InteractPressed()
     {
 
     }

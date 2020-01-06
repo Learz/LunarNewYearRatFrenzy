@@ -25,7 +25,7 @@ public class RatController : GenericController
         MoveRat();
     }
 
-    protected override void Jump()
+    protected override void JumpPressed()
     {
         if (!isJumping && isGrounded)
         {
@@ -38,7 +38,7 @@ public class RatController : GenericController
 
     }
 
-    protected override void Attack()
+    protected override void InteractPressed()
     {
 
     }
