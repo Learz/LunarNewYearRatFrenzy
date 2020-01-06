@@ -50,10 +50,25 @@ public class GameManager : MonoBehaviour
         if (players[(int)id] != null) return players[(int)id].GetComponent<RatManager>();
         else return null;
     }
+    public PlayerInput GetPlayerInput(PlayerIdentity id)
+    {
+        if (players[(int)id] != null) return players[(int)id];
+        else return null;
+    }
+    public List<PlayerIdentity> GetPlayerIdentities()
+    {
+        List<PlayerIdentity> list = new List<PlayerIdentity>();
+        foreach (PlayerInput player in players)
+        {
+            if (player != null) list.Add((PlayerIdentity)player.playerIndex);
+        }
+        return list;
+    }
 
     public void AddPoints(PlayerIdentity id) => scores[(int)id]++;
     public void AddPoints(PlayerIdentity id, int ammount) => scores[(int)id] += ammount;
 
+    public int GetScore(PlayerIdentity id) => scores[(int)id];
     public void LoadNextScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

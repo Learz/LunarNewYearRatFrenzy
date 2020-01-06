@@ -3434,14 +3434,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 317650371}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88450e1ba623ee14782e1b750491ee96, type: 3}
+  m_Script: {fileID: 11500000, guid: fd1f225f8384c524e8174f6966a8f57f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerJoined: {fileID: 0}
-  playerReady: {fileID: 0}
-  playerDisconnected: {fileID: 0}
-  playerIsConnected: 0
-  playerIsReady: 0
+  identity: 0
+  scoreLabel: {fileID: 0}
 --- !u!114 &317650374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15740,14 +15737,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1165381941}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88450e1ba623ee14782e1b750491ee96, type: 3}
+  m_Script: {fileID: 11500000, guid: fd1f225f8384c524e8174f6966a8f57f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerJoined: {fileID: 0}
-  playerReady: {fileID: 0}
-  playerDisconnected: {fileID: 0}
-  playerIsConnected: 0
-  playerIsReady: 0
+  identity: 0
+  scoreLabel: {fileID: 0}
 --- !u!114 &1165381944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19685,14 +19679,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1313320864}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88450e1ba623ee14782e1b750491ee96, type: 3}
+  m_Script: {fileID: 11500000, guid: fd1f225f8384c524e8174f6966a8f57f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerJoined: {fileID: 0}
-  playerReady: {fileID: 0}
-  playerDisconnected: {fileID: 0}
-  playerIsConnected: 0
-  playerIsReady: 0
+  identity: 0
+  scoreLabel: {fileID: 0}
 --- !u!114 &1313320867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21449,14 +21440,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1469802351}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88450e1ba623ee14782e1b750491ee96, type: 3}
+  m_Script: {fileID: 11500000, guid: fd1f225f8384c524e8174f6966a8f57f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerJoined: {fileID: 0}
-  playerReady: {fileID: 0}
-  playerDisconnected: {fileID: 0}
-  playerIsConnected: 0
-  playerIsReady: 0
+  identity: 0
+  scoreLabel: {fileID: 0}
 --- !u!114 &1469802354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32576,6 +32564,7 @@ GameObject:
   - component: {fileID: 1780272861}
   - component: {fileID: 1780272863}
   - component: {fileID: 1780272862}
+  - component: {fileID: 1780272864}
   m_Layer: 0
   m_Name: Panel
   m_TagString: Untagged
@@ -32639,6 +32628,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1780272860}
   m_CullTransparentMesh: 0
+--- !u!114 &1780272864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780272860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6291f9f581656a47bf7840edb571862, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1809623652
 GameObject:
   m_ObjectHideFlags: 0
