@@ -6,6 +6,14 @@ using static GameManager;
 
 public class SurvivorWinCondition : MonoBehaviour
 {
+    public enum SurvivorType
+    {
+        AllEliminated = 0,
+        LastManStanding = 1,
+    }
+
+    public SurvivorType survivorType;
+
     private List<PlayerIdentity> playersAlive;
     // Start is called before the first frame update
     void Start()
@@ -16,18 +24,18 @@ public class SurvivorWinCondition : MonoBehaviour
     }
     public void EliminatePlayer(PlayerIdentity id)
     {
-        playersAlive.Remove(id);
         Debug.Log(id + " eliminated");
-        if (playersAlive.Count <= 1) EndGame();
+        if (playersAlive.Count-1 == (int)survivorType) EndGame(playersAlive[0]);
+        playersAlive.Remove(id);
     }
     void OnPlayerJoined(PlayerInput input)
     {
         if (playersAlive == null) playersAlive = new List<PlayerIdentity>();
         playersAlive.Add((PlayerIdentity)input.playerIndex);
     }
-    void EndGame()
+    void EndGame(PlayerIdentity winner)
     {
-        Debug.Log(playersAlive[0] + " wins!");
+        Debug.Log(winner + " wins!");
         GameManager.instance.AddPoints(playersAlive[0]);
         GameManager.instance.DisplayScore();
     }
