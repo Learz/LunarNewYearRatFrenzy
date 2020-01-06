@@ -40,13 +40,10 @@ public class RatController : GenericController
 
     protected override void InteractPressed()
     {
-
+        base.InteractPressed();
     }
 
-    protected override void Grab()
-    {
 
-    }
 
     private void MoveRat()
     {
@@ -90,6 +87,6 @@ public class RatController : GenericController
             speed = airSpeed;
             rb.drag = airDrag;
         }
-        
+
     }
 }

@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public PlayerEvent playerLeft = new PlayerEvent();
     public int numPlayers;
     public PlayerInput[] players;
+    public MiniGameList miniGames;
     public enum PlayerIdentity
     {
         Player1 = 0,
@@ -113,3 +114,4 @@ public class GameManager : MonoBehaviour
     }
 }
 public class PlayerEvent : UnityEvent<PlayerInput> { };
+

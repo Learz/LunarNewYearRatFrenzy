@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c5d37d311903254d8ec94d65a0413f2, type: 3}
+  m_Name: MiniGames
+  m_EditorClassIdentifier: 
+  gamesList:
+  - gameName: Sumo Arena
+    description: 
+    thumbnail: {fileID: 0}
+    sceneName: sumoarena
+  - gameName: Rat Arena
+    description: 
+    thumbnail: {fileID: 0}
+    sceneName: ratArena

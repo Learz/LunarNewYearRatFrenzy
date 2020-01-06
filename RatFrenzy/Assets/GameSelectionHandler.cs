@@ -4,32 +4,41 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using Doozy.Engine.UI;
 
 public class GameSelectionHandler : MonoBehaviour
 {
     public GameObject gameSelectorPrefab;
     public RectTransform content;
+    public Image thumbnail;
+    public TMPro.TMP_Text descriptionField;
     public Doozy.Engine.UI.UIView gameSelectView;
-    private List<string> scenes;
+    private List<MiniGame> games;
     private List<GameObject> selectors;
     private GameObject lastSelected;
     // Start is called before the first frame update
     void Start()
     {
-        scenes = new List<string>();
-        scenes = GameManager.instance.GetScenes();
         selectors = new List<GameObject>();
-        foreach (string scene in scenes)
+        foreach (MiniGame game in GameManager.instance.miniGames.gamesList)
         {
             GameObject selector = Instantiate(gameSelectorPrefab, content);
             selectors.Add(selector);
-            selector.GetComponentInChildren<TMPro.TMP_Text>().text = scene;
+            selector.GetComponentInChildren<TMPro.TMP_Text>().text = game.gameName;
             Button button = selector.GetComponent<Button>();
             button.onClick.AddListener(() =>
             {
                 lastSelected = selector;
-                GameManager.instance.LoadSceneName(scene);
+                GameManager.instance.LoadSceneName(game.sceneName);
                 gameSelectView.Hide();
+            });
+            selector.GetComponent<UIButton>().OnSelected.OnTrigger.Event.AddListener(() =>
+            {
+                DisplayMiniGameInfo(game);
+            });
+            selector.GetComponent<UIButton>().OnPointerEnter.OnTrigger.Event.AddListener(() =>
+            {
+                DisplayMiniGameInfo(game);
             });
         }
         selectors[0].GetComponent<Button>().Select();
@@ -39,5 +48,12 @@ public class GameSelectionHandler : MonoBehaviour
         if (selectors == null) return;
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(lastSelected);
+    }
+    public void DisplayMiniGameInfo(MiniGame game)
+    {
+        if (game.thumbnail != null) thumbnail.sprite = game.thumbnail;
+        else thumbnail.sprite = null;
+        if (game.description != null) descriptionField.text = game.description;
+        else descriptionField.text = "Please add a description in your minigames settings file.";
     }
 }

@@ -36,8 +36,12 @@ public class RatManager : MonoBehaviour
     }
     private void OnJump(InputValue value)
     {
-        if (value.isPressed) onJumpDown.Invoke();
-        else onJumpUp.Invoke();
+        if (value.isPressed)
+        {
+            onJumpDown.Invoke();
+            return;
+        }
+        onJumpUp.Invoke();
     }
     private void OnInteract(InputValue value)
     {
