@@ -28,5 +28,7 @@ public class SurvivorWinCondition : MonoBehaviour
     void EndGame()
     {
         Debug.Log(playersAlive[0] + " wins!");
+        GameManager.instance.AddPoints(playersAlive[0]);
+        GameManager.instance.DisplayScore();
     }
 }

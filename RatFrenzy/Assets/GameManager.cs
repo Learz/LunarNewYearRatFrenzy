@@ -69,6 +69,10 @@ public class GameManager : MonoBehaviour
     public void AddPoints(PlayerIdentity id, int ammount) => scores[(int)id] += ammount;
 
     public int GetScore(PlayerIdentity id) => scores[(int)id];
+    public void DisplayScore()
+    {
+        graph.GoToNodeByName("DisplayScore");
+    }
     public void LoadNextScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
