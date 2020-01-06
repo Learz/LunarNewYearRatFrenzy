@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
@@ -33,10 +34,7 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this);
         players = new PlayerInput[4];
         scores = new int[4];
-    }
-    private void Start()
-    {
-        LoadSceneID(1);
+        DontDestroyOnLoad(EventSystem.current);
     }
     void OnPlayerJoined(PlayerInput input)
     {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class GameSelectionHandler : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class GameSelectionHandler : MonoBehaviour
     public Doozy.Engine.UI.UIView gameSelectView;
     private List<string> scenes;
     private List<GameObject> selectors;
-    private int lastSelected;
+    private GameObject lastSelected;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,12 +27,17 @@ public class GameSelectionHandler : MonoBehaviour
             Button button = selector.GetComponent<Button>();
             button.onClick.AddListener(() =>
             {
-                button.Select();
+                lastSelected = selector;
                 GameManager.instance.LoadSceneName(scene);
                 gameSelectView.Hide();
             });
         }
         selectors[0].GetComponent<Button>().Select();
     }
-
+    public void SelectLastButton()
+    {
+        if (selectors == null) return;
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(lastSelected);
+    }
 }
