@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   identity: 0
-  speed: 10
+  speed: 250
   jumpHeight: 200
   rb: {fileID: 0}
   ball: {fileID: 2529600740298096836}
