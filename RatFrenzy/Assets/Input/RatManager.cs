@@ -16,7 +16,6 @@ public class RatManager : MonoBehaviour
         onJumpUp = new RatInputEvent(),
         onInteractDown = new RatInputEvent(),
         onInteractUp = new RatInputEvent();
-    public RatButtonEvent onInteract = new RatButtonEvent();
     private PlayerInput playerInput;
     public UIButton escape;
 
@@ -60,5 +59,3 @@ public class RatManager : MonoBehaviour
 
 [System.Serializable]
 public class RatInputEvent : UnityEvent { };
-[System.Serializable]
-public class RatButtonEvent : UnityEvent<bool> { };

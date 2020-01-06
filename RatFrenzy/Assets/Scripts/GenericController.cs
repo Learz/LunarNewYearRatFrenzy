@@ -27,7 +27,6 @@ public class GenericController : MonoBehaviour
                 mgr.onJumpUp.AddListener(JumpReleased);
                 mgr.onInteractDown.AddListener(InteractPressed);
                 mgr.onInteractUp.AddListener(InteractReleased);
-                mgr.onInteract.AddListener(Interact);
             }
         }
     }
@@ -48,11 +47,6 @@ public class GenericController : MonoBehaviour
     {
         Debug.Log("Interact Released");
     }
-    protected virtual void Interact(bool isPressed)
-    {
-        if (isPressed) Debug.Log("Interact down");
-        else Debug.Log("Interact up");
-    }
     // This method enables the controller when the corresponding player joins. This is used for testing.
     protected virtual void PlayerJoined(PlayerInput input)
     {
@@ -61,7 +55,9 @@ public class GenericController : MonoBehaviour
             mgr = input.GetComponent<RatManager>();
             this.gameObject.SetActive(true);
             mgr.onJumpDown.AddListener(JumpPressed);
+            mgr.onJumpUp.AddListener(JumpReleased);
             mgr.onInteractDown.AddListener(InteractPressed);
+            mgr.onInteractUp.AddListener(InteractReleased);
         }
     }
     protected virtual void OnCollisionEnter(Collision collision)
