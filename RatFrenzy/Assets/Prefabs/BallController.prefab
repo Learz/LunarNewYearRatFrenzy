@@ -47,11 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f461794deb1cf2543adc8b24e40839bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  identity: 1
-  speed: 15
-  sumoSpeed: 3
-  jumpHeight: 500
-  sumoJumpHeight: 200
+  identity: 0
+  speed: 10
+  jumpHeight: 200
+  rb: {fileID: 0}
   ball: {fileID: 2529600740298096836}
   rat: {fileID: 5154834296765773766}
 --- !u!54 &9134174864242671903
