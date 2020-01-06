@@ -12,6 +12,7 @@ public class ScoreUI : MonoBehaviour
 
     void OnEnable()
     {
+        if (GameManager.instance == null) return;
         playerInput = GameManager.instance.GetPlayerInput(identity);
         if (playerInput == null) this.gameObject.SetActive(false);
         else
@@ -20,4 +21,5 @@ public class ScoreUI : MonoBehaviour
             scoreLabel.text = "" + score;
         }
     }
+
 }

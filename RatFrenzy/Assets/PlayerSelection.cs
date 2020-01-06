@@ -13,7 +13,7 @@ public class PlayerSelection : MonoBehaviour
     public UIView playerSelectionView;
     public PlayerUI[] players;
     public TMPro.TMP_Text countdown;
-    private IEnumerator co;
+    private Coroutine co;
     private int readyPlayers = 0, numPlayers = 0;
     public UIButton startGame;
     // Start is called before the first frame update
@@ -43,8 +43,7 @@ public class PlayerSelection : MonoBehaviour
         }
         if (readyPlayers >= 2 && readyPlayers == numPlayers)
         {
-            co = Countdown();
-            StartCoroutine(co);
+            co = StartCoroutine(Countdown());
         }
     }
     public void PlayerNotReady()
@@ -71,6 +70,7 @@ public class PlayerSelection : MonoBehaviour
     }
     private void OnDisable()
     {
+        if (co == null) return;
         StopCoroutine(co);
         co = null;
         countdown.text = "";
