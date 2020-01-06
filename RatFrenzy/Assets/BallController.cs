@@ -34,6 +34,7 @@ public class BallController : GenericController
 
     protected override void JumpPressed()
     {
+        base.JumpPressed();
         if (!isJumping && isGrounded)
         {
             rb.AddForce(Vector3.up * jumpHeight);
@@ -45,7 +46,7 @@ public class BallController : GenericController
 
     protected override void InteractPressed()
     {
-
+        base.InteractPressed();
     }
 
     //Moves the Sphere RigidBody
