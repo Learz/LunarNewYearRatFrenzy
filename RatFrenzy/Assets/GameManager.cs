@@ -1,6 +1,7 @@
 ﻿using Doozy.Engine.Nody;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -32,6 +33,10 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this);
         players = new PlayerInput[4];
         scores = new int[4];
+    }
+    private void Start()
+    {
+        LoadSceneID(1);
     }
     void OnPlayerJoined(PlayerInput input)
     {
@@ -82,10 +87,20 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(index);
         // TODO : LoadScreen with Input mapping chart
-        //graph.Graph.ActiveNode.
-        //graph.GoToNodeByName("InGame");
     }
-
+    public void LoadSceneName(string name)
+    {
+        SceneManager.LoadScene(name);
+    }
+    public List<string> GetScenes()
+    {
+        List<string> scenes = new List<string>();
+        for (int i = 2; i < SceneManager.sceneCountInBuildSettings; i++)
+        {
+            scenes.Add(Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i)));
+        }
+        return scenes;
+    }
     // Instantiate a test manager for scene prototyping
     public static void CreateTestManager()
     {
@@ -96,7 +111,7 @@ public class GameManager : MonoBehaviour
     public void OnReturnToMenu()
     {
         Debug.Log("Unloading active scene");
-        SceneManager.LoadSceneAsync(SceneManager.sceneCountInBuildSettings - 1);
+        SceneManager.LoadSceneAsync(1);
     }
 }
 public class PlayerEvent : UnityEvent<PlayerInput> { };

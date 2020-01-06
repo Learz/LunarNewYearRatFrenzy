@@ -10,7 +10,6 @@ using Doozy.Engine.Nody;
 public class PlayerSelection : MonoBehaviour
 {
     public static PlayerSelection instance { get; private set; }
-    public UIView playerSelectionView;
     public PlayerUI[] players;
     public TMPro.TMP_Text countdown;
     private Coroutine co;
@@ -63,9 +62,7 @@ public class PlayerSelection : MonoBehaviour
         countdown.text = "";
         Debug.Log("Game started");
 
-        GameManager.instance.LoadNextScene();
         startGame.ExecuteClick();
-        playerSelectionView.Hide();
         co = null;
     }
     private void OnDisable()
