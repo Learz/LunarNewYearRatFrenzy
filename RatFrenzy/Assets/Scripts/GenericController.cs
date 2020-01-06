@@ -23,8 +23,8 @@ public class GenericController : MonoBehaviour
             if (mgr == null) this.gameObject.SetActive(false);
             else
             {
-                mgr.onJump.AddListener(Jump);
-                mgr.onInteract.AddListener(Attack);
+                mgr.onJumpDown.AddListener(Jump);
+                mgr.onInteractDown.AddListener(Attack);
             }
         }
     }
@@ -50,8 +50,8 @@ public class GenericController : MonoBehaviour
         {
             mgr = input.GetComponent<RatManager>();
             this.gameObject.SetActive(true);
-            mgr.onJump.AddListener(Jump);
-            mgr.onInteract.AddListener(Attack);
+            mgr.onJumpDown.AddListener(Jump);
+            mgr.onInteractDown.AddListener(Attack);
         }
     }
     protected virtual void OnCollisionEnter(Collision collision)
