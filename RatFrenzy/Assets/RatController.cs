@@ -10,8 +10,6 @@ public class RatController : GenericController
     public GameObject rat;
     public bool isFixed;
 
-
-    private bool isJumping;
     private float speed;
     private Animator rAnim;
 
@@ -29,7 +27,7 @@ public class RatController : GenericController
 
     protected override void Jump()
     {
-        if (!isJumping)
+        if (!isJumping && isGrounded)
         {
             speed = airSpeed;
             rb.drag = airDrag;
@@ -57,38 +55,39 @@ public class RatController : GenericController
         dir = Camera.main.transform.TransformDirection(movement);
         dir.y = 0;
 
-        if (rb.velocity.magnitude > 0.1f)
-        {
-            //rb.MoveRotation(Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(new Vector3(rb.velocity.x, 0.0f, rb.velocity.z)), 10.0f));
-            rb.MoveRotation(Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(dir), 10.0f));
-        }
-
-        
         if (!isFixed)
         {
-            rb.AddForce(dir * speed);
+            rb.AddForce(dir * (speed * 60 * Time.deltaTime));
             rAnim.SetFloat("velocity", rb.velocity.magnitude);
         }
         else
         {
             rAnim.SetFloat("velocity", fixedSpeed);
         }
+
+        if (dir.magnitude > 0f)
+        {
+            //rb.MoveRotation(Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(new Vector3(rb.velocity.x, 0.0f, rb.velocity.z)), 10.0f));
+            rb.MoveRotation(Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(dir), 10.0f * 60 * Time.deltaTime));
+        }
+
     }
 
-    private void OnCollisionEnter(Collision collision)
+    protected override void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == 10)
+        base.OnCollisionEnter(collision);
+        if (isGrounded)
         {
-            isJumping = false;
-            rAnim.SetBool("isJumping", isJumping);
             rb.drag = groundDrag;
             speed = groundSpeed;
         }
+        rAnim.SetBool("isJumping", isJumping);
     }
 
-    private void OnCollisionExit(Collision collision)
+    protected override void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.layer == 10)
+        base.OnCollisionExit(collision);
+        if (!isGrounded)
         {
             speed = airSpeed;
             rb.drag = airDrag;
