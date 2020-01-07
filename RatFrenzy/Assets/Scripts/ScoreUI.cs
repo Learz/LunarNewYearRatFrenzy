@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class ScoreUI : MonoBehaviour
 {
-    public GameManager.PlayerIdentity identity;
+    public Player.Identity identity;
     public TMPro.TMP_Text scoreLabel;
     private PlayerInput playerInput;
     private int score;

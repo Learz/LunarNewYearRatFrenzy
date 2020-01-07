@@ -7,7 +7,7 @@ using static GameManager;
 public class SpeedUp : MonoBehaviour
 {
     public SpawnObject spawner;
-    private List<PlayerIdentity> players;
+    private List<Player.Identity> players;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +25,7 @@ public class SpeedUp : MonoBehaviour
 
     void OnPlayerJoined(PlayerInput input)
     {
-        if (players == null) players = new List<PlayerIdentity>();
-        players.Add((PlayerIdentity)input.playerIndex);
+        if (players == null) players = new List<Player.Identity>();
+        players.Add((Player.Identity)input.playerIndex);
     }
 }

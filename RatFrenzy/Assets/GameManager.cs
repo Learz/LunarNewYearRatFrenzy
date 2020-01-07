@@ -18,13 +18,6 @@ public class GameManager : MonoBehaviour
     public int numPlayers;
     public PlayerInput[] players;
     public MiniGameList miniGames;
-    public enum PlayerIdentity
-    {
-        Player1 = 0,
-        Player2 = 1,
-        Player3 = 2,
-        Player4 = 3
-    };
     private int[] scores;
     // Start is called before the first frame update
     void Awake()
@@ -49,30 +42,30 @@ public class GameManager : MonoBehaviour
         players[input.playerIndex] = null;
         playerLeft.Invoke(input);
     }
-    public RatManager GetRatManager(PlayerIdentity id)
+    public RatManager GetRatManager(Player.Identity id)
     {
         if (players[(int)id] != null) return players[(int)id].GetComponent<RatManager>();
         else return null;
     }
-    public PlayerInput GetPlayerInput(PlayerIdentity id)
+    public PlayerInput GetPlayerInput(Player.Identity id)
     {
         if (players[(int)id] != null) return players[(int)id];
         else return null;
     }
-    public List<PlayerIdentity> GetPlayerIdentities()
+    public List<Player.Identity> GetPlayerIdentities()
     {
-        List<PlayerIdentity> list = new List<PlayerIdentity>();
+        List<Player.Identity> list = new List<Player.Identity>();
         foreach (PlayerInput player in players)
         {
-            if (player != null) list.Add((PlayerIdentity)player.playerIndex);
+            if (player != null) list.Add((Player.Identity)player.playerIndex);
         }
         return list;
     }
 
-    public void AddPoints(PlayerIdentity id) => scores[(int)id]++;
-    public void AddPoints(PlayerIdentity id, int ammount) => scores[(int)id] += ammount;
+    public void AddPoints(Player.Identity id) => scores[(int)id]++;
+    public void AddPoints(Player.Identity id, int ammount) => scores[(int)id] += ammount;
 
-    public int GetScore(PlayerIdentity id) => scores[(int)id];
+    public int GetScore(Player.Identity id) => scores[(int)id];
     public void DisplayScore()
     {
         graph.GoToNodeByName("DisplayScore");
@@ -114,4 +107,34 @@ public class GameManager : MonoBehaviour
     }
 }
 public class PlayerEvent : UnityEvent<PlayerInput> { };
+
+// Pour plus d'abstraction
+public class Player
+{
+    public enum Identity
+    {
+        Player1 = 0,
+        Player2 = 1,
+        Player3 = 2,
+        Player4 = 3
+    }
+    public enum Color
+    {
+        Red,
+        Blue,
+        Yellow,
+        Green,
+        Pink,
+        Purple,
+        Orange,
+        Teal
+    }
+    public enum CharacterPose
+    {
+        One,
+        Two,
+        Three,
+        Four
+    }
+}
 

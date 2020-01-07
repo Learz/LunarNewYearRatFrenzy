@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using static GameManager;
 
 public class GenericWinCondition : MonoBehaviour
 {
@@ -14,11 +14,11 @@ public class GenericWinCondition : MonoBehaviour
         if (startCountdownOnStart) StartTimeoutCountdown(timeLimit);
     }
 
-    public virtual void EliminatePlayer(GameManager.PlayerIdentity id)
+    public virtual void EliminatePlayer(Player.Identity id)
     {
 
     }
-    public virtual void AddMinigamePoint(GameManager.PlayerIdentity id, int points)
+    public virtual void AddMinigamePoint(Player.Identity id, int points)
     {
 
     }

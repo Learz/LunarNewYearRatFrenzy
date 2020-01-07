@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class GenericController : MonoBehaviour
 {
-    public GameManager.PlayerIdentity identity;
+    public Player.Identity identity;
     protected RatManager mgr;
     protected bool isJumping, isGrounded;
     protected int grounds;

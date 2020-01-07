@@ -14,7 +14,7 @@ public class SurvivorWinCondition : MonoBehaviour
 
     public SurvivorType survivorType;
 
-    private List<PlayerIdentity> playersAlive;
+    private List<Player.Identity> playersAlive;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +22,7 @@ public class SurvivorWinCondition : MonoBehaviour
         GameManager.instance.playerJoined.AddListener(OnPlayerJoined);
         playersAlive = GameManager.instance.GetPlayerIdentities();
     }
-    public void EliminatePlayer(PlayerIdentity id)
+    public void EliminatePlayer(Player.Identity id)
     {
         Debug.Log(id + " eliminated");
         if (playersAlive.Count-1 == (int)survivorType) EndGame(playersAlive[0]);
@@ -30,10 +30,10 @@ public class SurvivorWinCondition : MonoBehaviour
     }
     void OnPlayerJoined(PlayerInput input)
     {
-        if (playersAlive == null) playersAlive = new List<PlayerIdentity>();
-        playersAlive.Add((PlayerIdentity)input.playerIndex);
+        if (playersAlive == null) playersAlive = new List<Player.Identity>();
+        playersAlive.Add((Player.Identity)input.playerIndex);
     }
-    void EndGame(PlayerIdentity winner)
+    void EndGame(Player.Identity winner)
     {
         Debug.Log(winner + " wins!");
         GameManager.instance.AddPoints(playersAlive[0]);
