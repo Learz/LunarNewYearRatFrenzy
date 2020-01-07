@@ -5,13 +5,14 @@ using UnityEngine.InputSystem;
 
 public class RatController : GenericController
 {
-    public float groundSpeed, airSpeed, jumpHeight, groundDrag, airDrag, speedOverride;
+    public float groundSpeed, airSpeed, jumpHeight, fallSpeed, groundDrag, airDrag, speedOverride;
     public Rigidbody rb;
     public GameObject rat;
-    public bool isFixed;
+    public bool isFixed, controlledJump;
 
     private float speed;
     private Animator rAnim;
+    private bool isFallBoosted;
 
     protected override void Start()
     {
@@ -29,6 +30,7 @@ public class RatController : GenericController
     {
         if (!isJumping && isGrounded)
         {
+            isFallBoosted = false;
             speed = airSpeed;
             rb.drag = airDrag;
             rb.AddForce(Vector3.up * jumpHeight);
@@ -36,6 +38,15 @@ public class RatController : GenericController
             rAnim.SetBool("isJumping", isJumping);
         }
 
+    }
+
+    protected override void JumpReleased()
+    {
+        if (!isFallBoosted && controlledJump && rb.velocity.y > 0)
+        {
+            rb.AddForce(Vector3.down * fallSpeed);
+            isFallBoosted = true;
+        }
     }
 
     protected override void InteractPressed()
@@ -75,6 +86,7 @@ public class RatController : GenericController
         {
             rb.drag = groundDrag;
             speed = groundSpeed;
+            isFallBoosted = false;
         }
         rAnim.SetBool("isJumping", isJumping);
     }

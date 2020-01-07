@@ -633,12 +633,14 @@ MonoBehaviour:
   groundSpeed: 100
   airSpeed: 2
   jumpHeight: 200
+  fallSpeed: 50
   groundDrag: 20
   airDrag: 1
   speedOverride: -1
   rb: {fileID: 4497655283208819181}
   rat: {fileID: 7360168752541191571}
   isFixed: 0
+  controlledJump: 0
 --- !u!54 &4497655283208819181
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -666,7 +668,7 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.125
-  m_Height: 0.75
+  m_Height: 0.45
   m_Direction: 2
   m_Center: {x: 0, y: 0.125, z: 0}
 --- !u!199 &4837947120543261982
