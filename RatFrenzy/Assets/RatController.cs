@@ -5,13 +5,14 @@ using UnityEngine.InputSystem;
 
 public class RatController : GenericController
 {
-    public float groundSpeed, airSpeed, jumpHeight, groundDrag, airDrag, fixedSpeed;
+    public float groundSpeed, airSpeed, jumpHeight, fallSpeed, groundDrag, airDrag, speedOverride;
     public Rigidbody rb;
     public GameObject rat;
-    public bool isFixed;
+    public bool isFixed, controlledJump;
 
     private float speed;
     private Animator rAnim;
+    private bool isFallBoosted;
 
     protected override void Start()
     {
@@ -29,6 +30,7 @@ public class RatController : GenericController
     {
         if (!isJumping && isGrounded)
         {
+            isFallBoosted = false;
             speed = airSpeed;
             rb.drag = airDrag;
             rb.AddForce(Vector3.up * jumpHeight);
@@ -36,6 +38,15 @@ public class RatController : GenericController
             rAnim.SetBool("isJumping", isJumping);
         }
 
+    }
+
+    protected override void JumpReleased()
+    {
+        if (!isFallBoosted && controlledJump && rb.velocity.y > 0)
+        {
+            rb.AddForce(Vector3.down * fallSpeed);
+            isFallBoosted = true;
+        }
     }
 
     protected override void InteractPressed()
@@ -52,22 +63,20 @@ public class RatController : GenericController
         dir = Camera.main.transform.TransformDirection(movement);
         dir.y = 0;
 
-        if (!isFixed)
+        if (isFixed)
         {
-            rb.AddForce(dir * (speed * 60 * Time.deltaTime));
-            rAnim.SetFloat("velocity", rb.velocity.magnitude);
+            rAnim.SetFloat("velocity", speedOverride);
         }
         else
         {
-            rAnim.SetFloat("velocity", fixedSpeed);
+            rb.AddForce(dir * (speed * 60 * Time.deltaTime));
+            rAnim.SetFloat("velocity", rb.velocity.magnitude);
+            if (dir.magnitude > 0f)
+            {
+                //rb.MoveRotation(Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(new Vector3(rb.velocity.x, 0.0f, rb.velocity.z)), 10.0f));
+                rb.MoveRotation(Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(dir), 10.0f * 60 * Time.deltaTime));
+            }
         }
-
-        if (dir.magnitude > 0f)
-        {
-            //rb.MoveRotation(Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(new Vector3(rb.velocity.x, 0.0f, rb.velocity.z)), 10.0f));
-            rb.MoveRotation(Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(dir), 10.0f * 60 * Time.deltaTime));
-        }
-
     }
 
     protected override void OnCollisionEnter(Collision collision)
@@ -77,6 +86,7 @@ public class RatController : GenericController
         {
             rb.drag = groundDrag;
             speed = groundSpeed;
+            isFallBoosted = false;
         }
         rAnim.SetBool("isJumping", isJumping);
     }
