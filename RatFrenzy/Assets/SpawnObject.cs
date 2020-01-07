@@ -6,7 +6,11 @@ public class SpawnObject : MonoBehaviour
 {
     public GameObject[] objects;
     public Vector3 area = new Vector3(1,1,1);
-    public float rate, increase, maxRate;
+    public float maxRate;
+    [Tooltip("Spawn rate (seconds)")]
+    public float rate;
+    [Tooltip("Rate increase per second")]
+    public float increase;
     
     private float spawnTime;
 
