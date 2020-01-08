@@ -40,7 +40,7 @@ public class GenericWinCondition : MonoBehaviour
 
     protected virtual void OnPlayerJoined(PlayerInput input)
     {
-
+        GameManager.instance.SetDisplayType(displayType);
     }
     protected virtual void EndGame(Player.Identity winner)
     {
