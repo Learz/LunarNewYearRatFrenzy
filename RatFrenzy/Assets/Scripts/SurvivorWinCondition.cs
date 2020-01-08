@@ -25,18 +25,14 @@ public class SurvivorWinCondition : GenericWinCondition
     {
         base.EliminatePlayer(id);
         Debug.Log(id + " eliminated");
-        if (playersAlive.Count-1 == (int)survivorType) EndGame(playersAlive[0]);
-        playersAlive.Remove(id);
+        if (playersAlive.Count - 1 > 0) playersAlive.Remove(id);
+        if (playersAlive.Count - 1 == (int)survivorType) EndGame(playersAlive[0]);
+
     }
     protected override void OnPlayerJoined(PlayerInput input)
     {
         if (playersAlive == null) playersAlive = new List<Player.Identity>();
         playersAlive.Add((Player.Identity)input.playerIndex);
     }
-    void EndGame(Player.Identity winner)
-    {
-        Debug.Log(winner + " wins!");
-        GameManager.instance.AddPoints(playersAlive[0]);
-        GameManager.instance.DisplayScore();
-    }
+
 }

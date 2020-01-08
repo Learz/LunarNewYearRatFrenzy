@@ -42,4 +42,10 @@ public class GenericWinCondition : MonoBehaviour
     {
 
     }
+    protected virtual void EndGame(Player.Identity winner)
+    {
+        Debug.Log(winner + " wins!");
+        GameManager.instance.AddPoints(winner);
+        GameManager.instance.DisplayScore();
+    }
 }
