@@ -776,7 +776,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 71b465051a424b74b9bcce6b6dfd2efa, type: 2}
+  - {fileID: 2100000, guid: e918f7043115d6345858d128426ba90c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -969,7 +969,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   volumeAnchorOverride: {fileID: 0}
-  antialiasing: 0
+  antialiasing: 2
   SMAAQuality: 2
   dithering: 0
   stopNaNs: 0
