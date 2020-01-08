@@ -39,7 +39,7 @@ public class PlayerHUD : MonoBehaviour
                 scoreLabel.text = score + "/" + maxScore;
                 break;
             case DisplayType.ProgressPercent:
-                scoreLabel.text = score + "%";
+                scoreLabel.text = (score/maxScore * 100).ToString("0.0") + "%";
                 break;
             case DisplayType.ProgressBar:
                 float width = progressBar.parent.GetComponent<RectTransform>().rect.width;
