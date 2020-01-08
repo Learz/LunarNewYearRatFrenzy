@@ -56,6 +56,10 @@ public class RatManager : MonoBehaviour
             escape.ExecuteClick();
     }
 
+    public Color getPlayerColor()
+    {
+        return ColorPalette.GetColor(color);
+    }
 }
 
 [System.Serializable]

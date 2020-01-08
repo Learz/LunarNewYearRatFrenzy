@@ -9,6 +9,8 @@ public class SpawnObject : MonoBehaviour
     public float maxRate;
     [Tooltip("Spawn rate (seconds)")]
     public float rate;
+    [Tooltip("Spawn rate deviation amount")]
+    public float flutter;
     [Tooltip("Rate increase per second")]
     public float increase;
     
@@ -25,10 +27,10 @@ public class SpawnObject : MonoBehaviour
     {
         spawnTime += Time.deltaTime;
         rate = Mathf.Clamp(rate - increase * Time.deltaTime, maxRate, float.PositiveInfinity);
-        if (spawnTime >= rate)
+        if (spawnTime >= rate + Random.Range(flutter,-flutter))
         {
             spawnTime = 0;
-            Instantiate(objects[Random.Range(0,objects.Length-1)], 
+            Instantiate(objects[Random.Range(0,objects.Length)], 
                 new Vector3
                 (
                     transform.position.x + Random.Range(-area.x / 2, area.x / 2), 

@@ -48,13 +48,20 @@ MonoBehaviour:
   onMove:
     m_PersistentCalls:
       m_Calls: []
-  onJump:
+  onJumpDown:
     m_PersistentCalls:
       m_Calls: []
-  onInteract:
+  onJumpUp:
+    m_PersistentCalls:
+      m_Calls: []
+  onInteractDown:
+    m_PersistentCalls:
+      m_Calls: []
+  onInteractUp:
     m_PersistentCalls:
       m_Calls: []
   escape: {fileID: 3669481205618383935}
+  color: 18
 --- !u!114 &6358306454650263246
 MonoBehaviour:
   m_ObjectHideFlags: 0

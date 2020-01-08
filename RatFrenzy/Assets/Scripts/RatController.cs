@@ -8,22 +8,39 @@ public class RatController : GenericController
     public float groundSpeed, airSpeed, jumpHeight, fallSpeed, groundDrag, airDrag, speedOverride;
     public Rigidbody rb;
     public GameObject rat;
+    public GameObject tracker;
     public bool isFixed, controlledJump;
 
     private float speed;
     private Animator rAnim;
     private bool isFallBoosted;
+    private RaycastHit hit;
 
     protected override void Start()
     {
         base.Start();
         if (rb == null) rb = GetComponent<Rigidbody>();
         rAnim = rat.GetComponent<Animator>();
+
+        tracker.GetComponent<MeshRenderer>().material.SetColor("_UnlitColor", ColorPalette.GetColor(Player.Color.Blue));
+        rat.GetComponentInChildren<Renderer>().material.SetColor("_EmissiveColor", ColorPalette.GetColor(Player.Color.Blue)*150);
     }
 
     void Update()
     {
         MoveRat();
+
+        tracker.transform.eulerAngles = new Vector3(0, 180, 0);
+        if (Physics.Raycast(transform.position+Vector3.up*1, Vector3.down, out hit, Mathf.Infinity, 1 << 10))
+        {
+            tracker.SetActive(true);
+            tracker.transform.position = hit.point + new Vector3(0,0.01f,0);
+            tracker.transform.eulerAngles = new Vector3(-hit.normal.z * 65,180, hit.normal.x * 65);
+        }
+        else
+        {
+            tracker.SetActive(false);
+        }
     }
 
     protected override void JumpPressed()
@@ -44,7 +61,7 @@ public class RatController : GenericController
     {
         if (!isFallBoosted && controlledJump && rb.velocity.y > 0)
         {
-            rb.AddForce(Vector3.down * fallSpeed);
+            rb.AddForce(Vector3.down * rb.velocity.y * fallSpeed);
             isFallBoosted = true;
         }
     }
@@ -77,6 +94,11 @@ public class RatController : GenericController
                 rb.MoveRotation(Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(dir), 10.0f * 60 * Time.deltaTime));
             }
         }
+    }
+
+    protected override void PlayerJoined(PlayerInput input)
+    {
+        base.PlayerJoined(input);
     }
 
     protected override void OnCollisionEnter(Collision collision)
