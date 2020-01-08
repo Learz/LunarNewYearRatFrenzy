@@ -18,6 +18,7 @@ public class RatManager : MonoBehaviour
         onInteractUp = new RatInputEvent();
     private PlayerInput playerInput;
     public UIButton escape;
+    public Player.Color color;
 
     private void Start()
     {

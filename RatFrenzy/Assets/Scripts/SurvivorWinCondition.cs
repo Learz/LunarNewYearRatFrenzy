@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using static GameManager;
 
-public class SurvivorWinCondition : MonoBehaviour
+public class SurvivorWinCondition : GenericWinCondition
 {
     public enum SurvivorType
     {
@@ -16,19 +16,19 @@ public class SurvivorWinCondition : MonoBehaviour
 
     private List<Player.Identity> playersAlive;
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
-        if (GameManager.instance == null) GameManager.CreateTestManager();
-        GameManager.instance.playerJoined.AddListener(OnPlayerJoined);
+        base.Start();
         playersAlive = GameManager.instance.GetPlayerIdentities();
     }
-    public void EliminatePlayer(Player.Identity id)
+    public override void EliminatePlayer(Player.Identity id)
     {
+        base.EliminatePlayer(id);
         Debug.Log(id + " eliminated");
         if (playersAlive.Count-1 == (int)survivorType) EndGame(playersAlive[0]);
         playersAlive.Remove(id);
     }
-    void OnPlayerJoined(PlayerInput input)
+    protected override void OnPlayerJoined(PlayerInput input)
     {
         if (playersAlive == null) playersAlive = new List<Player.Identity>();
         playersAlive.Add((Player.Identity)input.playerIndex);

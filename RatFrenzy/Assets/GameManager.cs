@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public int numPlayers;
     public PlayerInput[] players;
     public MiniGameList miniGames;
+    public PlayerHUD[] playerHUDs;
     private int[] scores;
     // Start is called before the first frame update
     void Awake()
@@ -104,6 +105,31 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Unloading active scene");
         SceneManager.LoadSceneAsync(1);
+    }
+    public void UpdateAliveStatus(Player.Identity id, bool isAlive)
+    {
+        playerHUDs[(int)id].SetAliveStatus(isAlive);
+    }
+    public void UpdateMinigameScore(Player.Identity id, int score)
+    {
+        playerHUDs[(int)id].SetScore(score);
+    }
+    public void SetDisplayType(PlayerHUD.DisplayType type)
+    {
+        foreach (PlayerHUD hud in playerHUDs) hud.SetDisplayType(type);
+        graph.GoToNodeByName("InGame");
+    }
+    public void SetMaxScore(int score)
+    {
+        foreach (PlayerHUD hud in playerHUDs) hud.maxScore = score;
+    }
+    public static IEnumerator MiniGameCountDown(float timeLeft)
+    {
+        while (timeLeft > 0)
+        {
+            yield return new WaitForSeconds(1);
+            timeLeft--;
+        }
     }
 }
 public class PlayerEvent : UnityEvent<PlayerInput> { };
