@@ -99,7 +99,8 @@ public class GameManager : MonoBehaviour
     {
         if (instance != null) return;
         Debug.Log("Creating game manager");
-        Instantiate(Resources.Load("GameManager"));
+        Instantiate(Resources.Load("Root"));
+        instance.graph.GoToNodeByName("InGame");
     }
     public void OnReturnToMenu()
     {
