@@ -48,6 +48,7 @@ public class PlayerUI : MonoBehaviour
     }
     private void Move()
     {
+        if (playerIsReady) return;
         if (mgr.move.magnitude < 0.5)
         {
             isMoving = false;
@@ -79,12 +80,18 @@ public class PlayerUI : MonoBehaviour
     }
     private void NextColor()
     {
-        mgr.color = mgr.color.Next();
+        do
+        {
+            mgr.color = mgr.color.Next();
+        } while (PlayerSelection.instance.selectedColors.Contains(mgr.color));
         background.color = mgr.GetPlayerColor();
     }
     private void PrevColor()
     {
-        mgr.color = mgr.color.Prev();
+        do
+        {
+            mgr.color = mgr.color.Prev();
+        } while (PlayerSelection.instance.selectedColors.Contains(mgr.color));
         background.color = mgr.GetPlayerColor();
     }
     private void NextChar()
@@ -102,10 +109,12 @@ public class PlayerUI : MonoBehaviour
     {
         if (!playerIsReady)
         {
+            if (PlayerSelection.instance.selectedColors.Contains(mgr.color)) return;
             Debug.Log("Player Ready");
             playerReady.SetActive(true);
             playerIsReady = true;
             PlayerSelection.instance.PlayerReady();
+            PlayerSelection.instance.selectedColors.Add(mgr.color);
         }
     }
     private void Interact()
@@ -116,6 +125,7 @@ public class PlayerUI : MonoBehaviour
             playerReady.SetActive(false);
             playerIsReady = false;
             PlayerSelection.instance.PlayerNotReady();
+            PlayerSelection.instance.selectedColors.Remove(mgr.color);
         }
         else
         {

@@ -15,12 +15,14 @@ public class PlayerSelection : MonoBehaviour
     private Coroutine co;
     private int readyPlayers = 0, numPlayers = 0;
     public UIButton startGame;
+    public List<Player.Color> selectedColors;
     // Start is called before the first frame update
     void Start()
     {
         if (instance != null) throw new System.Exception("More than one Player Selection Manager");
         GameManager.instance.playerJoined.AddListener(OnPlayerJoined);
         GameManager.instance.playerLeft.AddListener(OnPlayerLeft);
+        selectedColors = new List<Player.Color>();
         instance = this;
     }
     void OnPlayerJoined(PlayerInput input)
@@ -48,7 +50,7 @@ public class PlayerSelection : MonoBehaviour
     public void PlayerNotReady()
     {
         countdown.text = "";
-        StopCoroutine(co);
+        if (co != null) StopCoroutine(co);
     }
     IEnumerator Countdown()
     {
