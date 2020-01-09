@@ -101,6 +101,11 @@ public class RatController : GenericController
             }
         }
     }
+    public void MultiplySpeed(float mul)
+    {
+        groundSpeed *= mul;
+        speed *= mul;
+    }
 
     protected override void PlayerJoined(PlayerInput input)
     {

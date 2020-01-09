@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/twistedSystem.unity
     guid: 8c56a6f7c459bdb4eaafee69eb52fbcf
+  - enabled: 1
+    path: Assets/Scenes/labcleanup.unity
+    guid: f846cd166861c73489f6742c5a9ff99c
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 3385625d645ba8f4891239b805ddf6c4,
       type: 2}
