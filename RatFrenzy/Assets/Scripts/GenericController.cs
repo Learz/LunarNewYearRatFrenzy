@@ -6,6 +6,9 @@ using UnityEngine.InputSystem;
 public class GenericController : MonoBehaviour
 {
     public Player.Identity identity;
+    public List<RendererProperties> renderers;
+    public List<Light> lights;
+
     protected RatManager mgr;
     protected bool isJumping, isGrounded;
     protected int grounds;
@@ -27,10 +30,42 @@ public class GenericController : MonoBehaviour
                 mgr.onJumpUp.AddListener(JumpReleased);
                 mgr.onInteractDown.AddListener(InteractPressed);
                 mgr.onInteractUp.AddListener(InteractReleased);
+                UpdateColor();
             }
         }
-    }
 
+    }
+    protected virtual void UpdateColor()
+    {
+        foreach (RendererProperties rend in renderers)
+        {
+            string property = "";
+            int multiply = 1;
+            switch (rend.property)
+            {
+                case RendererProperties.Property.BaseColor:
+                    property = "_BaseColor";
+                    break;
+                case RendererProperties.Property.EmissiveColor:
+                    property = "_EmissiveColor";
+                    multiply = 150;
+                    break;
+                case RendererProperties.Property.UnlitColor:
+                    property = "_UnlitColor";
+                    break;
+            }
+            foreach (Material mat in rend.renderer.materials)
+            {
+                Color col = mgr.GetPlayerColor();
+                col.a = mat.color.a;
+                mat.SetColor(property, col * multiply);
+            }
+        }
+        foreach (Light light in lights)
+        {
+            light.color = mgr.GetPlayerColor();
+        }
+    }
     protected virtual void JumpPressed()
     {
         Debug.Log("Jump Pressed");
@@ -58,6 +93,7 @@ public class GenericController : MonoBehaviour
             mgr.onJumpUp.AddListener(JumpReleased);
             mgr.onInteractDown.AddListener(InteractPressed);
             mgr.onInteractUp.AddListener(InteractReleased);
+            UpdateColor();
         }
     }
     protected virtual void OnCollisionEnter(Collision collision)
@@ -71,5 +107,17 @@ public class GenericController : MonoBehaviour
     {
         if (collision.gameObject.layer == 10) grounds--;
         isGrounded = grounds == 0 ? false : true;
+    }
+}
+[System.Serializable]
+public class RendererProperties
+{
+    public Renderer renderer;
+    public Property property;
+    public enum Property
+    {
+        BaseColor,
+        EmissiveColor,
+        UnlitColor
     }
 }

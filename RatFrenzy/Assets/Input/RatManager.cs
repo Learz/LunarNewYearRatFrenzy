@@ -12,6 +12,7 @@ public class RatManager : MonoBehaviour
     public bool jump { get; private set; }
     public bool interact { get; private set; }
     public RatInputEvent onMove = new RatInputEvent(),
+        onMoveCancelled = new RatInputEvent(),
         onJumpDown = new RatInputEvent(),
         onJumpUp = new RatInputEvent(),
         onInteractDown = new RatInputEvent(),
@@ -34,6 +35,7 @@ public class RatManager : MonoBehaviour
     private void OnMoveCancelled()
     {
         move = Vector2.zero;
+        onMoveCancelled.Invoke();
     }
     private void OnJump(InputValue value)
     {
@@ -56,7 +58,7 @@ public class RatManager : MonoBehaviour
             escape.ExecuteClick();
     }
 
-    public Color getPlayerColor()
+    public Color GetPlayerColor()
     {
         return ColorPalette.GetColor(color);
     }

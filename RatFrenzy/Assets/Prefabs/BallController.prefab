@@ -49,6 +49,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   identity: 0
+  renderers:
+  - renderer: {fileID: 5204659647595651295}
+    property: 1
+  - renderer: {fileID: 1401380518846309251}
+    property: 0
+  - renderer: {fileID: 3344065062084557825}
+    property: 0
+  - renderer: {fileID: 338534722784170874}
+    property: 0
   speed: 250
   jumpHeight: 200
   rb: {fileID: 0}
@@ -2600,6 +2609,24 @@ GameObject:
 --- !u!4 &1531694053620347607 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 4f3733709ea1c3b43bb830bb4dd2cb79,
+    type: 3}
+  m_PrefabInstance: {fileID: 5781249107775969741}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1401380518846309251 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4848594794600692302, guid: 4f3733709ea1c3b43bb830bb4dd2cb79,
+    type: 3}
+  m_PrefabInstance: {fileID: 5781249107775969741}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &3344065062084557825 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 9102793107163833804, guid: 4f3733709ea1c3b43bb830bb4dd2cb79,
+    type: 3}
+  m_PrefabInstance: {fileID: 5781249107775969741}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &338534722784170874 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -3131786353542935881, guid: 4f3733709ea1c3b43bb830bb4dd2cb79,
     type: 3}
   m_PrefabInstance: {fileID: 5781249107775969741}
   m_PrefabAsset: {fileID: 0}

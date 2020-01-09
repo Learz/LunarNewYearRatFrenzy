@@ -12194,6 +12194,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1423653313015335402, guid: cce2ca4185beb764b906577c0675ebdd,
+        type: 3}
+      propertyPath: renderers.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1423653313015335402, guid: cce2ca4185beb764b906577c0675ebdd,
+        type: 3}
+      propertyPath: lights.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1423653313015335402, guid: cce2ca4185beb764b906577c0675ebdd,
+        type: 3}
+      propertyPath: renderers.Array.data[4].renderer
+      value: 
+      objectReference: {fileID: 1330271897}
+    - target: {fileID: 1423653313015335402, guid: cce2ca4185beb764b906577c0675ebdd,
+        type: 3}
+      propertyPath: renderers.Array.data[5].renderer
+      value: 
+      objectReference: {fileID: 1330271897}
+    - target: {fileID: 1423653313015335402, guid: cce2ca4185beb764b906577c0675ebdd,
+        type: 3}
+      propertyPath: lights.Array.data[0]
+      value: 
+      objectReference: {fileID: 1696415480}
+    - target: {fileID: 1423653313015335402, guid: cce2ca4185beb764b906577c0675ebdd,
+        type: 3}
+      propertyPath: renderers.Array.data[4].property
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5204659647595651295, guid: cce2ca4185beb764b906577c0675ebdd,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -18699,6 +18729,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67a90716c609e884da3800967a490967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  displayType: 0
+  maxScore: 0
+  timeLimit: 0
+  startCountdownOnStart: 0
   survivorType: 1
 --- !u!4 &1521514394
 Transform:
@@ -18720,7 +18754,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh44142
+  m_Name: pb_Mesh82686
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

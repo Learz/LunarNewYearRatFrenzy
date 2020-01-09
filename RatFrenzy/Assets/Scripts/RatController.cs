@@ -22,8 +22,8 @@ public class RatController : GenericController
         if (rb == null) rb = GetComponent<Rigidbody>();
         rAnim = rat.GetComponent<Animator>();
 
-        tracker.GetComponent<MeshRenderer>().material.SetColor("_UnlitColor", ColorPalette.GetColor(Player.Color.Blue));
-        rat.GetComponentInChildren<Renderer>().material.SetColor("_EmissiveColor", ColorPalette.GetColor(Player.Color.Blue)*150);
+        /*tracker.GetComponent<MeshRenderer>().material.SetColor("_UnlitColor", ColorPalette.GetColor(Player.Color.Blue));
+        rat.GetComponentInChildren<Renderer>().material.SetColor("_EmissiveColor", ColorPalette.GetColor(Player.Color.Blue)*150);*/
     }
 
     void Update()
