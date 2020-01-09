@@ -18,6 +18,7 @@ public class RatManager : MonoBehaviour
         onInteractDown = new RatInputEvent(),
         onInteractUp = new RatInputEvent();
     private PlayerInput playerInput;
+    public int poseIndex;
     public UIButton escape;
     public Player.Color color;
 
@@ -61,6 +62,10 @@ public class RatManager : MonoBehaviour
     public Color GetPlayerColor()
     {
         return ColorPalette.GetColor(color);
+    }
+    public Sprite GetPoseSprite()
+    {
+        return GameManager.instance.playerPoses[poseIndex];
     }
 }
 

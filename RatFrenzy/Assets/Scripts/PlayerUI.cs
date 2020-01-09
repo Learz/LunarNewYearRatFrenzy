@@ -10,7 +10,7 @@ public class PlayerUI : MonoBehaviour
     public Player.Color defaultColor;
     public GameObject playerJoined, playerReady, playerDisconnected;
     public bool playerIsConnected, playerIsReady;
-    public Image background;
+    public Image background, playerPose;
     private PlayerInput playerInput;
     private RatManager mgr;
     private enum moveDirection
@@ -40,7 +40,9 @@ public class PlayerUI : MonoBehaviour
         mgr.onMove.AddListener(Move);
         mgr.onMoveCancelled.AddListener(Move);
         mgr.color = defaultColor;
+        mgr.poseIndex = (int)identity;
         background.color = mgr.GetPlayerColor();
+        playerPose.sprite = mgr.GetPoseSprite();
         //input.currentActionMap.actionTriggered += actionTriggered;
         playerIsConnected = true;
     }
@@ -88,10 +90,13 @@ public class PlayerUI : MonoBehaviour
     private void NextChar()
     {
 
+        mgr.poseIndex = (mgr.poseIndex + 1 > GameManager.instance.playerPoses.Length - 1) ? 0 : mgr.poseIndex + 1;
+        playerPose.sprite = mgr.GetPoseSprite();
     }
     private void PrevChar()
     {
-
+        mgr.poseIndex = (mgr.poseIndex - 1 < 0) ? GameManager.instance.playerPoses.Length - 1 : mgr.poseIndex - 1;
+        playerPose.sprite = mgr.GetPoseSprite();
     }
     private void Jump()
     {

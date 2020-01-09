@@ -2,23 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class ScoreUI : MonoBehaviour
 {
     public Player.Identity identity;
     public TMPro.TMP_Text scoreLabel;
-    private PlayerInput playerInput;
+    public Image background;
+    private RatManager mgr;
     private int score;
 
     void OnEnable()
     {
         if (GameManager.instance == null) return;
-        playerInput = GameManager.instance.GetPlayerInput(identity);
-        if (playerInput == null) this.gameObject.SetActive(false);
+        mgr = GameManager.instance.GetRatManager(identity);
+        if (mgr == null) this.gameObject.SetActive(false);
         else
         {
             score = GameManager.instance.GetScore(identity);
             scoreLabel.text = "" + score;
+            background.color = mgr.GetPlayerColor();
         }
     }
 

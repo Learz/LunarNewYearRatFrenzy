@@ -8,7 +8,7 @@ public class PlayerHUD : MonoBehaviour
 {
     public Player.Identity identity;
     public TMPro.TMP_Text scoreLabel;
-    public Image colorImage;
+    public Image poseImage;
     public RectTransform deadIndicator, progressBar, progressBarContainer;
     public int maxScore;
     private RatManager mgr;
@@ -27,6 +27,11 @@ public class PlayerHUD : MonoBehaviour
         if (GameManager.instance == null) return;
         mgr = GameManager.instance.GetRatManager(identity);
         if (mgr == null) this.gameObject.SetActive(false);
+        else
+        {
+            poseImage.color = mgr.GetPlayerColor();
+            poseImage.sprite = mgr.GetPoseSprite();
+        }
     }
     public void SetScore(int score)
     {
@@ -39,7 +44,7 @@ public class PlayerHUD : MonoBehaviour
                 scoreLabel.text = score + "/" + maxScore;
                 break;
             case DisplayType.ProgressPercent:
-                scoreLabel.text = (score/maxScore * 100).ToString("0.0") + "%";
+                scoreLabel.text = (score / maxScore * 100).ToString("0.0") + "%";
                 break;
             case DisplayType.ProgressBar:
                 float width = progressBar.parent.GetComponent<RectTransform>().rect.width;

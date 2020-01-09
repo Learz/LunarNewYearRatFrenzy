@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public PlayerInput[] players;
     public MiniGameList miniGames;
     public PlayerHUD[] playerHUDs;
+    public Sprite[] playerPoses;
     private int[] scores;
     // Start is called before the first frame update
     void Awake()
@@ -63,6 +64,10 @@ public class GameManager : MonoBehaviour
         }
         return list;
     }
+    public Sprite GetPoseSprite(Player.Identity id)
+    {
+        return playerPoses[GetRatManager(id).poseIndex];
+    }
 
     public void AddPoints(Player.Identity id) => scores[(int)id]++;
     public void AddPoints(Player.Identity id, int ammount) => scores[(int)id] += ammount;
@@ -95,6 +100,7 @@ public class GameManager : MonoBehaviour
         }
         return scenes;
     }
+
     // Instantiate a test manager for scene prototyping
     public static void CreateTestManager()
     {
