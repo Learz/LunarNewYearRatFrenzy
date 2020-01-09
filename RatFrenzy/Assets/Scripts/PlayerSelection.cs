@@ -25,12 +25,12 @@ public class PlayerSelection : MonoBehaviour
     }
     void OnPlayerJoined(PlayerInput input)
     {
-        players[input.playerIndex].PlayerJoined(input);
+        //players[input.playerIndex].PlayerJoined(input);
         numPlayers++;
     }
     void OnPlayerLeft(PlayerInput input)
     {
-        players[input.playerIndex].PlayerLeft();
+        //players[input.playerIndex].PlayerLeft();
         numPlayers--;
     }
     public void PlayerReady()

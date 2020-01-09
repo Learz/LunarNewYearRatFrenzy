@@ -1,4 +1,5 @@
 ﻿using Doozy.Engine.Nody;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -164,7 +165,26 @@ public class Player
         Four
     }
 }
+public static class Extensions
+{
 
+    public static T Next<T>(this T src) where T : struct
+    {
+        if (!typeof(T).IsEnum) throw new System.Exception(String.Format("Argument {0} is not an Enum", typeof(T).FullName));
+
+        T[] Arr = (T[])Enum.GetValues(src.GetType());
+        int j = Array.IndexOf<T>(Arr, src) + 1;
+        return (Arr.Length == j) ? Arr[0] : Arr[j];
+    }
+    public static T Prev<T>(this T src) where T : struct
+    {
+        if (!typeof(T).IsEnum) throw new System.Exception(String.Format("Argument {0} is not an Enum", typeof(T).FullName));
+
+        T[] Arr = (T[])Enum.GetValues(src.GetType());
+        int j = Array.IndexOf<T>(Arr, src) - 1;
+        return (j < 0) ? Arr[Arr.Length - 1] : Arr[j];
+    }
+}
 public class ColorPalette
 {
     private static readonly Color[] pal = new Color[32]

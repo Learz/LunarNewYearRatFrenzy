@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 public class GenericController : MonoBehaviour
 {
     public Player.Identity identity;
+    public List<RendererProperties> renderers;
+
     protected RatManager mgr;
     protected bool isJumping, isGrounded;
     protected int grounds;
@@ -27,10 +29,31 @@ public class GenericController : MonoBehaviour
                 mgr.onJumpUp.AddListener(JumpReleased);
                 mgr.onInteractDown.AddListener(InteractPressed);
                 mgr.onInteractUp.AddListener(InteractReleased);
+                UpdateColor();
             }
         }
-    }
 
+    }
+    protected virtual void UpdateColor()
+    {
+        foreach (RendererProperties rend in renderers)
+        {
+            string property = "";
+            switch (rend.property)
+            {
+                case RendererProperties.Property.BaseColor:
+                    property = "_BaseColor";
+                    break;
+                case RendererProperties.Property.EmissiveColor:
+                    property = "_EmissiveColor";
+                    break;
+                case RendererProperties.Property.UnlitColor:
+                    property = "_UnlitColor";
+                    break;
+            }
+            rend.renderer.material.SetColor(property, mgr.GetPlayerColor());
+        }
+    }
     protected virtual void JumpPressed()
     {
         Debug.Log("Jump Pressed");
@@ -58,6 +81,7 @@ public class GenericController : MonoBehaviour
             mgr.onJumpUp.AddListener(JumpReleased);
             mgr.onInteractDown.AddListener(InteractPressed);
             mgr.onInteractUp.AddListener(InteractReleased);
+            UpdateColor();
         }
     }
     protected virtual void OnCollisionEnter(Collision collision)
@@ -71,5 +95,17 @@ public class GenericController : MonoBehaviour
     {
         if (collision.gameObject.layer == 10) grounds--;
         isGrounded = grounds == 0 ? false : true;
+    }
+}
+[System.Serializable]
+public class RendererProperties
+{
+    public Renderer renderer;
+    public Property property;
+    public enum Property
+    {
+        BaseColor,
+        EmissiveColor,
+        UnlitColor
     }
 }
