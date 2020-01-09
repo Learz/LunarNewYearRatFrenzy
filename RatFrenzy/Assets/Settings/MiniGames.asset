@@ -26,3 +26,8 @@ MonoBehaviour:
     description: 
     thumbnail: {fileID: 0}
     sceneName: twistedSystem
+  - gameName: Lab Clean Up
+    description: There was a spillage in the lab! Collect the most radioactive goo
+      to win, but careful! The goo will make you run faster!
+    thumbnail: {fileID: 0}
+    sceneName: labcleanup

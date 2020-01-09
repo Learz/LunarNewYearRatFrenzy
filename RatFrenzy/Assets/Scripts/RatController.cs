@@ -31,11 +31,11 @@ public class RatController : GenericController
         MoveRat();
 
         tracker.transform.eulerAngles = new Vector3(0, 180, 0);
-        if (Physics.Raycast(transform.position+Vector3.up*1, Vector3.down, out hit, Mathf.Infinity, 1 << 10))
+        if (Physics.Raycast(transform.position + Vector3.up * 1, Vector3.down, out hit, Mathf.Infinity, 1 << 10))
         {
             tracker.SetActive(true);
-            tracker.transform.position = hit.point + new Vector3(0,0.01f,0);
-            tracker.transform.eulerAngles = new Vector3(-hit.normal.z * 65,180, hit.normal.x * 65);
+            tracker.transform.position = hit.point + new Vector3(0, 0.01f, 0);
+            tracker.transform.eulerAngles = new Vector3(-hit.normal.z * 65, 180, hit.normal.x * 65);
         }
         else
         {
@@ -94,6 +94,11 @@ public class RatController : GenericController
                 rb.MoveRotation(Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(dir), 10.0f * 60 * Time.deltaTime));
             }
         }
+    }
+    public void MultiplySpeed(float mul)
+    {
+        groundSpeed *= mul;
+        speed *= mul;
     }
 
     protected override void PlayerJoined(PlayerInput input)

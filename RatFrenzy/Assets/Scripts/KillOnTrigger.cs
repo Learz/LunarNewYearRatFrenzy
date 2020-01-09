@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class KillOnTrigger : MonoBehaviour
 {
-    public SurvivorWinCondition winCondition;
+    public GenericWinCondition winCondition;
 
     private void OnTriggerEnter(Collider other)
     {
