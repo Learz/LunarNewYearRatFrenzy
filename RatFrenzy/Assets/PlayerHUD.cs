@@ -11,7 +11,7 @@ public class PlayerHUD : MonoBehaviour
     public Image poseImage;
     public RectTransform deadIndicator, progressBar, progressBarContainer;
     public int maxScore;
-    private RatManager mgr;
+    public RatManager mgr;
     private int score;
     private DisplayType currentDisplayType;
     public enum DisplayType
@@ -27,8 +27,23 @@ public class PlayerHUD : MonoBehaviour
         if (GameManager.instance == null) return;
         mgr = GameManager.instance.GetRatManager(identity);
         if (mgr == null) this.gameObject.SetActive(false);
+
         else
         {
+            this.gameObject.SetActive(true);
+            poseImage.color = mgr.GetPlayerColor();
+            poseImage.sprite = mgr.GetPoseSprite();
+        }
+    }
+    public void EnableHud()
+    {
+        if (GameManager.instance == null) return;
+        mgr = GameManager.instance.GetRatManager(identity);
+        if (mgr == null) this.gameObject.SetActive(false);
+
+        else
+        {
+            this.gameObject.SetActive(true);
             poseImage.color = mgr.GetPlayerColor();
             poseImage.sprite = mgr.GetPoseSprite();
         }

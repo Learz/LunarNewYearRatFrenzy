@@ -113,6 +113,8 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Unloading active scene");
         SceneManager.LoadSceneAsync(1);
+        scores = new int[4];
+
     }
     public void UpdateAliveStatus(Player.Identity id, bool isAlive)
     {

@@ -594,6 +594,8 @@ GameObject:
   - component: {fileID: 4837947120543261982}
   - component: {fileID: 4426240585042127664}
   - component: {fileID: 6801869896312503297}
+  - component: {fileID: 1824782416}
+  - component: {fileID: 1824782417}
   m_Layer: 0
   m_Name: RatController
   m_TagString: Untagged
@@ -608,7 +610,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2617024739063901117}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: -1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.04013157, y: 0, z: -2.842171e-14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -631,18 +633,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   identity: 0
+  renderers:
+  - renderer: {fileID: 7608724198661495434}
+    property: 1
+  - renderer: {fileID: 1138172463878055257}
+    property: 2
+  - renderer: {fileID: 4837947120543261982}
+    property: 1
+  numberOfRenderersToHideOnKill: 2
+  lights: []
   groundSpeed: 100
   airSpeed: 2
   jumpHeight: 200
   fallSpeed: 50
   groundDrag: 20
   airDrag: 1
-  speedOverride: -1
+  speedOverride: 2
   rb: {fileID: 4497655283208819181}
   rat: {fileID: 7360168752541191571}
   tracker: {fileID: 3058513498240586204}
-  trackerRenderer: {fileID: 1138172463878055257}
-  isFixed: 0
+  isFixed: 1
   controlledJump: 0
 --- !u!54 &4497655283208819181
 Rigidbody:
@@ -658,7 +668,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!136 &543469396322267087
 CapsuleCollider:
@@ -5504,6 +5514,32 @@ MonoBehaviour:
     m_DirectionMode: 0
     m_DissipationMode: 2
     m_DissipationDistance: 1000
+--- !u!114 &1824782416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2617024739063901117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 253077d3b5609284da94fae1ef496552, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  setBackAmount: 2
+  cooldown: 1
+--- !u!114 &1824782417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2617024739063901117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 033ffa96bf114ca429051f70f4b0d87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2864747699370921332
 GameObject:
   m_ObjectHideFlags: 0
@@ -7057,7 +7093,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 670224309865224971, guid: 05b82c218e7b06d4abed4a0fb6bb75ab, type: 3}
+  - {fileID: 2100000, guid: 5fe341e80949c7449a8227e47aa88ddc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -13,6 +13,7 @@ public class KillOnTrigger : MonoBehaviour
         {
             player.GetComponent<ParticleSystem>().Play();
             player.GetComponent<Cinemachine.CinemachineImpulseSource>().GenerateImpulse();
+            player.Kill();
             winCondition.EliminatePlayer(player.identity);
 
         }

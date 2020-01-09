@@ -7,7 +7,9 @@ public class GenericController : MonoBehaviour
 {
     public Player.Identity identity;
     public List<RendererProperties> renderers;
+    public int numberOfRenderersToHideOnKill;
     public List<Light> lights;
+    private AudioSource collisionSound;
 
     protected RatManager mgr;
     protected bool isJumping, isGrounded;
@@ -16,6 +18,7 @@ public class GenericController : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
+        collisionSound = GetComponent<AudioSource>();
         if (mgr == null)
         {
             // Create Manager if it doesn't exist. Used for testing scenes.
@@ -34,6 +37,13 @@ public class GenericController : MonoBehaviour
             }
         }
 
+    }
+    public virtual void Kill()
+    {
+        for (int i = 0; i < numberOfRenderersToHideOnKill; i++)
+        {
+            renderers[i].renderer.enabled = false;
+        }
     }
     protected virtual void UpdateColor()
     {
@@ -102,6 +112,16 @@ public class GenericController : MonoBehaviour
         if (collision.gameObject.layer == 10) grounds++;
         isGrounded = grounds == 0 ? false : true;
         if (isGrounded) isJumping = false;
+        if (collisionSound != null)
+        {
+            if (collision.relativeVelocity.magnitude > 2)
+            {
+                collisionSound.pitch = Time.timeScale * Random.Range(0.9f, 1.2f);
+                collisionSound.volume = 0.1f * collision.relativeVelocity.magnitude;
+                collisionSound.Play();
+
+            }
+        }
     }
 
     protected virtual void OnCollisionExit(Collision collision)
