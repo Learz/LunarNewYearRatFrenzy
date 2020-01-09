@@ -7,6 +7,7 @@ public class GenericController : MonoBehaviour
 {
     public Player.Identity identity;
     public List<RendererProperties> renderers;
+    public List<Light> lights;
 
     protected RatManager mgr;
     protected bool isJumping, isGrounded;
@@ -39,6 +40,7 @@ public class GenericController : MonoBehaviour
         foreach (RendererProperties rend in renderers)
         {
             string property = "";
+            int multiply = 1;
             switch (rend.property)
             {
                 case RendererProperties.Property.BaseColor:
@@ -46,12 +48,22 @@ public class GenericController : MonoBehaviour
                     break;
                 case RendererProperties.Property.EmissiveColor:
                     property = "_EmissiveColor";
+                    multiply = 150;
                     break;
                 case RendererProperties.Property.UnlitColor:
                     property = "_UnlitColor";
                     break;
             }
-            rend.renderer.material.SetColor(property, mgr.GetPlayerColor());
+            foreach (Material mat in rend.renderer.materials)
+            {
+                Color col = mgr.GetPlayerColor();
+                col.a = mat.color.a;
+                mat.SetColor(property, col * multiply);
+            }
+        }
+        foreach (Light light in lights)
+        {
+            light.color = mgr.GetPlayerColor();
         }
     }
     protected virtual void JumpPressed()
