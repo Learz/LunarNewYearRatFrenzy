@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class GenericController : MonoBehaviour
 {
     public Player.Identity identity;
+    public GenericWinCondition winCondition;
     public List<RendererProperties> renderers;
     public int numberOfRenderersToHideOnKill;
     public List<Light> lights;
@@ -36,6 +37,7 @@ public class GenericController : MonoBehaviour
                 UpdateColor();
             }
         }
+        if (winCondition == null) winCondition = FindObjectOfType<GenericWinCondition>();
 
     }
     public virtual void Kill()
@@ -105,6 +107,7 @@ public class GenericController : MonoBehaviour
             mgr.onInteractUp.AddListener(InteractReleased);
             mgr.color = (Player.Color)System.Enum.ToObject(typeof(Player.Color), Random.Range(0, System.Enum.GetValues(typeof(Player.Color)).Length - 1));
             UpdateColor();
+            GameManager.instance.ShowPlayerHud(identity);
         }
     }
     protected virtual void OnCollisionEnter(Collision collision)
@@ -128,6 +131,12 @@ public class GenericController : MonoBehaviour
     {
         if (collision.gameObject.layer == 10) grounds--;
         isGrounded = grounds == 0 ? false : true;
+    }
+
+    public virtual void AddPoint()
+    {
+
+        winCondition.AddPoint(identity);
     }
 }
 [System.Serializable]

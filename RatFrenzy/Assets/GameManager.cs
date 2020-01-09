@@ -124,10 +124,15 @@ public class GameManager : MonoBehaviour
     {
         playerHUDs[(int)id].SetScore(score);
     }
-    public void SetDisplayType(PlayerHUD.DisplayType type)
+    public void ConfigureGameHud(PlayerHUD.DisplayType type, int maxScore)
     {
-        foreach (PlayerHUD hud in playerHUDs) hud.SetDisplayType(type);
+        foreach (PlayerHUD hud in playerHUDs) hud.ConfigureGameHud(type, maxScore);
         graph.GoToNodeByName("InGame");
+        
+    }
+    public void ShowPlayerHud(Player.Identity id)
+    {
+        playerHUDs[(int)id].gameObject.SetActive(true);
     }
     public void SetMaxScore(int score)
     {

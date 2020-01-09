@@ -10,14 +10,14 @@ public class GenericWinCondition : MonoBehaviour
     public int maxScore;
     public float timeLimit;
     public bool startCountdownOnStart;
-    private int[] scores;
+    protected int[] scores;
     protected virtual void Start()
     {
         if (GameManager.instance == null) GameManager.CreateTestManager();
         GameManager.instance.playerJoined.AddListener(OnPlayerJoined);
 
         if (startCountdownOnStart) StartTimeoutCountdown(timeLimit);
-        GameManager.instance.SetDisplayType(displayType);
+        GameManager.instance.ConfigureGameHud(displayType, maxScore);
         scores = new int[4];
     }
 
@@ -28,6 +28,7 @@ public class GenericWinCondition : MonoBehaviour
     public virtual void AddPoint(Player.Identity id)
     {
         scores[(int)id]++;
+        Debug.Log("Score : " + scores[(int)id]);
         GameManager.instance.UpdateMinigameScore(id, scores[(int)id]);
     }
     public virtual void AddPoints(Player.Identity id, int points)
@@ -40,7 +41,7 @@ public class GenericWinCondition : MonoBehaviour
 
     protected virtual void OnPlayerJoined(PlayerInput input)
     {
-        GameManager.instance.SetDisplayType(displayType);
+        //GameManager.instance.ConfigureGameHud(displayType);
     }
     protected virtual void EndGame(Player.Identity winner)
     {

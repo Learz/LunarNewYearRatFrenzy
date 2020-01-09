@@ -63,7 +63,7 @@ public class PlayerHUD : MonoBehaviour
                 break;
             case DisplayType.ProgressBar:
                 float width = progressBar.parent.GetComponent<RectTransform>().rect.width;
-                progressBar.offsetMax = new Vector2(width - (score * width / maxScore), 0);
+                progressBar.offsetMax = new Vector2(-width + (score * width / (float)maxScore), 0);
                 break;
         }
     }
@@ -71,11 +71,12 @@ public class PlayerHUD : MonoBehaviour
     {
         deadIndicator.gameObject.SetActive(!isAlive);
     }
-    public void SetDisplayType(DisplayType type)
+    public void ConfigureGameHud(DisplayType type, int maxSc)
     {
+        maxScore = maxSc;
         scoreLabel.gameObject.SetActive(false);
         progressBarContainer.gameObject.SetActive(false);
-        progressBar.offsetMax = new Vector2(progressBar.parent.GetComponent<RectTransform>().rect.width, 0);
+        progressBar.offsetMax = new Vector2(-progressBar.parent.GetComponent<RectTransform>().rect.width, 0);
         deadIndicator.gameObject.SetActive(false);
         currentDisplayType = type;
         switch (type)

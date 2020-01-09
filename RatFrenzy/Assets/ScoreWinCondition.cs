@@ -2,17 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScoreWinCondition : MonoBehaviour
+public class ScoreWinCondition : GenericWinCondition
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void AddPoint(Player.Identity id)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        base.AddPoint(id);
+        if (scores[(int)id] == maxScore) EndGame(id);
+        Debug.Log("Point added for " + id);
     }
 }
