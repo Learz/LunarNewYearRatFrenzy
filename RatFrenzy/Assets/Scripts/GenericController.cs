@@ -93,6 +93,7 @@ public class GenericController : MonoBehaviour
             mgr.onJumpUp.AddListener(JumpReleased);
             mgr.onInteractDown.AddListener(InteractPressed);
             mgr.onInteractUp.AddListener(InteractReleased);
+            mgr.color = (Player.Color)System.Enum.ToObject(typeof(Player.Color), Random.Range(0, System.Enum.GetValues(typeof(Player.Color)).Length - 1));
             UpdateColor();
         }
     }
