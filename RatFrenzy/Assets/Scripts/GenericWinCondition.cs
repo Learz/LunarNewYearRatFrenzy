@@ -11,6 +11,7 @@ public class GenericWinCondition : MonoBehaviour
     public float timeLimit;
     public bool startCountdownOnStart;
     protected int[] scores;
+    protected bool gameEnded;
     protected virtual void Start()
     {
         if (GameManager.instance == null) GameManager.CreateTestManager();
@@ -45,6 +46,8 @@ public class GenericWinCondition : MonoBehaviour
     }
     protected virtual void EndGame(Player.Identity winner)
     {
+        if (gameEnded) return;
+        gameEnded = true;
         Debug.Log(winner + " wins!");
         GameManager.instance.AddPoints(winner);
         GameManager.instance.DisplayScore();

@@ -23,6 +23,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/labcleanup.unity
     guid: f846cd166861c73489f6742c5a9ff99c
+  - enabled: 1
+    path: Assets/Scenes/towerClimb.unity
+    guid: 49260e576c911854183b6070261240ec
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 3385625d645ba8f4891239b805ddf6c4,
       type: 2}
