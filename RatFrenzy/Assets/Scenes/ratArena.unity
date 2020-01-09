@@ -702,6 +702,21 @@ PrefabInstance:
       propertyPath: identity
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5744527926825360171, guid: e19d7ad38b6f6e3498266bc83101ea9c,
+        type: 3}
+      propertyPath: controlledJump
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744527926825360171, guid: e19d7ad38b6f6e3498266bc83101ea9c,
+        type: 3}
+      propertyPath: jumpHeight
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744527926825360171, guid: e19d7ad38b6f6e3498266bc83101ea9c,
+        type: 3}
+      propertyPath: fallSpeed
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 6920067572440690728, guid: e19d7ad38b6f6e3498266bc83101ea9c,
         type: 3}
       propertyPath: m_Material
@@ -805,6 +820,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67a90716c609e884da3800967a490967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  displayType: 0
+  maxScore: 0
+  timeLimit: 0
+  startCountdownOnStart: 0
+  survivorType: 0
 --- !u!4 &700371181
 Transform:
   m_ObjectHideFlags: 0
@@ -1548,6 +1568,21 @@ PrefabInstance:
       propertyPath: fixedSpeed
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5744527926825360171, guid: e19d7ad38b6f6e3498266bc83101ea9c,
+        type: 3}
+      propertyPath: controlledJump
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744527926825360171, guid: e19d7ad38b6f6e3498266bc83101ea9c,
+        type: 3}
+      propertyPath: jumpHeight
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744527926825360171, guid: e19d7ad38b6f6e3498266bc83101ea9c,
+        type: 3}
+      propertyPath: fallSpeed
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 6920067572440690728, guid: e19d7ad38b6f6e3498266bc83101ea9c,
         type: 3}
       propertyPath: m_Enabled
@@ -1962,6 +1997,21 @@ PrefabInstance:
       propertyPath: identity
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5744527926825360171, guid: e19d7ad38b6f6e3498266bc83101ea9c,
+        type: 3}
+      propertyPath: controlledJump
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744527926825360171, guid: e19d7ad38b6f6e3498266bc83101ea9c,
+        type: 3}
+      propertyPath: jumpHeight
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744527926825360171, guid: e19d7ad38b6f6e3498266bc83101ea9c,
+        type: 3}
+      propertyPath: fallSpeed
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 6920067572440690728, guid: e19d7ad38b6f6e3498266bc83101ea9c,
         type: 3}
       propertyPath: m_Material
@@ -2065,6 +2115,21 @@ PrefabInstance:
         type: 3}
       propertyPath: identity
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744527926825360171, guid: e19d7ad38b6f6e3498266bc83101ea9c,
+        type: 3}
+      propertyPath: controlledJump
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744527926825360171, guid: e19d7ad38b6f6e3498266bc83101ea9c,
+        type: 3}
+      propertyPath: jumpHeight
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744527926825360171, guid: e19d7ad38b6f6e3498266bc83101ea9c,
+        type: 3}
+      propertyPath: fallSpeed
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6920067572440690728, guid: e19d7ad38b6f6e3498266bc83101ea9c,
         type: 3}
