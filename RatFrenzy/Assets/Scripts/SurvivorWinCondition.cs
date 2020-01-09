@@ -30,6 +30,11 @@ public class SurvivorWinCondition : GenericWinCondition
             if (survivorType == SurvivorType.LastManStanding) playersAlive.Remove(id);
             EndGame(playersAlive[0]);
         }
+        else
+        {
+            playersAlive.Remove(id);
+        }
+        Debug.Log(playersAlive.Count + " players alive");
 
     }
     protected override void OnPlayerJoined(PlayerInput input)

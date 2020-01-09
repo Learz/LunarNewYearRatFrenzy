@@ -57,6 +57,22 @@ public class @RatControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Squeak"",
+                    ""type"": ""Button"",
+                    ""id"": ""4f04429c-4de0-4968-ab29-2221f5746d86"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""SqueakPitch"",
+                    ""type"": ""Value"",
+                    ""id"": ""e66a22f8-4704-4b02-b473-1a38d980c6fb"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -268,6 +284,39 @@ public class @RatControls : IInputActionCollection, IDisposable
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f4b50e8b-52a9-44af-9b6a-4de5a0ec96d3"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Squeak"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fdc2b68c-ed82-4b23-9281-6ff29d6a3d19"",
+                    ""path"": ""<Keyboard>/leftCtrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Squeak"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""44101c29-5c71-41dd-9e6d-27c7c692d063"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SqueakPitch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -281,6 +330,8 @@ public class @RatControls : IInputActionCollection, IDisposable
         m_DefaultRat_Jump = m_DefaultRat.FindAction("Jump", throwIfNotFound: true);
         m_DefaultRat_Interact = m_DefaultRat.FindAction("Interact", throwIfNotFound: true);
         m_DefaultRat_Pause = m_DefaultRat.FindAction("Pause", throwIfNotFound: true);
+        m_DefaultRat_Squeak = m_DefaultRat.FindAction("Squeak", throwIfNotFound: true);
+        m_DefaultRat_SqueakPitch = m_DefaultRat.FindAction("SqueakPitch", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -335,6 +386,8 @@ public class @RatControls : IInputActionCollection, IDisposable
     private readonly InputAction m_DefaultRat_Jump;
     private readonly InputAction m_DefaultRat_Interact;
     private readonly InputAction m_DefaultRat_Pause;
+    private readonly InputAction m_DefaultRat_Squeak;
+    private readonly InputAction m_DefaultRat_SqueakPitch;
     public struct DefaultRatActions
     {
         private @RatControls m_Wrapper;
@@ -344,6 +397,8 @@ public class @RatControls : IInputActionCollection, IDisposable
         public InputAction @Jump => m_Wrapper.m_DefaultRat_Jump;
         public InputAction @Interact => m_Wrapper.m_DefaultRat_Interact;
         public InputAction @Pause => m_Wrapper.m_DefaultRat_Pause;
+        public InputAction @Squeak => m_Wrapper.m_DefaultRat_Squeak;
+        public InputAction @SqueakPitch => m_Wrapper.m_DefaultRat_SqueakPitch;
         public InputActionMap Get() { return m_Wrapper.m_DefaultRat; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -368,6 +423,12 @@ public class @RatControls : IInputActionCollection, IDisposable
                 @Pause.started -= m_Wrapper.m_DefaultRatActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_DefaultRatActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_DefaultRatActionsCallbackInterface.OnPause;
+                @Squeak.started -= m_Wrapper.m_DefaultRatActionsCallbackInterface.OnSqueak;
+                @Squeak.performed -= m_Wrapper.m_DefaultRatActionsCallbackInterface.OnSqueak;
+                @Squeak.canceled -= m_Wrapper.m_DefaultRatActionsCallbackInterface.OnSqueak;
+                @SqueakPitch.started -= m_Wrapper.m_DefaultRatActionsCallbackInterface.OnSqueakPitch;
+                @SqueakPitch.performed -= m_Wrapper.m_DefaultRatActionsCallbackInterface.OnSqueakPitch;
+                @SqueakPitch.canceled -= m_Wrapper.m_DefaultRatActionsCallbackInterface.OnSqueakPitch;
             }
             m_Wrapper.m_DefaultRatActionsCallbackInterface = instance;
             if (instance != null)
@@ -387,6 +448,12 @@ public class @RatControls : IInputActionCollection, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @Squeak.started += instance.OnSqueak;
+                @Squeak.performed += instance.OnSqueak;
+                @Squeak.canceled += instance.OnSqueak;
+                @SqueakPitch.started += instance.OnSqueakPitch;
+                @SqueakPitch.performed += instance.OnSqueakPitch;
+                @SqueakPitch.canceled += instance.OnSqueakPitch;
             }
         }
     }
@@ -398,5 +465,7 @@ public class @RatControls : IInputActionCollection, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnSqueak(InputAction.CallbackContext context);
+        void OnSqueakPitch(InputAction.CallbackContext context);
     }
 }
