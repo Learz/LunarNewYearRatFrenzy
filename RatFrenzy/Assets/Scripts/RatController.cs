@@ -31,16 +31,22 @@ public class RatController : GenericController
         MoveRat();
 
         tracker.transform.eulerAngles = new Vector3(0, 180, 0);
-        if (Physics.Raycast(transform.position+Vector3.up*1, Vector3.down, out hit, Mathf.Infinity, 1 << 10))
+        if (Physics.Raycast(transform.position+Vector3.up*0.1f, Vector3.down, out hit, Mathf.Infinity, 1 << 10))
         {
             tracker.SetActive(true);
-            tracker.transform.position = hit.point + new Vector3(0,0.01f,0);
+            tracker.transform.position = hit.point + new Vector3(0,0.005f,0);
             tracker.transform.eulerAngles = new Vector3(-hit.normal.z * 65,180, hit.normal.x * 65);
         }
         else
         {
             tracker.SetActive(false);
         }
+
+    }
+
+    private void FixedUpdate()
+    {
+        //if (rb.velocity.y <= 0) rb.detectCollisions = true;
     }
 
     protected override void JumpPressed()

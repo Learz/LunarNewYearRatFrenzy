@@ -9,17 +9,17 @@ public class SpawnObject : MonoBehaviour
     public float maxRate;
     [Tooltip("Spawn rate (seconds)")]
     public float rate;
-    [Tooltip("Spawn rate deviation amount")]
-    public float flutter;
+    [Tooltip("Spawn rate deviation amount (additive)")]
+    public float rateVariance;
     [Tooltip("Rate increase per second")]
     public float increase;
+    public Vector3 sizeVariance;
     
     private float spawnTime;
 
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -27,10 +27,10 @@ public class SpawnObject : MonoBehaviour
     {
         spawnTime += Time.deltaTime;
         rate = Mathf.Clamp(rate - increase * Time.deltaTime, maxRate, float.PositiveInfinity);
-        if (spawnTime >= rate + Random.Range(flutter,-flutter))
+        if (spawnTime >= rate)
         {
-            spawnTime = 0;
-            Instantiate(objects[Random.Range(0,objects.Length)], 
+            spawnTime = 0 - Random.Range(0, rateVariance); ;
+            GameObject obj = Instantiate(objects[Random.Range(0,objects.Length)], 
                 new Vector3
                 (
                     transform.position.x + Random.Range(-area.x / 2, area.x / 2), 
@@ -38,6 +38,7 @@ public class SpawnObject : MonoBehaviour
                     transform.position.z + Random.Range(-area.z / 2, area.z / 2)
                 ), 
                 transform.rotation);
+            obj.transform.localScale = Vector3.Scale(obj.transform.localScale, new Vector3(Random.Range(1, sizeVariance.x), Random.Range(1, sizeVariance.y), Random.Range(1, sizeVariance.z))); 
         }
     }
 

@@ -46,6 +46,8 @@ MonoBehaviour:
   objects:
   - {fileID: 0}
   area: {x: 0, y: 0, z: 0}
-  rate: 1
-  increase: 0
   maxRate: 1
+  rate: 1
+  rateVariance: 0
+  increase: 0
+  sizeVariance: {x: 1, y: 1, z: 1}
