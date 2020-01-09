@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnOnCollision : MonoBehaviour
+public class SpawnOnParticleCollision : MonoBehaviour
 {
     public GameObject prefab;
     public ParticleSystem PSystem;
@@ -20,7 +20,7 @@ public class SpawnOnCollision : MonoBehaviour
         foreach (ParticleCollisionEvent collision in CollisionEvents)
         {
             Vector3 pos = new Vector3(collision.intersection.x, collision.intersection.y - PSystem.main.startSize.constant / 2, collision.intersection.z);
-            Instantiate(prefab, pos, Quaternion.identity);
+            Instantiate(prefab, pos, Quaternion.LookRotation(Vector3.forward, collision.normal));
         }
     }
 }

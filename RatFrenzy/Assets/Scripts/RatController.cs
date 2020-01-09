@@ -15,6 +15,7 @@ public class RatController : GenericController
     private Animator rAnim;
     private bool isFallBoosted;
     private RaycastHit hit;
+    private float rotationMultiplier = 6f;
 
     protected override void Start()
     {
@@ -31,11 +32,11 @@ public class RatController : GenericController
         MoveRat();
 
         tracker.transform.eulerAngles = new Vector3(0, 180, 0);
-        if (Physics.Raycast(transform.position+Vector3.up*0.1f, Vector3.down, out hit, Mathf.Infinity, 1 << 10))
+        if (Physics.Raycast(transform.position + Vector3.up * 0.1f, Vector3.down, out hit, Mathf.Infinity, 1 << 10))
         {
             tracker.SetActive(true);
-            tracker.transform.position = hit.point + new Vector3(0,0.005f,0);
-            tracker.transform.eulerAngles = new Vector3(-hit.normal.z * 65,180, hit.normal.x * 65);
+            tracker.transform.position = hit.point + new Vector3(0, 0.005f, 0);
+            tracker.transform.eulerAngles = new Vector3(-hit.normal.z * 65, 180, hit.normal.x * 65);
         }
         else
         {
@@ -97,7 +98,7 @@ public class RatController : GenericController
             if (dir.magnitude > 0f)
             {
                 //rb.MoveRotation(Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(new Vector3(rb.velocity.x, 0.0f, rb.velocity.z)), 10.0f));
-                rb.MoveRotation(Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(dir), 10.0f * 60 * Time.deltaTime));
+                rb.MoveRotation(Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(dir), speed * rotationMultiplier * Time.deltaTime));
             }
         }
     }
