@@ -5,7 +5,7 @@ using UnityEngine;
 public class KillOnTrigger : MonoBehaviour
 {
     public GenericWinCondition winCondition;
-    public bool eliminatePlayer;
+    public bool eliminatePlayer = true;
     private void OnTriggerEnter(Collider other)
     {
         GenericController player = other.GetComponent<GenericController>();

@@ -1087,6 +1087,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winCondition: {fileID: 1532333905}
+  eliminatePlayer: 1
 --- !u!65 &347442211
 BoxCollider:
   m_ObjectHideFlags: 0
