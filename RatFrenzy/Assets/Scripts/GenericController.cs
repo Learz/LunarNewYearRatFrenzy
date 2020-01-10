@@ -28,30 +28,27 @@ public class GenericController : MonoBehaviour
     protected virtual void Start()
     {
         collisionSound = GetComponent<AudioSource>();
-        if (mgr == null)
-        {
-            // Create Manager if it doesn't exist. Used for testing scenes.
-            if (GameManager.instance == null) GameManager.CreateTestManager();
-            GameManager.instance.playerJoined.AddListener(PlayerJoined);
-
-            mgr = GameManager.instance.GetRatManager(identity);
-            if (mgr == null) this.gameObject.SetActive(false);
-            else
-            {
-                if (targetGroup != null) targetGroup.AddMember(this.transform, 1, 2);
-                mgr.onJumpDown.AddListener(JumpPressed);
-                mgr.onJumpUp.AddListener(JumpReleased);
-                mgr.onInteractDown.AddListener(InteractPressed);
-                mgr.onInteractUp.AddListener(InteractReleased);
-                UpdateColor();
-
-            }
-        }
+        rb = GetComponent<Rigidbody>();
         if (respawn) SetRespawnPosition(transform.position, transform.rotation);
         if (winCondition == null) winCondition = FindObjectOfType<GenericWinCondition>();
         ps = GetComponent<ParticleSystem>();
         impulse = GetComponent<Cinemachine.CinemachineImpulseSource>();
 
+        // Create Manager if it doesn't exist. Used for testing scenes.
+        if (GameManager.instance == null) GameManager.CreateTestManager();
+        GameManager.instance.playerJoined.AddListener(PlayerJoined);
+
+        mgr = GameManager.instance.GetRatManager(identity);
+        if (mgr == null) this.gameObject.SetActive(false);
+        else
+        {
+            if (targetGroup != null) targetGroup.AddMember(this.transform, 1, 2);
+            mgr.onJumpDown.AddListener(JumpPressed);
+            mgr.onJumpUp.AddListener(JumpReleased);
+            mgr.onInteractDown.AddListener(InteractPressed);
+            mgr.onInteractUp.AddListener(InteractReleased);
+            UpdateColor();
+        }
     }
     public virtual void Kill()
     {
