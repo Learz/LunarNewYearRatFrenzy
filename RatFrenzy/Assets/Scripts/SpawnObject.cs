@@ -77,6 +77,8 @@ public class SpawnObject : MonoBehaviour
         objToSpawn.transform.position = pos;
         objToSpawn.transform.rotation = rot;
         currentObjectInPool[i] = (currentObjectInPool[i] + 1) % poolSize;
+        ResettingMonoBehaviour resetter = objToSpawn.GetComponent<ResettingMonoBehaviour>();
+        if (resetter != null) resetter.ResetOnSpawn();
         return objToSpawn;
     }
 
