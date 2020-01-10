@@ -10,6 +10,7 @@ public class GenericController : MonoBehaviour
     public List<RendererProperties> renderers;
     public int numberOfRenderersToHideOnKill;
     public List<Light> lights;
+    public Cinemachine.CinemachineTargetGroup targetGroup;
     private AudioSource collisionSound;
 
     protected RatManager mgr;
@@ -30,11 +31,13 @@ public class GenericController : MonoBehaviour
             if (mgr == null) this.gameObject.SetActive(false);
             else
             {
+                if (targetGroup != null) targetGroup.AddMember(this.transform, 1, 2);
                 mgr.onJumpDown.AddListener(JumpPressed);
                 mgr.onJumpUp.AddListener(JumpReleased);
                 mgr.onInteractDown.AddListener(InteractPressed);
                 mgr.onInteractUp.AddListener(InteractReleased);
                 UpdateColor();
+
             }
         }
         if (winCondition == null) winCondition = FindObjectOfType<GenericWinCondition>();
@@ -99,6 +102,10 @@ public class GenericController : MonoBehaviour
     {
         if (input.playerIndex == (int)identity)
         {
+            if (targetGroup != null)
+            {
+                targetGroup.AddMember(this.transform, 1, 2);
+            }
             mgr = input.GetComponent<RatManager>();
             this.gameObject.SetActive(true);
             mgr.onJumpDown.AddListener(JumpPressed);
@@ -106,8 +113,10 @@ public class GenericController : MonoBehaviour
             mgr.onInteractDown.AddListener(InteractPressed);
             mgr.onInteractUp.AddListener(InteractReleased);
             mgr.color = (Player.Color)System.Enum.ToObject(typeof(Player.Color), Random.Range(0, System.Enum.GetValues(typeof(Player.Color)).Length - 1));
-            UpdateColor();
             GameManager.instance.ShowPlayerHud(identity);
+            UpdateColor();
+
+
         }
     }
     protected virtual void OnCollisionEnter(Collision collision)
