@@ -5663,7 +5663,7 @@ ParticleSystem:
     lifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.02
+      scalar: 0.05
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -8360,7 +8360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayType: 2
-  maxScore: 10
+  maxScore: 15
   timeLimit: 0
   startCountdownOnStart: 0
 --- !u!4 &1532333906
@@ -9622,7 +9622,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh228194
+  m_Name: pb_Mesh393578
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
