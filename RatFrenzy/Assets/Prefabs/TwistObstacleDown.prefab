@@ -140,12 +140,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  acceleration: 0.5
-  maxSpeed: 60
+  speedInterpolationTime: 50
+  maxSpeed: 40
   translation: {x: 0, y: -0.0138, z: 0}
   rotation: {x: 0, y: 1, z: 0}
-  dies: 1
-  lifeSpan: 50
+  dies: 0
+  lifeSpan: 0
 --- !u!1 &7461781181109534554
 GameObject:
   m_ObjectHideFlags: 0

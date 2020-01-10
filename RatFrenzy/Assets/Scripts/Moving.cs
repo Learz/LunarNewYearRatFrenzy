@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class Moving : MonoBehaviour
 {
-    public float speed, acceleration, maxSpeed;
+    public float speed, speedInterpolationTime, maxSpeed;
     public Vector3 translation, rotation;
     public bool dies;
     public float lifeSpan;
@@ -24,7 +24,9 @@ public class Moving : MonoBehaviour
         transform.Rotate(rotation * realspeed * Time.deltaTime);
         lifeSpan -= Time.deltaTime;
         if (dies && lifeSpan <= 0) Destroy(this.gameObject);
-        realspeed = Mathf.Clamp(speed + Time.timeSinceLevelLoad * acceleration, 0, maxSpeed);
+        //realspeed = Mathf.Clamp(speed + Time.timeSinceLevelLoad * speedInterpolationTime, 0, maxSpeed);
+
+        realspeed = Mathf.Lerp(speed, maxSpeed, Time.timeSinceLevelLoad / speedInterpolationTime);
     }
 
 

@@ -598,7 +598,7 @@ GameObject:
   - component: {fileID: 1824782417}
   m_Layer: 0
   m_Name: RatController
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -633,6 +633,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   identity: 0
+  winCondition: {fileID: 0}
   renderers:
   - renderer: {fileID: 7608724198661495434}
     property: 1
