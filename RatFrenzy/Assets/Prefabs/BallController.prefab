@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   identity: 0
+  winCondition: {fileID: 0}
   renderers:
   - renderer: {fileID: 5204659647595651295}
     property: 1
@@ -58,6 +59,11 @@ MonoBehaviour:
     property: 0
   - renderer: {fileID: 338534722784170874}
     property: 0
+  - renderer: {fileID: 0}
+    property: 1
+  numberOfRenderersToHideOnKill: 4
+  lights:
+  - {fileID: 0}
   speed: 250
   jumpHeight: 200
   rb: {fileID: 0}
