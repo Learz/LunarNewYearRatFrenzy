@@ -12,8 +12,12 @@ public class GenericController : MonoBehaviour
     public List<Light> lights;
     private AudioSource collisionSound;
 
+    [HideInInspector]
+    public bool isJumping { get; protected set; }
+    [HideInInspector]
+    public bool isGrounded { get; protected set; }
+
     protected RatManager mgr;
-    protected bool isJumping, isGrounded;
     protected int grounds;
 
     // Start is called before the first frame update

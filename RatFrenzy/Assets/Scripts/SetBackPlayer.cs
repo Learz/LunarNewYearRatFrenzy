@@ -16,7 +16,7 @@ public class SetBackPlayer : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "SetBackObstacle" && timer <= 0)
+        if (timer <= 0 && ((other.tag == "JumpObstacle") || (other.tag == "DuckObstacle" && (!GetComponent<RatController>().isSliding || GetComponent<RatController>().isJumping))))
         {
             timer = cooldown;
             transform.RotateAround(other.transform.parent.position, Vector3.up, setBackAmount);

@@ -10,12 +10,27 @@ public class RatController : GenericController
     public GameObject rat;
     public GameObject tracker;
     public bool isFixed, controlledJump;
+    public RatActions actionButton;
+
+    [HideInInspector]
+    public bool isSliding { get; private set; } = false;
+    [HideInInspector]
+    public bool isAttacking { get; private set; } = false;
 
     private float speed;
     private Animator rAnim;
     private bool isFallBoosted;
     private RaycastHit hit;
     private float rotationMultiplier = 6f;
+    private float slideTime = 0.5f;
+    private float slideTimer = 0;
+
+    public enum RatActions
+    {
+        None,
+        Attack,
+        Slide
+    }
 
     protected override void Start()
     {
@@ -43,6 +58,17 @@ public class RatController : GenericController
             tracker.SetActive(false);
         }
 
+        if (isSliding && isGrounded) slideTimer += Time.deltaTime;
+        if (slideTimer >= slideTime)
+        {
+            isSliding = false;
+            slideTimer = 0;
+        }
+
+
+        rAnim.SetBool("isJumping", isJumping);
+        rAnim.SetBool("isAttacking", isAttacking);
+        rAnim.SetBool("isSliding", isSliding);
     }
 
     private void FixedUpdate()
@@ -52,14 +78,13 @@ public class RatController : GenericController
 
     protected override void JumpPressed()
     {
-        if (!isJumping && isGrounded)
+        if (!isSliding && !isJumping && isGrounded)
         {
             isFallBoosted = false;
             speed = airSpeed;
             rb.drag = airDrag;
             rb.AddForce(Vector3.up * jumpHeight);
             isJumping = true;
-            rAnim.SetBool("isJumping", isJumping);
         }
 
     }
@@ -76,9 +101,23 @@ public class RatController : GenericController
     protected override void InteractPressed()
     {
         base.InteractPressed();
+        switch (actionButton)
+        {
+            case RatActions.Attack:
+                isAttacking = true;
+                break;
+            case RatActions.Slide:
+                isSliding = true;
+                break;
+        }
     }
 
-
+    protected override void InteractReleased()
+    {
+        base.InteractReleased();
+        isSliding = false;
+        slideTimer = 0;
+    }
 
     private void MoveRat()
     {
@@ -122,7 +161,6 @@ public class RatController : GenericController
             speed = groundSpeed;
             isFallBoosted = false;
         }
-        rAnim.SetBool("isJumping", isJumping);
     }
 
     protected override void OnCollisionExit(Collision collision)
