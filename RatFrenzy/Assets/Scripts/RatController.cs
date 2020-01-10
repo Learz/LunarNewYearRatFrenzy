@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class RatController : GenericController
 {
     public float groundSpeed, airSpeed, jumpHeight, fallSpeed, groundDrag, airDrag, speedOverride;
-    public Rigidbody rb;
     public GameObject rat;
     public GameObject tracker;
     public bool isFixed, controlledJump;

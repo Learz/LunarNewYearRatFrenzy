@@ -5,17 +5,14 @@ using UnityEngine;
 public class KillOnTrigger : MonoBehaviour
 {
     public GenericWinCondition winCondition;
-
+    public bool eliminatePlayer;
     private void OnTriggerEnter(Collider other)
     {
         GenericController player = other.GetComponent<GenericController>();
         if (player != null)
         {
-            player.GetComponent<ParticleSystem>().Play();
-            player.GetComponent<Cinemachine.CinemachineImpulseSource>().GenerateImpulse();
             player.Kill();
-            winCondition.EliminatePlayer(player.identity);
-
+            if (eliminatePlayer) winCondition.EliminatePlayer(player.identity);
         }
     }
 }

@@ -7,7 +7,7 @@ public class BallController : GenericController
 {
 
     public float speed, jumpHeight;
-    public Rigidbody rb;
+
     public GameObject ball;
     public GameObject rat;
 
@@ -19,11 +19,9 @@ public class BallController : GenericController
     // Start is called before the first frame update
     protected override void Start()
     {
-        base.Start();
-        if (rb == null) rb = GetComponent<Rigidbody>();
         rAnim = rat.GetComponent<Animator>();
-
         ratYOffset = 0.45f;
+        base.Start();
     }
 
     void Update()
