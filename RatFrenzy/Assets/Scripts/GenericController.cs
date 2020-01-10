@@ -10,12 +10,19 @@ public class GenericController : MonoBehaviour
     public List<RendererProperties> renderers;
     public int numberOfRenderersToHideOnKill;
     public List<Light> lights;
+    public bool respawn;
+    public float respawnTime = 2f;
+    public Rigidbody rb;
+    protected Vector3 respawnPosition;
+    protected Quaternion respawnRotation;
     public Cinemachine.CinemachineTargetGroup targetGroup;
     private AudioSource collisionSound;
 
     protected RatManager mgr;
     protected bool isJumping, isGrounded;
     protected int grounds;
+    protected ParticleSystem ps;
+    protected Cinemachine.CinemachineImpulseSource impulse;
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -40,15 +47,38 @@ public class GenericController : MonoBehaviour
 
             }
         }
+        if (respawn) SetRespawnPosition(transform.position, transform.rotation);
         if (winCondition == null) winCondition = FindObjectOfType<GenericWinCondition>();
+        ps = GetComponent<ParticleSystem>();
+        impulse = GetComponent<Cinemachine.CinemachineImpulseSource>();
 
     }
     public virtual void Kill()
     {
+        rb.isKinematic = true;
+        rb.velocity = Vector3.zero;
+        if (ps != null) ps.Play();
+        if (impulse != null) impulse.GenerateImpulse();
         for (int i = 0; i < numberOfRenderersToHideOnKill; i++)
         {
             renderers[i].renderer.enabled = false;
         }
+        if (respawn) Invoke("Respawn", respawnTime);
+    }
+    public virtual void Respawn()
+    {
+        transform.position = respawnPosition;
+        transform.rotation = respawnRotation;
+        for (int i = 0; i < numberOfRenderersToHideOnKill; i++)
+        {
+            renderers[i].renderer.enabled = true;
+        }
+        rb.isKinematic = false;
+    }
+    public virtual void SetRespawnPosition(Vector3 pos, Quaternion rot)
+    {
+        respawnPosition = pos;
+        respawnRotation = rot;
     }
     protected virtual void UpdateColor()
     {

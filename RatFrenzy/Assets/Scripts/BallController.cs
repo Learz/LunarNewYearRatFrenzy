@@ -7,7 +7,7 @@ public class BallController : GenericController
 {
 
     public float speed, jumpHeight;
-    public Rigidbody rb;
+    
     public GameObject ball;
     public GameObject rat;
 

@@ -96,5 +96,6 @@ public class PlayerHUD : MonoBehaviour
                 scoreLabel.gameObject.SetActive(true);
                 break;
         }
+        SetScore(0);
     }
 }

@@ -2,17 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RaceWinCondition : MonoBehaviour
+public class RaceWinCondition : GenericWinCondition
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    public override void EliminatePlayer(Player.Identity id)
     {
+        base.EliminatePlayer(id);
         
     }
 }
