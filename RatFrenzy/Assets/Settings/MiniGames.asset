@@ -29,7 +29,7 @@ MonoBehaviour:
   - gameName: Lab Clean Up
     description: There was a spillage in the lab! Collect the most radioactive goo
       to win, but careful! The goo will make you run faster!
-    thumbnail: {fileID: 0}
+    thumbnail: {fileID: 21300000, guid: 9277f39eb7a679148b4e11e9f8dec0a0, type: 3}
     sceneName: labcleanup
   - gameName: Tower Climb
     description: 
