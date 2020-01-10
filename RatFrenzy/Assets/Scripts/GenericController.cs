@@ -18,8 +18,12 @@ public class GenericController : MonoBehaviour
     public Cinemachine.CinemachineTargetGroup targetGroup;
     private AudioSource collisionSound;
 
+    [HideInInspector]
+    public bool isJumping { get; protected set; }
+    [HideInInspector]
+    public bool isGrounded { get; protected set; }
+
     protected RatManager mgr;
-    protected bool isJumping, isGrounded;
     protected int grounds;
     protected ParticleSystem ps;
     protected Cinemachine.CinemachineImpulseSource impulse;

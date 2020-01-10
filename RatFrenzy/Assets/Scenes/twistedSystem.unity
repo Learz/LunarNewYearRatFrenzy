@@ -897,6 +897,11 @@ PrefabInstance:
       propertyPath: numberOfRenderersToHideOnKill
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5744527926825360171, guid: e19d7ad38b6f6e3498266bc83101ea9c,
+        type: 3}
+      propertyPath: actionButton
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6920067572440690728, guid: e19d7ad38b6f6e3498266bc83101ea9c,
         type: 3}
       propertyPath: m_Material
@@ -1337,6 +1342,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744527926825360171, guid: e19d7ad38b6f6e3498266bc83101ea9c,
+        type: 3}
+      propertyPath: actionButton
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e19d7ad38b6f6e3498266bc83101ea9c, type: 3}
@@ -1912,6 +1922,11 @@ PrefabInstance:
       propertyPath: numberOfRenderersToHideOnKill
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5744527926825360171, guid: e19d7ad38b6f6e3498266bc83101ea9c,
+        type: 3}
+      propertyPath: actionButton
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6920067572440690728, guid: e19d7ad38b6f6e3498266bc83101ea9c,
         type: 3}
       propertyPath: m_Material
@@ -2157,6 +2172,11 @@ PrefabInstance:
     - target: {fileID: 5744527926825360171, guid: e19d7ad38b6f6e3498266bc83101ea9c,
         type: 3}
       propertyPath: numberOfRenderersToHideOnKill
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744527926825360171, guid: e19d7ad38b6f6e3498266bc83101ea9c,
+        type: 3}
+      propertyPath: actionButton
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6920067572440690728, guid: e19d7ad38b6f6e3498266bc83101ea9c,
@@ -2628,7 +2648,7 @@ PrefabInstance:
     - target: {fileID: 7145084116065626847, guid: 18c5c6da13939da41a2949c413055610,
         type: 3}
       propertyPath: maxRate
-      value: 0.8
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7145084116065626847, guid: 18c5c6da13939da41a2949c413055610,
         type: 3}

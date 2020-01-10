@@ -53,15 +53,14 @@ public class SpawnObject : MonoBehaviour
         if (spawnTime <= 0)
         {
             spawnTime = realRate;// + Random.Range(0, rateVariance);
-            GameObject obj = SpawnNextInPool(Random.Range(0, objects.Length),
+            SpawnNextInPool(Random.Range(0, objects.Length),
                 new Vector3
                 (
                     transform.position.x + Random.Range(-area.x / 2, area.x / 2),
                     transform.position.y + Random.Range(-area.y / 2, area.y / 2),
                     transform.position.z + Random.Range(-area.z / 2, area.z / 2)
                 ),
-                transform.rotation);
-            obj.transform.localScale = Vector3.Scale(obj.transform.localScale,
+                transform.rotation,
                 new Vector3(
                     Random.Range(1, sizeVariance.x) * Mathf.Lerp(minimumSize.x, maximumSize.x, t / sizeInterpolationTime.x),
                     Random.Range(1, sizeVariance.y) * Mathf.Lerp(minimumSize.y, maximumSize.y, t / sizeInterpolationTime.y),
@@ -71,11 +70,12 @@ public class SpawnObject : MonoBehaviour
         }
     }
 
-    private GameObject SpawnNextInPool(int i, Vector3 pos, Quaternion rot)
+    private GameObject SpawnNextInPool(int i, Vector3 pos, Quaternion rot, Vector3 scale)
     {
         GameObject objToSpawn = instancePool[i][currentObjectInPool[i]];
         objToSpawn.transform.position = pos;
         objToSpawn.transform.rotation = rot;
+        objToSpawn.transform.localScale = Vector3.Scale(objToSpawn.transform.localScale, scale);
         currentObjectInPool[i] = (currentObjectInPool[i] + 1) % poolSize;
         ResettingMonoBehaviour resetter = objToSpawn.GetComponent<ResettingMonoBehaviour>();
         if (resetter != null) resetter.ResetOnSpawn();
