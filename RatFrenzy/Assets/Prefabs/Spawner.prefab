@@ -51,3 +51,6 @@ MonoBehaviour:
   rateVariance: 0
   increase: 0
   sizeVariance: {x: 1, y: 1, z: 1}
+  minimumSize: {x: 1, y: 1, z: 1}
+  maximumSize: {x: 1, y: 1, z: 1}
+  sizeChangePerSecond: {x: 0, y: 0, z: 0}
