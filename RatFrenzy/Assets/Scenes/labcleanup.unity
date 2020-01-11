@@ -21248,8 +21248,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayType: 2
   maxScore: 15
-  timeLimit: 0
-  startCountdownOnStart: 0
+  timeLimit: 60
+  startTimeLimitOnStart: 1
+  initialCountdown: 0
 --- !u!4 &1532333906
 Transform:
   m_ObjectHideFlags: 0
