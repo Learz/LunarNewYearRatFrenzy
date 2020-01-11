@@ -218,6 +218,16 @@ PrefabInstance:
       propertyPath: lights.Array.data[0]
       value: 
       objectReference: {fileID: 239838514}
+    - target: {fileID: 1423653313015335402, guid: cce2ca4185beb764b906577c0675ebdd,
+        type: 3}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 19583e46b5c921e47aa32755c1d1de75, type: 3}
+    - target: {fileID: 1423653313015335402, guid: cce2ca4185beb764b906577c0675ebdd,
+        type: 3}
+      propertyPath: collisionSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6d161b7932ccca747b4cb24bf3114dca, type: 3}
     - target: {fileID: 3344065062084557825, guid: cce2ca4185beb764b906577c0675ebdd,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -12475,6 +12485,16 @@ PrefabInstance:
       propertyPath: lights.Array.data[0]
       value: 
       objectReference: {fileID: 1696415480}
+    - target: {fileID: 1423653313015335402, guid: cce2ca4185beb764b906577c0675ebdd,
+        type: 3}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 19583e46b5c921e47aa32755c1d1de75, type: 3}
+    - target: {fileID: 1423653313015335402, guid: cce2ca4185beb764b906577c0675ebdd,
+        type: 3}
+      propertyPath: collisionSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6d161b7932ccca747b4cb24bf3114dca, type: 3}
     - target: {fileID: 5204659647595651295, guid: cce2ca4185beb764b906577c0675ebdd,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -19064,6 +19084,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winCondition: {fileID: 1521514393}
+  eliminatePlayer: 1
 --- !u!114 &1521514393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19079,7 +19100,8 @@ MonoBehaviour:
   displayType: 0
   maxScore: 0
   timeLimit: 0
-  startCountdownOnStart: 0
+  startTimeLimitOnStart: 0
+  initialCountdown: 0
   survivorType: 1
 --- !u!4 &1521514394
 Transform:
@@ -19102,7 +19124,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh342864
+  m_Name: pb_Mesh282738
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -31878,6 +31900,16 @@ PrefabInstance:
       propertyPath: lights.Array.data[0]
       value: 
       objectReference: {fileID: 273305684}
+    - target: {fileID: 1423653313015335402, guid: cce2ca4185beb764b906577c0675ebdd,
+        type: 3}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 19583e46b5c921e47aa32755c1d1de75, type: 3}
+    - target: {fileID: 1423653313015335402, guid: cce2ca4185beb764b906577c0675ebdd,
+        type: 3}
+      propertyPath: collisionSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6d161b7932ccca747b4cb24bf3114dca, type: 3}
     - target: {fileID: 3344065062084557825, guid: cce2ca4185beb764b906577c0675ebdd,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -36783,6 +36815,16 @@ PrefabInstance:
       propertyPath: lights.Array.data[0]
       value: 
       objectReference: {fileID: 268163929}
+    - target: {fileID: 1423653313015335402, guid: cce2ca4185beb764b906577c0675ebdd,
+        type: 3}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 19583e46b5c921e47aa32755c1d1de75, type: 3}
+    - target: {fileID: 1423653313015335402, guid: cce2ca4185beb764b906577c0675ebdd,
+        type: 3}
+      propertyPath: collisionSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6d161b7932ccca747b4cb24bf3114dca, type: 3}
     - target: {fileID: 3344065062084557825, guid: cce2ca4185beb764b906577c0675ebdd,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

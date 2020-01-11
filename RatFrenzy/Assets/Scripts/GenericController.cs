@@ -16,7 +16,8 @@ public class GenericController : MonoBehaviour
     protected Vector3 respawnPosition;
     protected Quaternion respawnRotation;
     public Cinemachine.CinemachineTargetGroup targetGroup;
-    private AudioSource collisionSound;
+    public AudioSource audioSource;
+    public AudioClip collisionSound, deathSound;
 
     [HideInInspector]
     public bool isJumping { get; protected set; }
@@ -32,7 +33,7 @@ public class GenericController : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        collisionSound = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
         if (respawn) SetRespawnPosition(transform.position, transform.rotation);
         if (winCondition == null) winCondition = FindObjectOfType<GenericWinCondition>();
@@ -57,6 +58,13 @@ public class GenericController : MonoBehaviour
     }
     public virtual void Kill()
     {
+        if (audioSource != null && deathSound != null)
+        {
+            audioSource.clip = deathSound;
+            audioSource.pitch = Time.timeScale * Random.Range(0.9f, 1f);
+            audioSource.volume = 1f;
+            audioSource.Play();
+        }
         if (isDead) return;
         isDead = true;
         rb.isKinematic = true;
@@ -68,6 +76,7 @@ public class GenericController : MonoBehaviour
             renderers[i].renderer.enabled = false;
         }
         if (respawn) Invoke("Respawn", respawnTime);
+        
     }
     public virtual void Respawn()
     {
@@ -159,13 +168,14 @@ public class GenericController : MonoBehaviour
         if (collision.gameObject.layer == 10) grounds++;
         isGrounded = grounds == 0 ? false : true;
         if (isGrounded) isJumping = false;
-        if (collisionSound != null)
+        if (audioSource != null && collisionSound != null)
         {
             if (collision.relativeVelocity.magnitude > 2)
             {
-                collisionSound.pitch = Time.timeScale * Random.Range(0.9f, 1.2f);
-                collisionSound.volume = 0.1f * collision.relativeVelocity.magnitude;
-                collisionSound.Play();
+                audioSource.clip = collisionSound;
+                audioSource.pitch = Time.timeScale * Random.Range(0.9f, 1.2f);
+                audioSource.volume = 0.1f * collision.relativeVelocity.magnitude;
+                audioSource.Play();
 
             }
         }
