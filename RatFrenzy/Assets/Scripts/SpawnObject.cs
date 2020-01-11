@@ -23,11 +23,13 @@ public class SpawnObject : MonoBehaviour
     private float spawnTime, realRate;
     private GameObject[][] instancePool;
     private int[] currentObjectInPool;
+    private Vector3[] originalScales;
 
     // Start is called before the first frame update
     void Start()
     {
         instancePool = new GameObject[objects.Length][];
+        originalScales = new Vector3[objects.Length];
         for (int i = 0; i < instancePool.Length; i++)
         {
             instancePool[i] = new GameObject[poolSize];
@@ -35,6 +37,7 @@ public class SpawnObject : MonoBehaviour
             {
                 instancePool[i][x] = Instantiate(objects[i], poolPosition, Quaternion.identity);
             }
+            originalScales[i] = objects[i].transform.localScale;
         }
 
         currentObjectInPool = new int[poolSize];
@@ -75,7 +78,7 @@ public class SpawnObject : MonoBehaviour
         GameObject objToSpawn = instancePool[i][currentObjectInPool[i]];
         objToSpawn.transform.position = pos;
         objToSpawn.transform.rotation = rot;
-        objToSpawn.transform.localScale = Vector3.Scale(objToSpawn.transform.localScale, scale);
+        objToSpawn.transform.localScale = Vector3.Scale(originalScales[i], scale);
         currentObjectInPool[i] = (currentObjectInPool[i] + 1) % poolSize;
         ResettingMonoBehaviour resetter = objToSpawn.GetComponent<ResettingMonoBehaviour>();
         if (resetter != null) resetter.ResetOnSpawn();

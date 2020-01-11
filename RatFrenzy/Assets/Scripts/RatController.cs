@@ -15,6 +15,8 @@ public class RatController : GenericController
     public bool isSliding { get; private set; } = false;
     [HideInInspector]
     public bool isAttacking { get; private set; } = false;
+    [HideInInspector]
+    public bool canGetPoint = true;
 
     private float speed;
     private Animator rAnim;
@@ -149,6 +151,11 @@ public class RatController : GenericController
     protected override void PlayerJoined(PlayerInput input)
     {
         base.PlayerJoined(input);
+    }
+
+    public override void AddPoint()
+    {
+        if(canGetPoint) base.AddPoint();
     }
 
     protected override void OnCollisionEnter(Collision collision)
