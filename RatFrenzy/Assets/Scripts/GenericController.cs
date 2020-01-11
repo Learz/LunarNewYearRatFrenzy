@@ -23,6 +23,7 @@ public class GenericController : MonoBehaviour
     [HideInInspector]
     public bool isGrounded { get; protected set; }
 
+    protected bool isDead;
     protected RatManager mgr;
     protected int grounds;
     protected ParticleSystem ps;
@@ -56,6 +57,8 @@ public class GenericController : MonoBehaviour
     }
     public virtual void Kill()
     {
+        if (isDead) return;
+        isDead = true;
         rb.isKinematic = true;
         rb.velocity = Vector3.zero;
         if (ps != null) ps.Play();
@@ -68,6 +71,7 @@ public class GenericController : MonoBehaviour
     }
     public virtual void Respawn()
     {
+        isDead = false;
         transform.position = respawnPosition;
         transform.rotation = respawnRotation;
         for (int i = 0; i < numberOfRenderersToHideOnKill; i++)
