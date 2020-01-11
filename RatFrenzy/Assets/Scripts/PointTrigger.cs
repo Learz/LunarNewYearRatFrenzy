@@ -18,11 +18,10 @@ public class PointTrigger : ResettingMonoBehaviour
         GenericController player = other.GetComponent<GenericController>();
         if (player != null)
         {
-            winCondition.AddPoint(player.identity);
+            player.AddPoint();
             Collider curColl = other.GetComponentInParent<Collider>();
             Physics.IgnoreCollision(curColl, GetComponent<Collider>());
             ignoredCollisions.Add(other.GetComponentInParent<Collider>());
-            Debug.Log("Point!");
         }
     }
 
