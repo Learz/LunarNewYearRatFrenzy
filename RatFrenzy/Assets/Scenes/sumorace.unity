@@ -154,7 +154,7 @@ MonoBehaviour:
   maxScore: 3
   timeLimit: 0
   startTimeLimitOnStart: 0
-  initialCountdown: 5
+  initialCountdown: 3
 --- !u!4 &86501095
 Transform:
   m_ObjectHideFlags: 0

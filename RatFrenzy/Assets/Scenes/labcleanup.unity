@@ -21250,7 +21250,7 @@ MonoBehaviour:
   maxScore: 15
   timeLimit: 60
   startTimeLimitOnStart: 1
-  initialCountdown: 0
+  initialCountdown: 3
 --- !u!4 &1532333906
 Transform:
   m_ObjectHideFlags: 0

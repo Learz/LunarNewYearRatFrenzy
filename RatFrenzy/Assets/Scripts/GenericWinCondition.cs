@@ -19,8 +19,9 @@ public class GenericWinCondition : MonoBehaviour
         if (GameManager.instance == null) GameManager.CreateTestManager();
         GameManager.instance.playerJoined.AddListener(OnPlayerJoined);
 
-        if (startTimeLimitOnStart) StartTimeoutCountdown(timeLimit);
         if (initialCountdown > 0) StartCoroutine(InitialCountDown(initialCountdown));
+        if (startTimeLimitOnStart) StartTimeoutCountdown(timeLimit);
+
         GameManager.instance.ConfigureGameHud(displayType, maxScore);
         scores = new int[4];
     }
