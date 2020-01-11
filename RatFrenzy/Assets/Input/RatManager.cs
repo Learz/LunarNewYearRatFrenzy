@@ -67,6 +67,10 @@ public class RatManager : MonoBehaviour
     {
         return GameManager.instance.playerPoses[poseIndex];
     }
+    private void OnApplicationFocus(bool focus)
+    {
+        if (!focus) move = Vector2.zero;
+    }
 }
 
 [System.Serializable]
