@@ -6,6 +6,7 @@ using DG.Tweening;
 public class SetBackPlayer : MonoBehaviour
 {
     public float setBackAmount, cooldown;
+    public Transform anchor;
 
     private float timer;
 
@@ -19,7 +20,7 @@ public class SetBackPlayer : MonoBehaviour
         if (timer <= 0 && ((other.tag == "JumpObstacle") || (other.tag == "DuckObstacle" && (!GetComponent<RatController>().isSliding || GetComponent<RatController>().isJumping))))
         {
             timer = cooldown;
-            transform.RotateAround(other.transform.parent.position, Vector3.up, setBackAmount);
+            transform.RotateAround(anchor.position, Vector3.up, setBackAmount);
             //player.gameObject.transform.DOMoveZ(other.gameObject.transform.position.z - setBackAmount, 0.5f);
         }
     }

@@ -1087,6 +1087,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winCondition: {fileID: 700371180}
+  eliminatePlayer: 1
 --- !u!114 &700371180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2648,7 +2649,7 @@ PrefabInstance:
     - target: {fileID: 7145084116065626847, guid: 18c5c6da13939da41a2949c413055610,
         type: 3}
       propertyPath: maxRate
-      value: 0.6
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 7145084116065626847, guid: 18c5c6da13939da41a2949c413055610,
         type: 3}
