@@ -20,7 +20,7 @@ public class GenericWinCondition : MonoBehaviour
         GameManager.instance.playerJoined.AddListener(OnPlayerJoined);
 
         if (initialCountdown > 0) StartCoroutine(InitialCountDown(initialCountdown));
-        if (startTimeLimitOnStart) StartTimeoutCountdown(timeLimit);
+        else if (startTimeLimitOnStart) StartTimeoutCountdown(timeLimit);
 
         GameManager.instance.ConfigureGameHud(displayType, maxScore);
         scores = new int[4];
@@ -92,6 +92,7 @@ public class GenericWinCondition : MonoBehaviour
             yield return null;
         }
         Time.timeScale = 1;
+        if (startTimeLimitOnStart) StartTimeoutCountdown(timeLimit);
     }
     protected IEnumerator MiniGameCountDown(float timeLeft, bool endGame)
     {
