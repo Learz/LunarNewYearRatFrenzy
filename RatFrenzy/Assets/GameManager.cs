@@ -147,6 +147,10 @@ public class GameManager : MonoBehaviour
     {
 
     }
+    public void RemoveAllPlayers()
+    {
+        foreach (PlayerInput player in players) Destroy(player.gameObject);
+    }
 
 }
 public class PlayerEvent : UnityEvent<PlayerInput> { };

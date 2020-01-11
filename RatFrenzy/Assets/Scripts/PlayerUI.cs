@@ -172,12 +172,15 @@ public class PlayerUI : MonoBehaviour
     }
     private void OnEnable()
     {
-        if (playerInput != null)
+        playerIsReady = false;
+        playerReady.SetActive(false);
+        playerDisconnected.SetActive(true);
+        playerJoined.SetActive(false);
+        playerIsReady = false;
+        playerIsConnected = false;
+        if (mgr != null)
         {
             //playerInput.currentActionMap.actionTriggered += actionTriggered;
-            playerIsReady = false;
-            playerReady.SetActive(false);
-            playerDisconnected.SetActive(false);
             playerJoined.SetActive(true);
             mgr.onJumpDown.AddListener(Jump);
             mgr.onInteractDown.AddListener(Interact);
@@ -195,6 +198,7 @@ public class PlayerUI : MonoBehaviour
             mgr.onInteractDown.RemoveListener(Interact);
             mgr.onMove.RemoveListener(Move);
             mgr.onMoveCancelled.RemoveListener(Move);
+            mgr = null;
         }
 
     }

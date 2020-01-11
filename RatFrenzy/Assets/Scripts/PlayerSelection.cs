@@ -69,9 +69,11 @@ public class PlayerSelection : MonoBehaviour
     }
     private void OnDisable()
     {
+        selectedColors.Clear();
         if (co == null) return;
         StopCoroutine(co);
         co = null;
         countdown.text = "";
+
     }
 }
