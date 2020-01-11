@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/CreateMiniGameList", order = 1)]
+[CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/MiniGames List", order = 1)]
 public class MiniGameList : ScriptableObject
 {
     public List<MiniGame> gamesList;

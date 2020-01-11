@@ -57,5 +57,5 @@ MonoBehaviour:
     thumbnail: {fileID: 0}
     sceneName: sumorace
     bindings:
-    - action: 0
+    - action: 2
       description: Move

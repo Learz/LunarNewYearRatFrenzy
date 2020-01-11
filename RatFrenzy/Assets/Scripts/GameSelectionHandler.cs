@@ -8,8 +8,8 @@ using Doozy.Engine.UI;
 
 public class GameSelectionHandler : MonoBehaviour
 {
-    public GameObject gameSelectorPrefab;
-    public RectTransform content;
+    public GameObject gameSelectorPrefab, bindingPrefab;
+    public RectTransform content, bindingsContainer;
     public Image thumbnail;
     public TMPro.TMP_Text descriptionField;
     public Doozy.Engine.UI.UIView gameSelectView;
@@ -51,9 +51,19 @@ public class GameSelectionHandler : MonoBehaviour
     }
     public void DisplayMiniGameInfo(MiniGame game)
     {
+        if (bindingsContainer != null)
+        {
+            foreach (Transform child in bindingsContainer) Destroy(child.gameObject);
+            foreach (Binding bind in game.bindings)
+            {
+                // TODO : instanciate binding prefab
+                Instantiate(bindingPrefab, bindingsContainer).GetComponent<GameBindingObj>().SetData(bind.action, bind.description);
+            }
+        }
+
         if (game.thumbnail != null) thumbnail.sprite = game.thumbnail;
         else thumbnail.sprite = null;
-        if (game.description != null) descriptionField.text = game.description;
-        else descriptionField.text = "Please add a description in your minigames settings file.";
+        if (game.description.Length > 0) descriptionField.text = game.description;
+        else descriptionField.text = "Placeholder description. Please add a description in your minigames settings file.";
     }
 }

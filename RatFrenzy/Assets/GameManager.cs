@@ -143,6 +143,10 @@ public class GameManager : MonoBehaviour
     {
         foreach (PlayerHUD hud in playerHUDs) hud.maxScore = score;
     }
+    public void RestrictUIInputToLoser()
+    {
+
+    }
 
 }
 public class PlayerEvent : UnityEvent<PlayerInput> { };
