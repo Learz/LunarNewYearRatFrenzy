@@ -66,4 +66,8 @@ public class GameSelectionHandler : MonoBehaviour
         if (game.description.Length > 0) descriptionField.text = game.description;
         else descriptionField.text = "Placeholder description. Please add a description in your minigames settings file.";
     }
+    private void OnEnable()
+    {
+        SelectLastButton();
+    }
 }

@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 5411931991330196722}
   - component: {fileID: 5411931991330196721}
   - component: {fileID: 6358306454650263246}
-  - component: {fileID: 5320286349567731340}
-  - component: {fileID: -9149224377808368907}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -83,7 +81,7 @@ MonoBehaviour:
   m_Actions: {fileID: -944628639613478452, guid: 070a1bdc4e85a234bb7989488c1a3bda,
     type: 3}
   m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: -9149224377808368907}
+  m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -96,52 +94,6 @@ MonoBehaviour:
   m_DefaultActionMap: DefaultRat
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &5320286349567731340
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5411931991330196720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b16c6f78230fa4964a222622d8aae332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
-  m_PlayerRoot: {fileID: 0}
---- !u!114 &-9149224377808368907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5411931991330196720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_RepeatDelay: 0.5
-  m_RepeatRate: 0.1
-  m_ActionsAsset: {fileID: -944628639613478452, guid: 070a1bdc4e85a234bb7989488c1a3bda,
-    type: 3}
-  m_PointAction: {fileID: 0}
-  m_MoveAction: {fileID: 3410434858997564957, guid: 070a1bdc4e85a234bb7989488c1a3bda,
-    type: 3}
-  m_SubmitAction: {fileID: 3680044582453975488, guid: 070a1bdc4e85a234bb7989488c1a3bda,
-    type: 3}
-  m_CancelAction: {fileID: 6040052005141609801, guid: 070a1bdc4e85a234bb7989488c1a3bda,
-    type: 3}
-  m_LeftClickAction: {fileID: 0}
-  m_MiddleClickAction: {fileID: 0}
-  m_RightClickAction: {fileID: 0}
-  m_ScrollWheelAction: {fileID: 0}
-  m_TrackedDevicePositionAction: {fileID: 0}
-  m_TrackedDeviceOrientationAction: {fileID: 0}
-  m_TrackedDeviceSelectAction: {fileID: 0}
 --- !u!1 &5525367030917116674
 GameObject:
   m_ObjectHideFlags: 0
