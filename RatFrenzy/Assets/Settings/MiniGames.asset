@@ -18,21 +18,44 @@ MonoBehaviour:
       point
     thumbnail: {fileID: 21300000, guid: 4a934349e5ae5564abc957af4d5e821c, type: 3}
     sceneName: sumoarena
+    bindings:
+    - action: 2
+      description: Roll
+    - action: 0
+      description: Jump
   - gameName: Tower Climb
     description: 
     thumbnail: {fileID: 0}
     sceneName: towerClimb
+    bindings:
+    - action: 2
+      description: Move Left/Right
+    - action: 0
+      description: Jump
   - gameName: Obstacle Run
     description: 
     thumbnail: {fileID: 0}
     sceneName: twistedSystem
+    bindings:
+    - action: 0
+      description: Jump
+    - action: 1
+      description: Slide
   - gameName: Lab Clean Up
     description: There was a spillage in the lab! Collect the most radioactive goo
       to win, but careful! The goo will make you run faster!
     thumbnail: {fileID: 21300000, guid: 9277f39eb7a679148b4e11e9f8dec0a0, type: 3}
     sceneName: labcleanup
+    bindings:
+    - action: 2
+      description: Move
+    - action: 0
+      description: Jump
   - gameName: Sumo Race
     description: Race around the track! Careful not to fall off. First to 3 laps
       wins!
     thumbnail: {fileID: 0}
     sceneName: sumorace
+    bindings:
+    - action: 0
+      description: Move

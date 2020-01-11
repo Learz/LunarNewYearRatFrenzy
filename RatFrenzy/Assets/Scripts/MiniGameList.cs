@@ -13,4 +13,17 @@ public class MiniGame
     public string description;
     public Sprite thumbnail;
     public string sceneName;
+    public List<Binding> bindings;
+}
+[System.Serializable]
+public class Binding
+{
+    public enum Action
+    {
+        Jump,
+        Interact,
+        Move
+    }
+    public Action action;
+    public string description;
 }
