@@ -149,7 +149,8 @@ public class GameManager : MonoBehaviour
     }
     public void RemoveAllPlayers()
     {
-        foreach (PlayerInput player in players) Destroy(player.gameObject);
+        foreach (PlayerInput player in players)
+            if (player != null) Destroy(player.gameObject);
     }
 
 }
