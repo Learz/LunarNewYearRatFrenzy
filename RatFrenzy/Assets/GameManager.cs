@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public MiniGameList miniGames;
     public PlayerHUD[] playerHUDs;
     public Sprite[] playerPoses;
+    public UnityEngine.UI.Text timeLeftLabel;
     private int[] scores;
     // Start is called before the first frame update
     void Awake()
@@ -124,11 +125,15 @@ public class GameManager : MonoBehaviour
     {
         playerHUDs[(int)id].SetScore(score);
     }
+    public void UpdateTimeLeft(float timeLeft)
+    {
+        timeLeftLabel.text = (timeLeft <= 0) ? "" : "" + timeLeft;
+    }
     public void ConfigureGameHud(PlayerHUD.DisplayType type, int maxScore)
     {
         foreach (PlayerHUD hud in playerHUDs) hud.ConfigureGameHud(type, maxScore);
         graph.GoToNodeByName("InGame");
-        
+
     }
     public void ShowPlayerHud(Player.Identity id)
     {
@@ -138,14 +143,7 @@ public class GameManager : MonoBehaviour
     {
         foreach (PlayerHUD hud in playerHUDs) hud.maxScore = score;
     }
-    public static IEnumerator MiniGameCountDown(float timeLeft)
-    {
-        while (timeLeft > 0)
-        {
-            yield return new WaitForSeconds(1);
-            timeLeft--;
-        }
-    }
+
 }
 public class PlayerEvent : UnityEvent<PlayerInput> { };
 

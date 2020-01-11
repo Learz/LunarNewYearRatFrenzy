@@ -153,7 +153,8 @@ MonoBehaviour:
   displayType: 3
   maxScore: 3
   timeLimit: 0
-  startCountdownOnStart: 0
+  startTimeLimitOnStart: 0
+  initialCountdown: 5
 --- !u!4 &86501095
 Transform:
   m_ObjectHideFlags: 0
@@ -701,8 +702,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 369318141}
-  m_LocalRotation: {x: 0.19868365, y: -0.0000000030138496, z: -0.000000035529037,
-    w: 0.98006374}
+  m_LocalRotation: {x: 0.19868366, y: 0.0000000029586564, z: -0.000000036739813, w: 0.98006374}
   m_LocalPosition: {x: 0.47776082, y: 7, z: -14.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -809,8 +809,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 503838648}
-  m_LocalRotation: {x: 0.19868365, y: -0.0000000030138496, z: -0.000000035529037,
-    w: 0.98006374}
+  m_LocalRotation: {x: 0.19868366, y: 0.0000000029586564, z: -0.000000036739813, w: 0.98006374}
   m_LocalPosition: {x: 0.47776082, y: 7, z: -14.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
