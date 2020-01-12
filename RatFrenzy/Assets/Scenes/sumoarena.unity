@@ -12485,6 +12485,11 @@ PrefabInstance:
       propertyPath: deathSound
       value: 
       objectReference: {fileID: 8300000, guid: 19583e46b5c921e47aa32755c1d1de75, type: 3}
+    - target: {fileID: 1423653313015335402, guid: cce2ca4185beb764b906577c0675ebdd,
+        type: 3}
+      propertyPath: collisionSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6d161b7932ccca747b4cb24bf3114dca, type: 3}
     - target: {fileID: 5204659647595651295, guid: cce2ca4185beb764b906577c0675ebdd,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

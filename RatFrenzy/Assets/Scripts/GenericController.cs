@@ -168,16 +168,17 @@ public class GenericController : MonoBehaviour
         if (collision.gameObject.layer == 10) grounds++;
         isGrounded = grounds == 0 ? false : true;
         if (isGrounded) isJumping = false;
-        if (audioSource != null && collisionSound != null)
+
+        if (collision.relativeVelocity.magnitude > 2)
         {
-            if (collision.relativeVelocity.magnitude > 2)
+            if (audioSource != null && collisionSound != null)
             {
                 audioSource.clip = collisionSound;
                 audioSource.pitch = Time.timeScale * Random.Range(0.9f, 1.2f);
                 audioSource.volume = 0.1f * collision.relativeVelocity.magnitude;
                 audioSource.Play();
-
             }
+            VibrateGamepad(collision.relativeVelocity.magnitude / 50, collision.relativeVelocity.magnitude / 35);
         }
     }
 
