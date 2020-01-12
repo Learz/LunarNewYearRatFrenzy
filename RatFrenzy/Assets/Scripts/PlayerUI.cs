@@ -131,36 +131,7 @@ public class PlayerUI : MonoBehaviour
         {
             Debug.Log("Removing user");
             Destroy(playerInput.gameObject);
-        }
-    }
-
-    private void actionTriggered(InputAction.CallbackContext ctx)
-    {
-        if (!ctx.performed) return;
-        if (ctx.action.name.Contains("Jump"))
-        {
-            if (!playerIsReady)
-            {
-                Debug.Log("Player Ready");
-                playerReady.SetActive(true);
-                playerIsReady = true;
-                PlayerSelection.instance.PlayerReady();
-            }
-        }
-        if (ctx.action.name.Contains("Interact"))
-        {
-            if (playerIsReady)
-            {
-                Debug.Log("Player Not Ready");
-                playerReady.SetActive(false);
-                playerIsReady = false;
-                PlayerSelection.instance.PlayerNotReady();
-            }
-            else
-            {
-                Debug.Log("Removing user");
-                Destroy(playerInput.gameObject);
-            }
+            PlayerLeft();
         }
     }
     public void PlayerLeft()
