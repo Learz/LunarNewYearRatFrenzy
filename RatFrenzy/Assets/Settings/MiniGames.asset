@@ -59,3 +59,16 @@ MonoBehaviour:
     bindings:
     - action: 2
       description: Move
+  - gameName: Sports Ball
+    description: It's Sports Ball time! Defend your goal against other players. If
+      the ball enters your goal, you are eliminated! Collect the radioactive goo
+      to add to your boost meter.
+    thumbnail: {fileID: 0}
+    sceneName: sportsball
+    bindings:
+    - action: 2
+      description: Move
+    - action: 0
+      description: Jump
+    - action: 1
+      description: Boost
