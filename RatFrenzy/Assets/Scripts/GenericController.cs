@@ -36,7 +36,7 @@ public class GenericController : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null) audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
         if (respawn) SetRespawnPosition(transform.position, transform.rotation);
         if (winCondition == null) winCondition = FindObjectOfType<GenericWinCondition>();
@@ -213,7 +213,6 @@ public class GenericController : MonoBehaviour
         {
             t -= Time.deltaTime / duration;
             ammount = Mathf.Lerp(0, 1, t);
-            Debug.Log(ammount);
             pad.SetMotorSpeeds(ammount, ammount / 2);
             yield return null;
         }
@@ -239,6 +238,17 @@ public class GenericController : MonoBehaviour
             audioSource.pitch = Time.timeScale * pitch;
             audioSource.volume = volume;
             audioSource.Play();
+        }
+    }
+    protected void OnDestroy()
+    {
+        if (mgr == null) return;
+        foreach (Gamepad pad in Gamepad.all)
+        {
+            if (mgr.deviceId == pad.deviceId)
+            {
+                pad.SetMotorSpeeds(0, 0);
+            }
         }
     }
 }
