@@ -37,6 +37,11 @@ public class GenericWinCondition : MonoBehaviour
         Debug.Log("Score : " + scores[(int)id]);
         GameManager.instance.UpdateMinigameScore(id, scores[(int)id]);
     }
+    public virtual void SetScore(Player.Identity id, float ammount)
+    {
+        scores[(int)id] = (int)ammount;
+        GameManager.instance.UpdateMinigameScore(id, (int)ammount);
+    }
     public virtual void AddPoints(Player.Identity id, int points)
     {
         scores[(int)id] += points;

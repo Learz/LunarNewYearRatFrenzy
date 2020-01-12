@@ -27,7 +27,8 @@ public class GenericController : MonoBehaviour
     public bool isGrounded { get; protected set; }
 
     protected bool isDead;
-    protected RatManager mgr;
+    [HideInInspector]
+    public RatManager mgr { get; protected set; }
     protected int grounds;
     protected ParticleSystem ps;
     protected Cinemachine.CinemachineImpulseSource impulse;
@@ -119,7 +120,12 @@ public class GenericController : MonoBehaviour
             foreach (Material mat in rend.renderer.materials)
             {
                 Color col = mgr.GetPlayerColor();
-                col.a = mat.color.a;
+                /*foreach (string str in mat.GetTexturePropertyNames())
+                {
+                    Debug.Log(rend.renderer.gameObject.name + " property : " + str);
+                }*/
+                col.a = mat.GetColor(property).a;
+
                 mat.SetColor(property, col * multiply);
             }
         }
@@ -242,6 +248,6 @@ public class RendererProperties
     {
         BaseColor,
         EmissiveColor,
-        UnlitColor
+        UnlitColor,
     }
 }
