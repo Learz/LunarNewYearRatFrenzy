@@ -54,6 +54,7 @@ public class BallController : GenericController
         Vector3 movement = new Vector3(mgr.move.x, 0.0f, mgr.move.y);
         dir = Camera.main.transform.TransformDirection(movement);
         dir.y = 0;
+        dir.Normalize();
         rb.AddForce(dir * speed * Time.deltaTime);
         Debug.DrawRay(transform.position, dir, Color.green);
     }

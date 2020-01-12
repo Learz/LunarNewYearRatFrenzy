@@ -27,12 +27,16 @@ public class RatController : GenericController
     private float rotationMultiplier = 6f;
     private float slideTime = 0.5f;
     private float slideTimer = 0;
+    private bool isBoosting;
+    public float boostMeter;
+    private float boostSpeed = 3f, boostDepleteSpeed = 20f;
 
     public enum RatActions
     {
         None,
         Attack,
-        Slide
+        Slide,
+        Boost
     }
 
     protected override void Start()
@@ -67,7 +71,16 @@ public class RatController : GenericController
             isSliding = false;
             slideTimer = 0;
         }
-
+        if (isBoosting)
+        {
+            boostMeter -= Time.deltaTime * boostDepleteSpeed;
+            if (boostMeter <= 0)
+            {
+                MultiplySpeed(1 / boostSpeed);
+                isBoosting = false;
+                boostMeter = 0;
+            }
+        }
 
         rAnim.SetBool("isJumping", isJumping);
         rAnim.SetBool("isAttacking", isAttacking);
@@ -112,6 +125,14 @@ public class RatController : GenericController
             case RatActions.Slide:
                 isSliding = true;
                 break;
+            case RatActions.Boost:
+                if (isBoosting) break;
+                if (boostMeter > 0)
+                {
+                    isBoosting = true;
+                    MultiplySpeed(boostSpeed);
+                }
+                break;
         }
     }
 
@@ -119,6 +140,8 @@ public class RatController : GenericController
     {
         base.InteractReleased();
         isSliding = false;
+        if (isBoosting) MultiplySpeed(1 / boostSpeed);
+        isBoosting = false;
         slideTimer = 0;
     }
 
@@ -128,6 +151,7 @@ public class RatController : GenericController
         Vector3 movement = new Vector3(mgr.move.x, 0.0f, mgr.move.y);
         dir = Camera.main.transform.TransformDirection(movement);
         dir.y = 0;
+        dir.Normalize();
 
         if (isFixed)
         {
@@ -157,7 +181,11 @@ public class RatController : GenericController
 
     public override void AddPoint()
     {
-        if(canGetPoint) base.AddPoint();
+        if (canGetPoint) base.AddPoint();
+    }
+    public void AddBoost(float ammount)
+    {
+        boostMeter = Mathf.Clamp(boostMeter + ammount, 0, 100);
     }
 
     protected override void OnCollisionEnter(Collision collision)
