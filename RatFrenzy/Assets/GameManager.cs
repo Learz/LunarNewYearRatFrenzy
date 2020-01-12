@@ -152,7 +152,11 @@ public class GameManager : MonoBehaviour
         foreach (PlayerInput player in players)
             if (player != null) Destroy(player.gameObject);
     }
+    private void OnApplicationQuit()
+    {
+        foreach (Gamepad pad in Gamepad.all) pad.SetMotorSpeeds(0, 0);
 
+    }
 }
 public class PlayerEvent : UnityEvent<PlayerInput> { };
 

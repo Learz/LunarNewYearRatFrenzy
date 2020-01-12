@@ -2294,6 +2294,11 @@ PrefabInstance:
       propertyPath: collisionSound
       value: 
       objectReference: {fileID: 8300000, guid: 6d161b7932ccca747b4cb24bf3114dca, type: 3}
+    - target: {fileID: 4124452065473483590, guid: 0a6946c53e4080346be5f40720e93304,
+        type: 3}
+      propertyPath: vibrateOnCollision
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4124452065921961890, guid: 0a6946c53e4080346be5f40720e93304,
         type: 3}
       propertyPath: targetGroup
@@ -2339,6 +2344,11 @@ PrefabInstance:
       propertyPath: collisionSound
       value: 
       objectReference: {fileID: 8300000, guid: 6d161b7932ccca747b4cb24bf3114dca, type: 3}
+    - target: {fileID: 4124452065921961890, guid: 0a6946c53e4080346be5f40720e93304,
+        type: 3}
+      propertyPath: vibrateOnCollision
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4124452066173303480, guid: 0a6946c53e4080346be5f40720e93304,
         type: 3}
       propertyPath: targetGroup
@@ -2384,6 +2394,11 @@ PrefabInstance:
       propertyPath: collisionSound
       value: 
       objectReference: {fileID: 8300000, guid: 6d161b7932ccca747b4cb24bf3114dca, type: 3}
+    - target: {fileID: 4124452066173303480, guid: 0a6946c53e4080346be5f40720e93304,
+        type: 3}
+      propertyPath: vibrateOnCollision
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4124452066677382494, guid: 0a6946c53e4080346be5f40720e93304,
         type: 3}
       propertyPath: targetGroup
@@ -2429,6 +2444,11 @@ PrefabInstance:
       propertyPath: collisionSound
       value: 
       objectReference: {fileID: 8300000, guid: 6d161b7932ccca747b4cb24bf3114dca, type: 3}
+    - target: {fileID: 4124452066677382494, guid: 0a6946c53e4080346be5f40720e93304,
+        type: 3}
+      propertyPath: vibrateOnCollision
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a6946c53e4080346be5f40720e93304, type: 3}
 --- !u!199 &1502123365 stripped

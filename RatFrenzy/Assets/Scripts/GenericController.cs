@@ -18,6 +18,7 @@ public class GenericController : MonoBehaviour
     public Cinemachine.CinemachineTargetGroup targetGroup;
     public AudioSource audioSource;
     public AudioClip collisionSound, deathSound;
+    public bool vibrateOnCollision;
 
     [HideInInspector]
     public bool isJumping { get; protected set; }
@@ -178,7 +179,7 @@ public class GenericController : MonoBehaviour
                 audioSource.volume = 0.1f * collision.relativeVelocity.magnitude;
                 audioSource.Play();
             }
-            VibrateGamepad(collision.relativeVelocity.magnitude / 50, collision.relativeVelocity.magnitude / 35);
+            if (vibrateOnCollision) VibrateGamepad(collision.relativeVelocity.magnitude / 50, collision.relativeVelocity.magnitude / 35);
         }
     }
 
