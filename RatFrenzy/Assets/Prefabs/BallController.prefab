@@ -64,9 +64,23 @@ MonoBehaviour:
   numberOfRenderersToHideOnKill: 4
   lights:
   - {fileID: 0}
+  respawn: 0
+  respawnTime: 2
+  rb: {fileID: 0}
+  targetGroup: {fileID: 0}
+  audioSource: {fileID: 0}
+  collisionSound: {fileID: 0}
+  deathSound: {fileID: 0}
+  squeakSounds:
+  - {fileID: 8300000, guid: a5f2665fb51f26b4f8bdd44c02bf8e01, type: 3}
+  - {fileID: 8300000, guid: 32282e6100fed5e49aee6ec6c7ddb7ab, type: 3}
+  - {fileID: 8300000, guid: c04ace1ab4f0f954dbec7b505be8b5e9, type: 3}
+  - {fileID: 8300000, guid: 5d6e2b101b314e74393a6a3f44eb542b, type: 3}
+  - {fileID: 8300000, guid: 4fc1b8d808edadc44b526dbe95c414df, type: 3}
+  - {fileID: 8300000, guid: badfe5c5fa1ff364b8f371f3bce8d22e, type: 3}
+  vibrateOnCollision: 0
   speed: 250
   jumpHeight: 200
-  rb: {fileID: 0}
   ball: {fileID: 2529600740298096836}
   rat: {fileID: 5154834296765773766}
 --- !u!54 &9134174864242671903

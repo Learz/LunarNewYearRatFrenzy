@@ -11,12 +11,14 @@ public class RatManager : MonoBehaviour
     public Vector2 move { get; private set; }
     public bool jump { get; private set; }
     public bool interact { get; private set; }
+    public float squeakPitch { get; private set; }
     public RatInputEvent onMove = new RatInputEvent(),
         onMoveCancelled = new RatInputEvent(),
         onJumpDown = new RatInputEvent(),
         onJumpUp = new RatInputEvent(),
         onInteractDown = new RatInputEvent(),
-        onInteractUp = new RatInputEvent();
+        onInteractUp = new RatInputEvent(),
+        onSqueak = new RatInputEvent();
     private PlayerInput playerInput;
     public int poseIndex;
     public UIButton escape;
@@ -55,12 +57,20 @@ public class RatManager : MonoBehaviour
         else onInteractUp.Invoke();
 
     }
+    private void OnSqueakPitch(InputValue value)
+    {
+        squeakPitch = value.Get<float>();
+        Debug.Log("squeakpitch is " + squeakPitch);
+    }
+    private void OnSqueak(InputValue value)
+    {
+        onSqueak.Invoke();
+    }
     private void OnPause(InputValue value)
     {
         if (value.isPressed)
             escape.ExecuteClick();
     }
-
     public Color GetPlayerColor()
     {
         return ColorPalette.GetColor(color);
