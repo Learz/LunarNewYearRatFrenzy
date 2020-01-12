@@ -61,13 +61,7 @@ public class GenericController : MonoBehaviour
     }
     public virtual void Kill()
     {
-        if (audioSource != null && deathSound != null)
-        {
-            audioSource.clip = deathSound;
-            audioSource.pitch = Time.timeScale * Random.Range(0.9f, 1f);
-            audioSource.volume = 1f;
-            audioSource.Play();
-        }
+        PlaySound(deathSound, Time.timeScale * Random.Range(0.9f, 1f));
         if (isDead) return;
         isDead = true;
         rb.isKinematic = true;
@@ -146,14 +140,7 @@ public class GenericController : MonoBehaviour
     }
     protected virtual void SqueakPressed()
     {
-        if (audioSource != null && squeakSounds != null)
-        {
-            Debug.Log("Squeaking");
-            audioSource.clip = squeakSounds[Random.Range(0, squeakSounds.Length)];
-            audioSource.pitch = 1 + mgr.squeakPitch;
-            audioSource.volume = 1f;
-            audioSource.Play();
-        }
+        PlaySound(squeakSounds, 1 + mgr.squeakPitch);
     }
     // This method enables the controller when the corresponding player joins. This is used for testing.
     protected virtual void PlayerJoined(PlayerInput input)
@@ -186,13 +173,7 @@ public class GenericController : MonoBehaviour
 
         if (collision.relativeVelocity.magnitude > 2)
         {
-            if (audioSource != null && collisionSound != null)
-            {
-                audioSource.clip = collisionSound;
-                audioSource.pitch = Time.timeScale * Random.Range(0.9f, 1.2f);
-                audioSource.volume = 0.1f * collision.relativeVelocity.magnitude;
-                audioSource.Play();
-            }
+            PlaySound(collisionSound, Time.timeScale * Random.Range(0.9f, 1.2f), 0.1f * collision.relativeVelocity.magnitude);
             if (vibrateOnCollision) VibrateGamepad(collision.relativeVelocity.magnitude / 50, collision.relativeVelocity.magnitude / 35);
         }
     }
@@ -231,6 +212,28 @@ public class GenericController : MonoBehaviour
             yield return null;
         }
         pad.SetMotorSpeeds(0, 0);
+    }
+
+    public void PlaySound(AudioClip sound, float pitch = 1f, float volume = 1f)
+    {
+        if (audioSource != null && sound != null)
+        {
+            audioSource.clip = sound;
+            audioSource.pitch = Time.timeScale * pitch;
+            audioSource.volume = volume;
+            audioSource.Play();
+        }
+    }
+
+    public void PlaySound(AudioClip[] sound, float pitch = 1f, float volume = 1f)
+    {
+        if (audioSource != null && sound != null)
+        {
+            audioSource.clip = sound[Random.Range(0, sound.Length)];
+            audioSource.pitch = Time.timeScale * pitch;
+            audioSource.volume = volume;
+            audioSource.Play();
+        }
     }
 }
 [System.Serializable]
