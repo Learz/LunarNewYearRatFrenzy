@@ -76,7 +76,7 @@ public class GenericController : MonoBehaviour
             renderers[i].renderer.enabled = false;
         }
         if (respawn) Invoke("Respawn", respawnTime);
-        
+        VibrateGamepad(0.1f, 1f);
     }
     public virtual void Respawn()
     {
@@ -191,6 +191,30 @@ public class GenericController : MonoBehaviour
     {
 
         winCondition.AddPoint(identity);
+    }
+    protected void VibrateGamepad(float intensity, float duration)
+    {
+        foreach (Gamepad pad in Gamepad.all)
+        {
+            if (mgr.deviceId == pad.deviceId)
+            {
+                StartCoroutine(Vibrate(pad, intensity, duration));
+            }
+        }
+    }
+    protected IEnumerator Vibrate(Gamepad pad, float intensity, float duration)
+    {
+        float t = 01;
+        float ammount;
+        while (t > 0)
+        {
+            t -= Time.deltaTime / duration;
+            ammount = Mathf.Lerp(0, 1, t);
+            Debug.Log(ammount);
+            pad.SetMotorSpeeds(ammount, ammount / 2);
+            yield return null;
+        }
+        pad.SetMotorSpeeds(0, 0);
     }
 }
 [System.Serializable]

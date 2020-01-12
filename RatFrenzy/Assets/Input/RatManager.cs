@@ -21,11 +21,13 @@ public class RatManager : MonoBehaviour
     public int poseIndex;
     public UIButton escape;
     public Player.Color color;
+    public int deviceId { get; private set; }
 
     private void Start()
     {
         DontDestroyOnLoad(this);
         playerInput = GetComponent<PlayerInput>();
+        deviceId = playerInput.devices[0].deviceId;
         this.name = "Player " + (playerInput.playerIndex + 1);
     }
     private void OnMove(InputValue value)
