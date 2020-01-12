@@ -7,6 +7,8 @@ public class SetBackPlayer : MonoBehaviour
 {
     public float setBackAmount, cooldown;
     public Transform anchor;
+    public AudioClip hitSound;
+    public AudioSource audioSource;
 
     private float timer;
     private RatController player;
@@ -29,6 +31,14 @@ public class SetBackPlayer : MonoBehaviour
             player.canGetPoint = false;
             timer = cooldown;
             transform.RotateAround(anchor.position, Vector3.up, setBackAmount);
+            player.PlaySound(player.hurtSounds, Random.Range(0.9f,1.1f));
+            if (audioSource != null && hitSound != null)
+            {
+                audioSource.clip = hitSound;
+                audioSource.pitch = Time.timeScale * Random.Range(0.9f, 1.1f);
+                audioSource.volume = 1f;
+                audioSource.Play();
+            }
             //player.gameObject.transform.DOMoveZ(other.gameObject.transform.position.z - setBackAmount, 0.5f);
         }
     }
