@@ -5,12 +5,12 @@ using UnityEngine.InputSystem;
 
 public class RatController : GenericController
 {
+    public AudioClip[] slapSounds, hurtSounds;
     public float groundSpeed, airSpeed, jumpHeight, fallSpeed, groundDrag, airDrag, speedOverride;
     public GameObject rat;
     public GameObject tracker;
     public bool isFixed, controlledJump;
     public RatActions actionButton;
-    public AudioClip[] slapSounds, hurtSounds;
 
 
     [HideInInspector]

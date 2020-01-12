@@ -650,7 +650,7 @@ MonoBehaviour:
   targetGroup: {fileID: 0}
   audioSource: {fileID: 0}
   collisionSound: {fileID: 0}
-  deathSound: {fileID: 0}
+  deathSound: {fileID: 8300000, guid: 19583e46b5c921e47aa32755c1d1de75, type: 3}
   squeakSounds:
   - {fileID: 8300000, guid: a5f2665fb51f26b4f8bdd44c02bf8e01, type: 3}
   - {fileID: 8300000, guid: 32282e6100fed5e49aee6ec6c7ddb7ab, type: 3}
@@ -659,6 +659,15 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4fc1b8d808edadc44b526dbe95c414df, type: 3}
   - {fileID: 8300000, guid: badfe5c5fa1ff364b8f371f3bce8d22e, type: 3}
   vibrateOnCollision: 0
+  slapSounds:
+  - {fileID: 8300000, guid: 09cb2fb8d32b144429f94153437a26c8, type: 3}
+  - {fileID: 8300000, guid: 2e3534b15c743be499d411796db8dea4, type: 3}
+  - {fileID: 8300000, guid: 185179284942e7f449bb9f42c9bc7e2a, type: 3}
+  - {fileID: 8300000, guid: be270ac47b441c64bb5a38f6c7fd0a82, type: 3}
+  hurtSounds:
+  - {fileID: 8300000, guid: 2b4beca496b72c4489dcfafb66bc1697, type: 3}
+  - {fileID: 8300000, guid: a7b76fd6b63de1b4a97261eb2803b6b8, type: 3}
+  - {fileID: 8300000, guid: 9fd122cef047d3b498d11b99b448c213, type: 3}
   groundSpeed: 100
   airSpeed: 2
   jumpHeight: 200
@@ -671,8 +680,6 @@ MonoBehaviour:
   isFixed: 1
   controlledJump: 0
   actionButton: 0
-  slapSounds: []
-  hurtSounds: []
   canGetPoint: 1
 --- !u!54 &4497655283208819181
 Rigidbody:

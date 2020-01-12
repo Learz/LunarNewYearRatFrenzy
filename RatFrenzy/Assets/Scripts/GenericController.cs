@@ -146,12 +146,12 @@ public class GenericController : MonoBehaviour
     }
     protected virtual void SqueakPressed()
     {
-        if (audioSource != null && collisionSound != null)
+        if (audioSource != null && squeakSounds != null)
         {
             Debug.Log("Squeaking");
             audioSource.clip = squeakSounds[Random.Range(0, squeakSounds.Length)];
             audioSource.pitch = 1 + mgr.squeakPitch;
-            audioSource.volume = 1;
+            audioSource.volume = 1f;
             audioSource.Play();
         }
     }
