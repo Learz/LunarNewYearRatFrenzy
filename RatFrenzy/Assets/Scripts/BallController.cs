@@ -10,6 +10,7 @@ public class BallController : GenericController
 
     public GameObject ball;
     public GameObject rat;
+    public AudioSource rollAudioSource;
 
     private Animator rAnim;
     private Vector3 vel;
@@ -57,6 +58,16 @@ public class BallController : GenericController
         dir.Normalize();
         rb.AddForce(dir * speed * Time.deltaTime);
         Debug.DrawRay(transform.position, dir, Color.green);
+        if (rollAudioSource != null)
+        {
+            if (!isGrounded)
+            {
+                rollAudioSource.volume = 0;
+                return;
+            }
+            rollAudioSource.volume = rb.velocity.magnitude;
+            rollAudioSource.pitch = Mathf.Clamp(rb.velocity.magnitude / 2, 0.85f, 1.5f);
+        }
     }
 
     //Animates the angle and mecanim state of the rat
