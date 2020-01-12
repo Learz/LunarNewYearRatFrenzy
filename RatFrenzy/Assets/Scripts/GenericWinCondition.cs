@@ -14,6 +14,7 @@ public class GenericWinCondition : MonoBehaviour
     public float initialCountdown;
     protected int[] scores;
     protected bool gameEnded;
+    protected IEnumerator cdRoutine;
     protected virtual void Start()
     {
         if (GameManager.instance == null) GameManager.CreateTestManager();
@@ -42,7 +43,11 @@ public class GenericWinCondition : MonoBehaviour
         GameManager.instance.UpdateMinigameScore(id, scores[(int)id]);
     }
     public virtual void StartTimeoutCountdown() => StartTimeoutCountdown(timeLimit);
-    public virtual void StartTimeoutCountdown(float limit) => StartCoroutine(MiniGameCountDown(limit, true));
+    public virtual void StartTimeoutCountdown(float limit)
+    {
+        cdRoutine = MiniGameCountDown(limit, true);
+        StartCoroutine(cdRoutine);
+    }
 
     protected virtual void OnPlayerJoined(PlayerInput input)
     {
@@ -62,6 +67,8 @@ public class GenericWinCondition : MonoBehaviour
         Debug.Log(winner + " wins!");
         GameManager.instance.AddPoints(winner);
         GameManager.instance.DisplayScore();
+        if (cdRoutine != null) StopCoroutine(cdRoutine);
+        GameManager.instance.UpdateTimeLeft(0);
     }
     protected IEnumerator InitialCountDown(float timeLeft)
     {
