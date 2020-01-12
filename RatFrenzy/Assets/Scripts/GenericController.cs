@@ -62,8 +62,8 @@ public class GenericController : MonoBehaviour
     }
     public virtual void Kill()
     {
-        PlaySound(deathSound, Time.timeScale * Random.Range(0.9f, 1f));
         if (isDead) return;
+        PlaySound(deathSound, Time.timeScale * Random.Range(0.9f, 1f));
         isDead = true;
         rb.isKinematic = true;
         rb.velocity = Vector3.zero;

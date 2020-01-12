@@ -11,7 +11,6 @@ public class KillOnTrigger : MonoBehaviour
         GenericController player = other.GetComponent<GenericController>();
         if (player != null)
         {
-            Debug.Log(gameObject.name + " is killing player");
             player.Kill();
             if (eliminatePlayer) winCondition.EliminatePlayer(player.identity);
         }
