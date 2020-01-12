@@ -18,6 +18,7 @@ public class GenericController : MonoBehaviour
     public Cinemachine.CinemachineTargetGroup targetGroup;
     public AudioSource audioSource;
     public AudioClip collisionSound, deathSound;
+    public AudioClip[] squeakSounds;
     public bool vibrateOnCollision;
 
     [HideInInspector]
@@ -54,6 +55,7 @@ public class GenericController : MonoBehaviour
             mgr.onJumpUp.AddListener(JumpReleased);
             mgr.onInteractDown.AddListener(InteractPressed);
             mgr.onInteractUp.AddListener(InteractReleased);
+            mgr.onSqueak.AddListener(SqueakPressed);
             UpdateColor();
         }
     }
@@ -142,6 +144,17 @@ public class GenericController : MonoBehaviour
     {
         Debug.Log("Interact Released");
     }
+    protected virtual void SqueakPressed()
+    {
+        if (audioSource != null && collisionSound != null)
+        {
+            Debug.Log("Squeaking");
+            audioSource.clip = squeakSounds[Random.Range(0, squeakSounds.Length)];
+            audioSource.pitch = 1 + mgr.squeakPitch;
+            audioSource.volume = 1;
+            audioSource.Play();
+        }
+    }
     // This method enables the controller when the corresponding player joins. This is used for testing.
     protected virtual void PlayerJoined(PlayerInput input)
     {
@@ -157,6 +170,7 @@ public class GenericController : MonoBehaviour
             mgr.onJumpUp.AddListener(JumpReleased);
             mgr.onInteractDown.AddListener(InteractPressed);
             mgr.onInteractUp.AddListener(InteractReleased);
+            mgr.onSqueak.AddListener(SqueakPressed);
             mgr.color = (Player.Color)System.Enum.ToObject(typeof(Player.Color), Random.Range(0, System.Enum.GetValues(typeof(Player.Color)).Length - 1));
             GameManager.instance.ShowPlayerHud(identity);
             UpdateColor();

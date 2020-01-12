@@ -10,6 +10,8 @@ public class RatController : GenericController
     public GameObject tracker;
     public bool isFixed, controlledJump;
     public RatActions actionButton;
+    public AudioClip[] slapSounds, hurtSounds;
+
 
     [HideInInspector]
     public bool isSliding { get; private set; } = false;

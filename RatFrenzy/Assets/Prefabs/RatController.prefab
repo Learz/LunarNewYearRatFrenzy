@@ -596,6 +596,7 @@ GameObject:
   - component: {fileID: 6801869896312503297}
   - component: {fileID: 1824782416}
   - component: {fileID: 1824782417}
+  - component: {fileID: 2381303698938139150}
   m_Layer: 0
   m_Name: RatController
   m_TagString: Player
@@ -643,6 +644,21 @@ MonoBehaviour:
     property: 1
   numberOfRenderersToHideOnKill: 2
   lights: []
+  respawn: 0
+  respawnTime: 2
+  rb: {fileID: 4497655283208819181}
+  targetGroup: {fileID: 0}
+  audioSource: {fileID: 0}
+  collisionSound: {fileID: 0}
+  deathSound: {fileID: 0}
+  squeakSounds:
+  - {fileID: 8300000, guid: a5f2665fb51f26b4f8bdd44c02bf8e01, type: 3}
+  - {fileID: 8300000, guid: 32282e6100fed5e49aee6ec6c7ddb7ab, type: 3}
+  - {fileID: 8300000, guid: c04ace1ab4f0f954dbec7b505be8b5e9, type: 3}
+  - {fileID: 8300000, guid: 5d6e2b101b314e74393a6a3f44eb542b, type: 3}
+  - {fileID: 8300000, guid: 4fc1b8d808edadc44b526dbe95c414df, type: 3}
+  - {fileID: 8300000, guid: badfe5c5fa1ff364b8f371f3bce8d22e, type: 3}
+  vibrateOnCollision: 0
   groundSpeed: 100
   airSpeed: 2
   jumpHeight: 200
@@ -650,11 +666,14 @@ MonoBehaviour:
   groundDrag: 20
   airDrag: 1
   speedOverride: 2
-  rb: {fileID: 4497655283208819181}
   rat: {fileID: 7360168752541191571}
   tracker: {fileID: 3058513498240586204}
   isFixed: 1
   controlledJump: 0
+  actionButton: 0
+  slapSounds: []
+  hurtSounds: []
+  canGetPoint: 1
 --- !u!54 &4497655283208819181
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5529,6 +5548,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   setBackAmount: 2
   cooldown: 1
+  anchor: {fileID: 0}
 --- !u!114 &1824782417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5541,6 +5561,102 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 033ffa96bf114ca429051f70f4b0d87e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &2381303698938139150
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2617024739063901117}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2864747699370921332
 GameObject:
   m_ObjectHideFlags: 0

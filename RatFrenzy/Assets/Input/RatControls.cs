@@ -310,7 +310,7 @@ public class @RatControls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""44101c29-5c71-41dd-9e6d-27c7c692d063"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
