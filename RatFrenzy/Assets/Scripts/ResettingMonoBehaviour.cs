@@ -5,5 +5,6 @@ using UnityEngine.InputSystem;
 
 public abstract class ResettingMonoBehaviour : MonoBehaviour
 {
+    public bool readyToRespawn = true;
     public abstract void ResetOnSpawn();
 }

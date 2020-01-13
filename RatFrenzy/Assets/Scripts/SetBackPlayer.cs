@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
+[RequireComponent(typeof(RatController))]
 public class SetBackPlayer : MonoBehaviour
 {
     public float setBackAmount, cooldown;
@@ -39,6 +40,7 @@ public class SetBackPlayer : MonoBehaviour
                 audioSource.volume = 1f;
                 audioSource.Play();
             }
+            player.VibrateGamepad(1 , 0.25f);
             //player.gameObject.transform.DOMoveZ(other.gameObject.transform.position.z - setBackAmount, 0.5f);
         }
     }
