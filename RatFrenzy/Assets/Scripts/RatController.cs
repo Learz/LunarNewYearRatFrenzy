@@ -13,6 +13,7 @@ public class RatController : GenericController
     public RatActions actionButton;
     public Collider hurtBox;
     public Transform holdingPoint;
+    public float turningSpeed = 6f;
 
 
     [HideInInspector]
@@ -28,7 +29,6 @@ public class RatController : GenericController
     Animator rAnim;
     bool isFallBoosted;
     RaycastHit hit;
-    float rotationMultiplier = 6f;
     float slideTime = 0.5f;
     float slideTimer = 0;
     bool isBoosting;
@@ -134,12 +134,12 @@ public class RatController : GenericController
                 Collider[] hits = Physics.OverlapBox(hurtBox.transform.position, hurtBox.transform.localScale / 2);
                 if (hits != null)
                 {
-                    PlaySound(slapSounds, Random.Range(0.9f,1.1f));
                     foreach (Collider hit in hits)
                     {
                         RatController player = hit.GetComponent<RatController>();
                         if (player != null && player.identity != identity)
                         {
+                            PlaySound(slapSounds, Random.Range(0.9f, 1.1f));
                             player.GetHurt(Vector3.up * 500 + dir * 100);
                         }
                     }
@@ -185,7 +185,7 @@ public class RatController : GenericController
                 dir.Normalize();
                 rb.AddForce(dir * (speed * 60 * Time.deltaTime));
                 //rb.MoveRotation(Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(new Vector3(rb.velocity.x, 0.0f, rb.velocity.z)), 10.0f));
-                rb.MoveRotation(Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(dir), speed * rotationMultiplier * Time.deltaTime));
+                rb.MoveRotation(Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(dir), speed * turningSpeed * Time.deltaTime));
             }
             
             rAnim.SetFloat("velocity", rb.velocity.magnitude);

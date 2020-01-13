@@ -29,6 +29,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/sportsball.unity
     guid: 958150838fd6db04fb4004f7e9346397
+  - enabled: 1
+    path: Assets/Scenes/captureTheCheese.unity
+    guid: 2193478833cf81345a42aa70c1565cb1
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 3385625d645ba8f4891239b805ddf6c4,
       type: 2}
