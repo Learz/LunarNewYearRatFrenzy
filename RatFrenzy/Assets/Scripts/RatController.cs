@@ -49,7 +49,7 @@ public class RatController : GenericController
         base.Start();
         if (rb == null) rb = GetComponent<Rigidbody>();
         rAnim = rat.GetComponent<Animator>();
-
+        if (actionButton == RatActions.Boost) winCondition.SetScore(identity, boostMeter);
         /*tracker.GetComponent<MeshRenderer>().material.SetColor("_UnlitColor", ColorPalette.GetColor(Player.Color.Blue));
         rat.GetComponentInChildren<Renderer>().material.SetColor("_EmissiveColor", ColorPalette.GetColor(Player.Color.Blue)*150);*/
     }
@@ -85,6 +85,7 @@ public class RatController : GenericController
                 isBoosting = false;
                 boostMeter = 0;
             }
+            winCondition.SetScore(identity, boostMeter);
         }
 
         rAnim.SetBool("isJumping", isJumping);
@@ -217,6 +218,7 @@ public class RatController : GenericController
     public void AddBoost(float ammount)
     {
         boostMeter = Mathf.Clamp(boostMeter + ammount, 0, 100);
+        winCondition.SetScore(identity, boostMeter);
     }
 
     protected override void OnCollisionEnter(Collision collision)

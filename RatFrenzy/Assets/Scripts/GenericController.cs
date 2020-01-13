@@ -36,7 +36,7 @@ public class GenericController : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null) audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
         if (respawn) SetRespawnPosition(transform.position, transform.rotation);
         if (winCondition == null) winCondition = FindObjectOfType<GenericWinCondition>();
@@ -62,8 +62,8 @@ public class GenericController : MonoBehaviour
     }
     public virtual void Kill()
     {
-        PlaySound(deathSound, Time.timeScale * Random.Range(0.9f, 1f));
         if (isDead) return;
+        PlaySound(deathSound, Time.timeScale * Random.Range(0.9f, 1f));
         isDead = true;
         rb.isKinematic = true;
         rb.velocity = Vector3.zero;
@@ -114,7 +114,12 @@ public class GenericController : MonoBehaviour
             foreach (Material mat in rend.renderer.materials)
             {
                 Color col = mgr.GetPlayerColor();
-                col.a = mat.color.a;
+                /*foreach (string str in mat.GetTexturePropertyNames())
+                {
+                    Debug.Log(rend.renderer.gameObject.name + " property : " + str);
+                }*/
+                col.a = mat.GetColor(property).a;
+
                 mat.SetColor(property, col * multiply);
             }
         }
@@ -208,7 +213,6 @@ public class GenericController : MonoBehaviour
         {
             t -= Time.deltaTime / duration;
             amount = Mathf.Lerp(0, 1, t);
-            Debug.Log(amount);
             pad.SetMotorSpeeds(amount, amount / 2);
             yield return null;
         }
@@ -236,6 +240,17 @@ public class GenericController : MonoBehaviour
             audioSource.Play();
         }
     }
+    protected void OnDestroy()
+    {
+        if (mgr == null) return;
+        foreach (Gamepad pad in Gamepad.all)
+        {
+            if (mgr.deviceId == pad.deviceId)
+            {
+                pad.SetMotorSpeeds(0, 0);
+            }
+        }
+    }
 }
 [System.Serializable]
 public class RendererProperties
@@ -246,6 +261,6 @@ public class RendererProperties
     {
         BaseColor,
         EmissiveColor,
-        UnlitColor
+        UnlitColor,
     }
 }
