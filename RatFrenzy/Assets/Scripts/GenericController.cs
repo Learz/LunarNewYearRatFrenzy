@@ -25,9 +25,10 @@ public class GenericController : MonoBehaviour
     public bool isJumping { get; protected set; }
     [HideInInspector]
     public bool isGrounded { get; protected set; }
+    [HideInInspector]
+    public RatManager mgr { get; protected set; }
 
     protected bool isDead;
-    protected RatManager mgr;
     protected int grounds;
     protected ParticleSystem ps;
     protected Cinemachine.CinemachineImpulseSource impulse;
@@ -189,7 +190,7 @@ public class GenericController : MonoBehaviour
 
         winCondition.AddPoint(identity);
     }
-    protected void VibrateGamepad(float intensity, float duration)
+    public void VibrateGamepad(float intensity, float duration)
     {
         foreach (Gamepad pad in Gamepad.all)
         {
@@ -202,13 +203,13 @@ public class GenericController : MonoBehaviour
     protected IEnumerator Vibrate(Gamepad pad, float intensity, float duration)
     {
         float t = 01;
-        float ammount;
+        float amount;
         while (t > 0)
         {
             t -= Time.deltaTime / duration;
-            ammount = Mathf.Lerp(0, 1, t);
-            Debug.Log(ammount);
-            pad.SetMotorSpeeds(ammount, ammount / 2);
+            amount = Mathf.Lerp(0, 1, t);
+            Debug.Log(amount);
+            pad.SetMotorSpeeds(amount, amount / 2);
             yield return null;
         }
         pad.SetMotorSpeeds(0, 0);

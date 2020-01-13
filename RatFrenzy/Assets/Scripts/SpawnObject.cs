@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class SpawnObject : MonoBehaviour
 {
@@ -76,12 +77,33 @@ public class SpawnObject : MonoBehaviour
     private GameObject SpawnNextInPool(int i, Vector3 pos, Quaternion rot, Vector3 scale)
     {
         GameObject objToSpawn = instancePool[i][currentObjectInPool[i]];
+        ResettingMonoBehaviour resetter = objToSpawn.GetComponent<ResettingMonoBehaviour>();
+
+        if (resetter != null && !resetter.readyToRespawn)
+        {
+            int poolId = 0;
+            while (!resetter.readyToRespawn)
+            {
+                currentObjectInPool[i] = (currentObjectInPool[i] + 1) % poolSize;
+                objToSpawn = instancePool[i][currentObjectInPool[i]];
+
+                resetter = objToSpawn.GetComponent<ResettingMonoBehaviour>();
+                poolId++;
+                if (poolId > poolSize)
+                {
+                    Debug.Log("No more items available to spawn, consider increasing the pool size or make sure the resetting objects have a way to be respawned (readyToRespawn).");
+                    return null;
+                }
+            }
+        }
+
+        Rigidbody rb = objToSpawn.GetComponent<Rigidbody>();
+        if (resetter != null) resetter.ResetOnSpawn();
         objToSpawn.transform.position = pos;
         objToSpawn.transform.rotation = rot;
         objToSpawn.transform.localScale = Vector3.Scale(originalScales[i], scale);
         currentObjectInPool[i] = (currentObjectInPool[i] + 1) % poolSize;
-        ResettingMonoBehaviour resetter = objToSpawn.GetComponent<ResettingMonoBehaviour>();
-        if (resetter != null) resetter.ResetOnSpawn();
+        if (rb != null) rb.velocity = Vector3.zero;
         return objToSpawn;
     }
 

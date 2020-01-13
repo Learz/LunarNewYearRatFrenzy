@@ -5,6 +5,9 @@ using UnityEngine;
 public class PointTrigger : ResettingMonoBehaviour
 {
     public GenericWinCondition winCondition;
+    public pointType trigger;
+    public bool playerSpecific = false;
+    public Player.Identity identity;
 
     private List<Collider> ignoredCollisions = new List<Collider>();
 
@@ -15,13 +18,28 @@ public class PointTrigger : ResettingMonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        GenericController player = other.GetComponent<GenericController>();
-        if (player != null)
+        switch (trigger)
         {
-            player.AddPoint();
-            Collider curColl = other.GetComponentInParent<Collider>();
-            Physics.IgnoreCollision(curColl, GetComponent<Collider>());
-            ignoredCollisions.Add(other.GetComponentInParent<Collider>());
+            case pointType.player:
+                GenericController player = other.GetComponent<GenericController>();
+                if (player != null)
+                {
+                    player.AddPoint();
+                    Collider curColl = other.GetComponentInParent<Collider>();
+                    Physics.IgnoreCollision(curColl, GetComponent<Collider>());
+                    ignoredCollisions.Add(other.GetComponentInParent<Collider>());
+                }
+                break;
+            case pointType.item:
+                HoldableObject obj = other.GetComponent<HoldableObject>();
+                if (obj != null && (playerSpecific && obj.lastHolder && obj.lastHolder.identity == identity))
+                {
+                    obj.lastHolder.AddPoint();
+                    obj.readyToRespawn = true;
+                    obj.Drop();
+                    obj.transform.position = new Vector3(-500, -500, -500);
+                }
+                break;
         }
     }
 
@@ -32,5 +50,11 @@ public class PointTrigger : ResettingMonoBehaviour
             Physics.IgnoreCollision(coll, GetComponent<Collider>(), false);
         }
         ignoredCollisions.Clear();
+    }
+
+    public enum pointType
+    {
+        player,
+        item
     }
 }

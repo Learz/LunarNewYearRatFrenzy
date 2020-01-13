@@ -32,7 +32,7 @@ public class @RatControls : IInputActionCollection, IDisposable
                     ""id"": ""6df78c06-a075-4af5-8b41-05b5af6bb44b"",
                     ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": ""Press(behavior=1)""
+                    ""interactions"": ""Press(pressPoint=0.125,behavior=1)""
                 },
                 {
                     ""name"": ""Jump"",

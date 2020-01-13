@@ -11,6 +11,8 @@ public class RatController : GenericController
     public GameObject tracker;
     public bool isFixed, controlledJump;
     public RatActions actionButton;
+    public Collider hurtBox;
+    public Transform holdingPoint;
 
 
     [HideInInspector]
@@ -19,17 +21,20 @@ public class RatController : GenericController
     public bool isAttacking { get; private set; } = false;
     [HideInInspector]
     public bool canGetPoint = true;
+    [HideInInspector]
+    public HoldableObject heldObject;
 
-    private float speed;
-    private Animator rAnim;
-    private bool isFallBoosted;
-    private RaycastHit hit;
-    private float rotationMultiplier = 6f;
-    private float slideTime = 0.5f;
-    private float slideTimer = 0;
-    private bool isBoosting;
-    public float boostMeter;
-    private float boostSpeed = 3f, boostDepleteSpeed = 20f;
+    float speed;
+    Animator rAnim;
+    bool isFallBoosted;
+    RaycastHit hit;
+    float rotationMultiplier = 6f;
+    float slideTime = 0.5f;
+    float slideTimer = 0;
+    bool isBoosting;
+    float boostMeter;
+    float boostSpeed = 3f, boostDepleteSpeed = 20f;
+    Vector3 dir;
 
     public enum RatActions
     {
@@ -83,7 +88,6 @@ public class RatController : GenericController
         }
 
         rAnim.SetBool("isJumping", isJumping);
-        rAnim.SetBool("isAttacking", isAttacking);
         rAnim.SetBool("isSliding", isSliding);
     }
 
@@ -94,7 +98,7 @@ public class RatController : GenericController
 
     protected override void JumpPressed()
     {
-        if (!isSliding && !isJumping && isGrounded)
+        if (!isSliding && !isJumping && isGrounded && jumpHeight > 0)
         {
             isFallBoosted = false;
             speed = airSpeed;
@@ -117,12 +121,27 @@ public class RatController : GenericController
     protected override void InteractPressed()
     {
         base.InteractPressed();
+        if(heldObject != null)
+        {
+            heldObject.Drop();
+        }
         switch (actionButton)
         {
             case RatActions.Attack:
                 isAttacking = true;
+                rAnim.SetTrigger("attack");
+                Collider[] hits = Physics.OverlapBox(hurtBox.transform.position, hurtBox.transform.localScale / 2);
+                foreach (Collider hit in hits)
+                {
+                    RatController player = hit.GetComponent<RatController>();
+                    if (player != null && player.identity != identity)
+                    {
+                        player.GetHurt(Vector3.up * 500 + dir * 100);
+                    }
+                }
                 break;
             case RatActions.Slide:
+                rAnim.SetTrigger("slide");
                 isSliding = true;
                 break;
             case RatActions.Boost:
@@ -147,31 +166,43 @@ public class RatController : GenericController
 
     private void MoveRat()
     {
-        Vector3 dir;
-        Vector3 movement = new Vector3(mgr.move.x, 0.0f, mgr.move.y);
-        dir = Camera.main.transform.TransformDirection(movement);
-        dir.y = 0;
-        dir.Normalize();
-
         if (isFixed)
         {
             rAnim.SetFloat("velocity", speedOverride);
         }
         else
         {
-            rb.AddForce(dir * (speed * 60 * Time.deltaTime));
-            rAnim.SetFloat("velocity", rb.velocity.magnitude);
-            if (dir.magnitude > 0f)
+            if (mgr.move.magnitude > 0f)
             {
+                Vector3 movement = new Vector3(mgr.move.x, 0.0f, mgr.move.y);
+                dir = Camera.main.transform.TransformDirection(movement);
+                dir.y = 0;
+                dir.Normalize();
+                rb.AddForce(dir * (speed * 60 * Time.deltaTime));
                 //rb.MoveRotation(Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(new Vector3(rb.velocity.x, 0.0f, rb.velocity.z)), 10.0f));
                 rb.MoveRotation(Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(dir), speed * rotationMultiplier * Time.deltaTime));
             }
+            
+            rAnim.SetFloat("velocity", rb.velocity.magnitude);
         }
     }
     public void MultiplySpeed(float mul)
     {
         groundSpeed *= mul;
         speed *= mul;
+    }
+
+    public void GetHurt()
+    {
+        VibrateGamepad(0.5f, 0.25f);
+        PlaySound(hurtSounds, Random.Range(0.9f, 1.1f));
+        if(heldObject) heldObject.Drop();
+    }
+
+    public void GetHurt(Vector3 knockbackDir)
+    {
+        GetHurt();
+        rb.AddForce(knockbackDir);
     }
 
     protected override void PlayerJoined(PlayerInput input)
