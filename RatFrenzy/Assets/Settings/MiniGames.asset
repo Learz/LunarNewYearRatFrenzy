@@ -24,7 +24,7 @@ MonoBehaviour:
     - action: 0
       description: Jump
   - gameName: Tower Climb
-    description: 
+    description: Climb the tower! Highest player wins!
     thumbnail: {fileID: 0}
     sceneName: towerClimb
     bindings:
@@ -33,7 +33,7 @@ MonoBehaviour:
     - action: 0
       description: Jump
   - gameName: Obstacle Run
-    description: 
+    description: Avoid the pipes! Red means duck, blue means jump!
     thumbnail: {fileID: 0}
     sceneName: twistedSystem
     bindings:
@@ -51,7 +51,7 @@ MonoBehaviour:
       description: Move
     - action: 0
       description: Jump
-  - gameName: Sumo Race
+  - gameName: Ball Race
     description: Race around the track! Careful not to fall off. First to 3 laps
       wins!
     thumbnail: {fileID: 0}
@@ -72,3 +72,13 @@ MonoBehaviour:
       description: Jump
     - action: 1
       description: Boost
+  - gameName: Collect-a-thon
+    description: Bring the most balls to your goal! Play fair or steal from your
+      opponents!
+    thumbnail: {fileID: 0}
+    sceneName: captureTheCheese
+    bindings:
+    - action: 2
+      description: Move
+    - action: 1
+      description: Attack/Drop item

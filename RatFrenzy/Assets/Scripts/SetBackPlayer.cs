@@ -27,7 +27,7 @@ public class SetBackPlayer : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (timer <= 0 && ((other.tag == "JumpObstacle") || (other.tag == "DuckObstacle" && (!GetComponent<RatController>().isSliding || GetComponent<RatController>().isJumping))))
+        if (!player.isDead && timer <= 0 && ((other.tag == "JumpObstacle") || (other.tag == "DuckObstacle" && (!GetComponent<RatController>().isSliding || GetComponent<RatController>().isJumping))))
         {
             player.canGetPoint = false;
             timer = cooldown;

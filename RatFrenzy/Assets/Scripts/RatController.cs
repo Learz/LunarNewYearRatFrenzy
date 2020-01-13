@@ -132,12 +132,16 @@ public class RatController : GenericController
                 isAttacking = true;
                 rAnim.SetTrigger("attack");
                 Collider[] hits = Physics.OverlapBox(hurtBox.transform.position, hurtBox.transform.localScale / 2);
-                foreach (Collider hit in hits)
+                if (hits != null)
                 {
-                    RatController player = hit.GetComponent<RatController>();
-                    if (player != null && player.identity != identity)
+                    PlaySound(slapSounds, Random.Range(0.9f,1.1f));
+                    foreach (Collider hit in hits)
                     {
-                        player.GetHurt(Vector3.up * 500 + dir * 100);
+                        RatController player = hit.GetComponent<RatController>();
+                        if (player != null && player.identity != identity)
+                        {
+                            player.GetHurt(Vector3.up * 500 + dir * 100);
+                        }
                     }
                 }
                 break;
@@ -195,6 +199,7 @@ public class RatController : GenericController
 
     public void GetHurt()
     {
+        PlaySound(hurtSounds, Random.Range(0.9f, 1.1f));
         VibrateGamepad(0.5f, 0.25f);
         PlaySound(hurtSounds, Random.Range(0.9f, 1.1f));
         if(heldObject) heldObject.Drop();

@@ -75,6 +75,23 @@ public class GenericWinCondition : MonoBehaviour
         if (cdRoutine != null) StopCoroutine(cdRoutine);
         GameManager.instance.UpdateTimeLeft(0);
     }
+
+    protected virtual void EndGame(List<Player.Identity> winners)
+    {
+        if (gameEnded) return;
+        gameEnded = true;
+        Debug.Log("It's a tie! ");
+        foreach (Player.Identity winner in winners)
+        {
+
+            Debug.Log(winner + " wins!");
+            GameManager.instance.AddPoints(winner);
+        }
+        GameManager.instance.DisplayScore();
+        if (cdRoutine != null) StopCoroutine(cdRoutine);
+        GameManager.instance.UpdateTimeLeft(0);
+    }
+
     protected IEnumerator InitialCountDown(float timeLeft)
     {
         UIPopup popup = UIPopup.GetPopup("Countdown");
