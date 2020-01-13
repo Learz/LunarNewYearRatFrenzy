@@ -32,6 +32,17 @@ public class ScoreWinCondition : GenericWinCondition
             EndGame((Player.Identity)winner);
         }
     }
+
+    protected override void EndGame()
+    {
+        int winner = 0;
+        for (int i = 0; i < scores.Length; i++)
+        {
+            if (scores[i] > scores[winner]) winner = i;
+        }
+        EndGame((Player.Identity)winner);
+    }
+
     protected override void OnPlayerJoined(PlayerInput input)
     {
         if (playersAlive == null) playersAlive = new List<Player.Identity>();
