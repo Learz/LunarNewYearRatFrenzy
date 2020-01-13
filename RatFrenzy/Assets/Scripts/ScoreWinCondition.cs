@@ -18,6 +18,7 @@ public class ScoreWinCondition : GenericWinCondition
         if (scores[(int)id] == maxScore) EndGame(id);
         Debug.Log("Point added for " + id);
     }
+
     public override void EliminatePlayer(Player.Identity id)
     {
         base.EliminatePlayer(id);
@@ -35,12 +36,22 @@ public class ScoreWinCondition : GenericWinCondition
 
     protected override void EndGame()
     {
-        int winner = 0;
+        List<Player.Identity> winners = new List<Player.Identity>();
+        int currentHighScore = 0;
         for (int i = 0; i < scores.Length; i++)
         {
-            if (scores[i] > scores[winner]) winner = i;
+            if (scores[i] > scores[currentHighScore])
+            {
+                winners.Clear();
+                winners.Add((Player.Identity)i);
+                currentHighScore = scores[i];
+            }
+            if (scores[i] == scores[currentHighScore])
+            {
+                winners.Add((Player.Identity)i);
+            }
         }
-        EndGame((Player.Identity)winner);
+        EndGame(winners);
     }
 
     protected override void OnPlayerJoined(PlayerInput input)

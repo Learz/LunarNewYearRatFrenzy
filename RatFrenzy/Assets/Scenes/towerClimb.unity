@@ -741,7 +741,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 700371177}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67a90716c609e884da3800967a490967, type: 3}
+  m_Script: {fileID: 11500000, guid: 5c3d4403bbd21334683bc927f10e6f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   displayType: 1
@@ -749,7 +749,6 @@ MonoBehaviour:
   timeLimit: 0
   startTimeLimitOnStart: 0
   initialCountdown: 3
-  survivorType: 0
 --- !u!4 &700371181
 Transform:
   m_ObjectHideFlags: 0
@@ -1755,7 +1754,7 @@ PrefabInstance:
         type: 3}
       propertyPath: winCondition
       value: 
-      objectReference: {fileID: 700371180}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 261616d453c25234dbfc37b5b85b131b, type: 3}
 --- !u!1001 &7145084115959791010

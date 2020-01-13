@@ -27,8 +27,9 @@ public class GenericController : MonoBehaviour
     public bool isGrounded { get; protected set; }
     [HideInInspector]
     public RatManager mgr { get; protected set; }
+    [HideInInspector]
+    public bool isDead { get; protected set; }
 
-    protected bool isDead;
     protected int grounds;
     protected ParticleSystem ps;
     protected Cinemachine.CinemachineImpulseSource impulse;
@@ -73,11 +74,13 @@ public class GenericController : MonoBehaviour
         {
             renderers[i].renderer.enabled = false;
         }
+        GetComponent<CapsuleCollider>().enabled = false;
         if (respawn) Invoke("Respawn", respawnTime);
         VibrateGamepad(0.1f, 1f);
     }
     public virtual void Respawn()
     {
+        GetComponent<CapsuleCollider>().enabled = true;
         isDead = false;
         transform.position = respawnPosition;
         transform.rotation = respawnRotation;
