@@ -19422,24 +19422,13 @@ MonoBehaviour:
       Event:
         m_PersistentCalls:
           m_Calls:
-          - m_Target: {fileID: 1681777889}
-            m_MethodName: set_clip
+          - m_Target: {fileID: 1681777885}
+            m_MethodName: PlayMusic
             m_Mode: 2
             m_Arguments:
               m_ObjectArgument: {fileID: 8300000, guid: d1e4484011cd993429c98cb590a813ac,
                 type: 3}
               m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-          - m_Target: {fileID: 1681777889}
-            m_MethodName: Play
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
               m_IntArgument: 0
               m_FloatArgument: 0
               m_StringArgument: 
@@ -33163,6 +33152,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 927ceb0b6aa912048a997b74fb852bdd, type: 3}
   - {fileID: 21300000, guid: 88b868df880a78145a7c32b79cd04273, type: 3}
   timeLeftLabel: {fileID: 531362148}
+  audioSource: {fileID: 0}
 --- !u!114 &1681777886
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -22,12 +22,14 @@ public class GameManager : MonoBehaviour
     public PlayerHUD[] playerHUDs;
     public Sprite[] playerPoses;
     public UnityEngine.UI.Text timeLeftLabel;
+    public AudioSource audioSource;
     private int[] scores;
     // Start is called before the first frame update
     void Awake()
     {
         if (instance != null) throw new System.Exception("Game Manager already exists!");
         if (graph == null) graph = GetComponent<GraphController>();
+        if (audioSource == null) audioSource = GetComponent<AudioSource>();
         instance = this;
         DontDestroyOnLoad(this);
         players = new PlayerInput[4];
@@ -151,6 +153,17 @@ public class GameManager : MonoBehaviour
     {
         foreach (PlayerInput player in players)
             if (player != null) Destroy(player.gameObject);
+    }
+    public void PlayMusic(AudioClip clip)
+    {
+        if (audioSource.clip == clip) return;
+        audioSource.clip = clip;
+        audioSource.Play();
+    }
+    public void StopMusic()
+    {
+        audioSource.Stop();
+        audioSource.clip = null;
     }
     private void OnApplicationQuit()
     {
