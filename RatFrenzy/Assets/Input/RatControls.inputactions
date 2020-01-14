@@ -131,6 +131,17 @@
                 },
                 {
                     "name": "",
+                    "id": "5d79abc7-fd2a-480f-a870-fea7462efb65",
+                    "path": "<Gamepad>/dpad",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "6d67ad87-9106-47e6-a99e-fbc3321baf0f",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
@@ -249,6 +260,17 @@
                     "action": "MoveCancelled",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "6f50bf75-b631-4d0a-a0ac-3b41d43bfefd",
+                    "path": "<Gamepad>/dpad",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveCancelled",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
