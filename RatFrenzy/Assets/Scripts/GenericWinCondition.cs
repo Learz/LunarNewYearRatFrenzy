@@ -63,15 +63,15 @@ public class GenericWinCondition : MonoBehaviour
         if (gameEnded) return;
         gameEnded = true;
         Debug.Log("No winner! You may want to override this method for your win condition");
-        GameManager.instance.DisplayScore();
+        //GameManager.instance.DisplayScore();
     }
     protected virtual void EndGame(Player.Identity winner)
     {
         if (gameEnded) return;
         gameEnded = true;
         Debug.Log(winner + " wins!");
-        GameManager.instance.AddPoints(winner);
-        GameManager.instance.DisplayScore();
+        GameManager.instance.AddPoint(winner);
+        //GameManager.instance.DisplayScore();
         if (cdRoutine != null) StopCoroutine(cdRoutine);
         GameManager.instance.UpdateTimeLeft(0);
     }
@@ -85,7 +85,7 @@ public class GenericWinCondition : MonoBehaviour
         {
 
             Debug.Log(winner + " wins!");
-            GameManager.instance.AddPoints(winner);
+            GameManager.instance.AddPoint(winner);
         }
         GameManager.instance.DisplayScore();
         if (cdRoutine != null) StopCoroutine(cdRoutine);

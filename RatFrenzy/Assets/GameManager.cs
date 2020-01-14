@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     public UnityEngine.UI.Text timeLeftLabel;
     public AudioSource audioSource;
     private int[] scores;
+    private int roundCounter;
+    private int showScoreEveryXRounds = 5;
     // Start is called before the first frame update
     void Awake()
     {
@@ -72,8 +74,15 @@ public class GameManager : MonoBehaviour
         return playerPoses[GetRatManager(id).poseIndex];
     }
 
-    public void AddPoints(Player.Identity id) => scores[(int)id]++;
-    public void AddPoints(Player.Identity id, int ammount) => scores[(int)id] += ammount;
+    public void AddPoint(Player.Identity id)
+    {
+        roundCounter++;
+        scores[(int)id]++;
+        playerHUDs[(int)id].ShowWinAnimation();
+        if (roundCounter % showScoreEveryXRounds == 0) graph.GoToNodeByName("DisplayScore");
+        else graph.GoToNodeByName("RoundEnd");
+    }
+    //public void AddPoints(Player.Identity id, int ammount) => scores[(int)id] += ammount;
 
     public int GetScore(Player.Identity id) => scores[(int)id];
     public void DisplayScore()
@@ -170,6 +179,7 @@ public class GameManager : MonoBehaviour
         foreach (Gamepad pad in Gamepad.all) pad.SetMotorSpeeds(0, 0);
 
     }
+    public void ResetRoundCounter() => roundCounter = 0;
 }
 public class PlayerEvent : UnityEvent<PlayerInput> { };
 

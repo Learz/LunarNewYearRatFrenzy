@@ -36,23 +36,24 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  CurrentGraph: {fileID: 11400000, guid: c624382b51ccbc24784d0a726ad000a4, type: 2}
+  CurrentGraph: {fileID: 11400000, guid: e07e56f6687e02d41bac4cbcdc239f5a, type: 2}
   RecentlyOpenedGraphs:
-  - {fileID: 11400000, guid: c624382b51ccbc24784d0a726ad000a4, type: 2}
   - {fileID: 11400000, guid: e07e56f6687e02d41bac4cbcdc239f5a, type: 2}
+  - {fileID: 11400000, guid: c624382b51ccbc24784d0a726ad000a4, type: 2}
   CopiedNodes: []
-  DeletedNodes: []
+  DeletedNodes:
+  - {fileID: -6783161924725897400, guid: e07e56f6687e02d41bac4cbcdc239f5a, type: 2}
   SelectedNodes: []
   GraphTabs:
   - IsRootTab: 1
-    Graph: {fileID: 11400000, guid: c624382b51ccbc24784d0a726ad000a4, type: 2}
+    Graph: {fileID: 11400000, guid: e07e56f6687e02d41bac4cbcdc239f5a, type: 2}
     SubGraphNode: {fileID: 0}
     Zoom: 0.6
-    PanOffset: {x: 239.3, y: 364.1}
+    PanOffset: {x: 217.69997, y: 314.3}
     SelectedNodes: []
     DeletedNodes: []
   CurrentView: 1
-  CurrentPanOffset: {x: 286.8491, y: 332.7627}
+  CurrentPanOffset: {x: 465.37115, y: 139.98299}
   DefaultPanOffset: {x: 0, y: 0}
   IsDirty: 0
   SaveCurrentGraphWithControlS: 1
