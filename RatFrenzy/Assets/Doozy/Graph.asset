@@ -349,10 +349,7 @@ MonoBehaviour:
   - Category: General
     InstantAction: 0
     Name: Score
-  m_onEnterHideViews:
-  - Category: General
-    InstantAction: 0
-    Name: InGame
+  m_onEnterHideViews: []
   m_onExitShowViews: []
   m_onExitHideViews:
   - Category: General
@@ -1686,8 +1683,8 @@ MonoBehaviour:
   m_useUpdate: 0
   m_height: 174
   m_width: 216
-  m_x: 960
-  m_y: -540
+  m_x: 912
+  m_y: -648
   m_minimumInputSocketsCount: 1
   m_minimumOutputSocketsCount: 1
   m_graphId: dfa8f8c4-57e4-46ae-8aaf-9ce7750b91c9
@@ -1870,8 +1867,8 @@ MonoBehaviour:
   m_useUpdate: 1
   m_height: 128
   m_width: 216
-  m_x: 1188
-  m_y: -540
+  m_x: 1200
+  m_y: -588
   m_minimumInputSocketsCount: 1
   m_minimumOutputSocketsCount: 1
   m_graphId: dfa8f8c4-57e4-46ae-8aaf-9ce7750b91c9
@@ -1881,7 +1878,10 @@ MonoBehaviour:
   m_onEnterShowViews: []
   m_onEnterHideViews: []
   m_onExitShowViews: []
-  m_onExitHideViews: []
+  m_onExitHideViews:
+  - Category: General
+    InstantAction: 0
+    Name: InGame
 --- !u!114 &6123839667981465695
 MonoBehaviour:
   m_ObjectHideFlags: 1

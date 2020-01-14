@@ -14,6 +14,7 @@ public class RatController : GenericController
     public Collider hurtBox;
     public Transform holdingPoint;
     public float turningSpeed = 6f;
+    public ParticleSystem slideParticles;
 
 
     [HideInInspector]
@@ -74,6 +75,7 @@ public class RatController : GenericController
         if (slideTimer >= slideTime)
         {
             isSliding = false;
+            if (slideParticles != null) slideParticles.Stop();
             slideTimer = 0;
         }
         if (isBoosting)
@@ -148,6 +150,7 @@ public class RatController : GenericController
             case RatActions.Slide:
                 rAnim.SetTrigger("slide");
                 isSliding = true;
+                if (isGrounded && slideParticles != null) slideParticles.Play();
                 break;
             case RatActions.Boost:
                 if (isBoosting) break;
@@ -167,6 +170,7 @@ public class RatController : GenericController
         if (isBoosting) MultiplySpeed(1 / boostSpeed);
         isBoosting = false;
         slideTimer = 0;
+        if (slideParticles != null) slideParticles.Stop();
     }
 
     private void MoveRat()
@@ -229,6 +233,7 @@ public class RatController : GenericController
     {
         base.Kill();
         GetComponent<CapsuleCollider>().enabled = false;
+        if (isSliding) slideParticles.Stop();
     }
     public override void Respawn()
     {
@@ -243,6 +248,7 @@ public class RatController : GenericController
             rb.drag = groundDrag;
             speed = groundSpeed;
             isFallBoosted = false;
+            if (isSliding) slideParticles.Play();
         }
     }
 
@@ -253,6 +259,7 @@ public class RatController : GenericController
         {
             speed = airSpeed;
             rb.drag = airDrag;
+            if (isSliding) slideParticles.Stop();
         }
 
     }

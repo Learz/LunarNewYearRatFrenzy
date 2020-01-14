@@ -91,7 +91,6 @@ public class GenericWinCondition : MonoBehaviour
             Debug.Log(winner + " wins!");
             GameManager.instance.AddPoint(winner);
         }
-        GameManager.instance.DisplayScore();
         if (cdRoutine != null) StopCoroutine(cdRoutine);
         GameManager.instance.UpdateTimeLeft(0);
     }
