@@ -74,13 +74,15 @@ public class GenericController : MonoBehaviour
         {
             renderers[i].renderer.enabled = false;
         }
-        GetComponent<CapsuleCollider>().enabled = false;
         if (respawn) Invoke("Respawn", respawnTime);
         VibrateGamepad(0.1f, 1f);
+        
+        // Moved CapsuleCollider related stuff to RatController
+        // GetComponent<CapsuleCollider>().enabled = false;
     }
     public virtual void Respawn()
     {
-        GetComponent<CapsuleCollider>().enabled = true;
+        // GetComponent<CapsuleCollider>().enabled = true;
         isDead = false;
         transform.position = respawnPosition;
         transform.rotation = respawnRotation;

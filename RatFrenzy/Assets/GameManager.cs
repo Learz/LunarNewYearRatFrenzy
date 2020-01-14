@@ -1,4 +1,5 @@
-﻿using Doozy.Engine.Nody;
+﻿using DG.Tweening;
+using Doozy.Engine.Nody;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -166,13 +167,30 @@ public class GameManager : MonoBehaviour
     public void PlayMusic(AudioClip clip)
     {
         if (audioSource.clip == clip) return;
-        audioSource.clip = clip;
-        audioSource.Play();
+        if (audioSource.isPlaying)
+        {
+            audioSource.DOFade(0, 0.2f).SetUpdate(UpdateType.Normal,true).OnComplete(() =>
+            {
+                audioSource.clip = clip;
+                audioSource.Play();
+                audioSource.DOFade(0.4f, 0.2f).SetUpdate(UpdateType.Normal, true);
+
+            });
+        }
+        else
+        {
+            audioSource.clip = clip;
+            audioSource.Play();
+        }
     }
     public void StopMusic()
     {
-        audioSource.Stop();
-        audioSource.clip = null;
+        audioSource.DOFade(0, 0.5f).SetUpdate(UpdateType.Normal, true).OnComplete(() =>
+        {
+            audioSource.clip = null;
+            audioSource.volume = 0.4f;
+        });
+
     }
     private void OnApplicationQuit()
     {

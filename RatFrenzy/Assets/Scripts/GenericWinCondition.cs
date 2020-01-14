@@ -12,6 +12,7 @@ public class GenericWinCondition : MonoBehaviour
     public float timeLimit;
     public bool startTimeLimitOnStart;
     public float initialCountdown;
+    public AudioClip levelMusic;
     protected int[] scores;
     protected bool gameEnded;
     protected IEnumerator cdRoutine;
@@ -25,6 +26,9 @@ public class GenericWinCondition : MonoBehaviour
 
         GameManager.instance.ConfigureGameHud(displayType, maxScore);
         scores = new int[4];
+
+        if (levelMusic != null) GameManager.instance.PlayMusic(levelMusic);
+        else GameManager.instance.StopMusic();
     }
 
     public virtual void EliminatePlayer(Player.Identity id)

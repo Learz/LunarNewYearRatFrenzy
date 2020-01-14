@@ -122,7 +122,7 @@ public class RatController : GenericController
     protected override void InteractPressed()
     {
         base.InteractPressed();
-        if(heldObject != null)
+        if (heldObject != null)
         {
             heldObject.Drop();
         }
@@ -187,7 +187,7 @@ public class RatController : GenericController
                 //rb.MoveRotation(Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(new Vector3(rb.velocity.x, 0.0f, rb.velocity.z)), 10.0f));
                 rb.MoveRotation(Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(dir), speed * turningSpeed * Time.deltaTime));
             }
-            
+
             rAnim.SetFloat("velocity", rb.velocity.magnitude);
         }
     }
@@ -202,7 +202,7 @@ public class RatController : GenericController
         PlaySound(hurtSounds, Random.Range(0.9f, 1.1f));
         VibrateGamepad(0.5f, 0.25f);
         PlaySound(hurtSounds, Random.Range(0.9f, 1.1f));
-        if(heldObject) heldObject.Drop();
+        if (heldObject) heldObject.Drop();
     }
 
     public void GetHurt(Vector3 knockbackDir)
@@ -225,7 +225,16 @@ public class RatController : GenericController
         boostMeter = Mathf.Clamp(boostMeter + ammount, 0, 100);
         winCondition.SetScore(identity, boostMeter);
     }
-
+    public override void Kill()
+    {
+        base.Kill();
+        GetComponent<CapsuleCollider>().enabled = false;
+    }
+    public override void Respawn()
+    {
+        GetComponent<CapsuleCollider>().enabled = true;
+        base.Respawn();
+    }
     protected override void OnCollisionEnter(Collision collision)
     {
         base.OnCollisionEnter(collision);
