@@ -39,6 +39,12 @@ public class GenericController : MonoBehaviour
     AudioSource[] audioSources;
     int nextChannel = 0;
 
+    protected virtual void Awake()
+    {
+        if (identity != Player.Identity.Leader) return;
+        if (GameManager.instance != null) identity = GameManager.instance.GetLeader();
+        else identity = Player.Identity.Player1;
+    }
     // Start is called before the first frame update
     protected virtual void Start()
     {

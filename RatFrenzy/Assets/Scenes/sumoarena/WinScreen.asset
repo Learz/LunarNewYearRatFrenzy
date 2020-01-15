@@ -15,30 +15,30 @@ MonoBehaviour:
   active: 1
   m_AdvancedMode: 0
   rotation:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 28
     min: 0
     max: 360
   skyIntensityMode:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   exposure:
     m_OverrideState: 0
-    m_Value: 0
+    m_Value: 2.95
   multiplier:
-    m_OverrideState: 0
-    m_Value: 1
+    m_OverrideState: 1
+    m_Value: 23.28
     min: 0
   upperHemisphereLuxValue:
     m_OverrideState: 0
-    m_Value: 1
+    m_Value: 38.23428
     min: 0
   upperHemisphereLuxColor:
     m_OverrideState: 0
-    m_Value: {x: 0, y: 0, z: 0}
+    m_Value: {x: 0.5, y: 0.4490667, z: 0.35259008}
   desiredLuxValue:
-    m_OverrideState: 0
-    m_Value: 20000
+    m_OverrideState: 1
+    m_Value: 55
   updateMode:
     m_OverrideState: 0
     m_Value: 0
@@ -50,8 +50,8 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0
   hdriSky:
-    m_OverrideState: 0
-    m_Value: {fileID: 0}
+    m_OverrideState: 1
+    m_Value: {fileID: 8900000, guid: 20fa721c9630c934a882314211ae67dc, type: 3}
   enableBackplate:
     m_OverrideState: 0
     m_Value: 0
@@ -120,12 +120,12 @@ MonoBehaviour:
     m_Value: 2
   intensity:
     m_OverrideState: 1
-    m_Value: 0.4
+    m_Value: 0.02
     min: 0
     max: 1
   scatter:
     m_OverrideState: 1
-    m_Value: 0.217
+    m_Value: 0.048
     min: 0
     max: 1
   tint:
@@ -263,6 +263,7 @@ MonoBehaviour:
   - {fileID: 633312911218984314}
   - {fileID: 8799297724631862915}
   - {fileID: -1714456621679546693}
+  - {fileID: -6419765070946838211}
 --- !u!114 &633312911218984314
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -288,15 +289,15 @@ MonoBehaviour:
     showEyeDropper: 1
   center:
     m_OverrideState: 1
-    m_Value: {x: 0.5, y: 0.06}
+    m_Value: {x: 0.5, y: 0.35}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.336
+    m_Value: 0.346
     min: 0
     max: 1
   smoothness:
-    m_OverrideState: 0
-    m_Value: 0.128
+    m_OverrideState: 1
+    m_Value: 0.792
     min: 0.01
     max: 1
   roundness:
@@ -337,7 +338,7 @@ MonoBehaviour:
     m_Value: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 2.82
+    m_Value: 2.29
     min: 0
     max: 4
   directLightingStrength:
@@ -423,13 +424,13 @@ MonoBehaviour:
   m_AdvancedMode: 0
   shadows:
     m_OverrideState: 1
-    m_Value: {x: 0.9493032, y: 0.9640809, z: 1, w: 0}
+    m_Value: {x: 0.9087839, y: 0.95017135, z: 1, w: 0}
   midtones:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.9721537, z: 0.9308522, w: 0}
+    m_Value: {x: 1, y: 0.98763233, z: 0.9272006, w: 0}
   highlights:
     m_OverrideState: 1
-    m_Value: {x: 0.9712862, y: 0.9763589, z: 1, w: 0}
+    m_Value: {x: 0.952122, y: 0.9640303, z: 1, w: 0}
   shadowsStart:
     m_OverrideState: 0
     m_Value: 0

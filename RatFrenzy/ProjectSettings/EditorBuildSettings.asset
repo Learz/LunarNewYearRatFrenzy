@@ -32,6 +32,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/captureTheCheese.unity
     guid: 2193478833cf81345a42aa70c1565cb1
+  - enabled: 1
+    path: Assets/Scenes/winscreen.unity
+    guid: 9e7fc141798a47742bd3168eb8d5bb6a
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 3385625d645ba8f4891239b805ddf6c4,
       type: 2}
