@@ -33,13 +33,14 @@ public class SetBackPlayer : MonoBehaviour
             timer = cooldown;
             transform.RotateAround(anchor.position, Vector3.up, setBackAmount);
             player.PlaySound(player.hurtSounds, Random.Range(0.9f,1.1f));
-            if (audioSource != null && hitSound != null)
+            player.PlaySound(hitSound, Random.Range(0.9f, 1.1f), 0.2f);
+            /*if (audioSource != null && hitSound != null)
             {
                 audioSource.clip = hitSound;
                 audioSource.pitch = Time.timeScale * Random.Range(0.9f, 1.1f);
-                audioSource.volume = 1f;
+                audioSource.volume = 0.2f;
                 audioSource.Play();
-            }
+            }*/
             player.VibrateGamepad(1 , 0.25f);
             //player.gameObject.transform.DOMoveZ(other.gameObject.transform.position.z - setBackAmount, 0.5f);
         }

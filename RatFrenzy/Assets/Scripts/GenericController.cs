@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using DG.Tweening;
 
 public class GenericController : MonoBehaviour
 {
@@ -17,8 +18,9 @@ public class GenericController : MonoBehaviour
     protected Quaternion respawnRotation;
     public Cinemachine.CinemachineTargetGroup targetGroup;
     public AudioSource audioSource;
-    public AudioClip collisionSound, deathSound;
+    public AudioClip collisionSound, deathSound, jumpSound;
     public AudioClip[] squeakSounds;
+    public int audioChannels = 5;
     public bool vibrateOnCollision;
 
     [HideInInspector]
@@ -34,6 +36,9 @@ public class GenericController : MonoBehaviour
     protected ParticleSystem ps;
     protected Cinemachine.CinemachineImpulseSource impulse;
 
+    AudioSource[] audioSources;
+    int nextChannel = 0;
+
     protected virtual void Awake()
     {
         if (identity != Player.Identity.Leader) return;
@@ -44,6 +49,11 @@ public class GenericController : MonoBehaviour
     protected virtual void Start()
     {
         if (audioSource == null) audioSource = GetComponent<AudioSource>();
+        audioSources = new AudioSource[audioChannels];
+        for (int i = 0; i < audioChannels; i++)
+        {
+            audioSources[i] = gameObject.AddComponent<AudioSource>();
+        }
         rb = GetComponent<Rigidbody>();
         if (respawn) SetRespawnPosition(transform.position, transform.rotation);
         if (winCondition == null) winCondition = FindObjectOfType<GenericWinCondition>();
@@ -230,27 +240,91 @@ public class GenericController : MonoBehaviour
         pad.SetMotorSpeeds(0, 0);
     }
 
-    public void PlaySound(AudioClip sound, float pitch = 1f, float volume = 1f)
+    public void PlaySound(AudioClip sound, float pitch = 1f, float volume = 1f, bool loop = false)
     {
-        if (audioSource != null && sound != null)
+        if (sound != null)
         {
-            audioSource.clip = sound;
-            audioSource.pitch = Time.timeScale * pitch;
-            audioSource.volume = volume;
-            audioSource.Play();
+            AudioSource curAudioSource;
+            int loopChecker = 0;
+
+            do
+            {
+                curAudioSource = audioSources[nextChannel];
+                nextChannel = (nextChannel + 1) % audioChannels;
+                loopChecker++;
+            } while (curAudioSource.clip != sound && curAudioSource.isPlaying && loopChecker < audioChannels);
+
+            curAudioSource.clip = sound;
+            curAudioSource.pitch = Time.timeScale * pitch;
+            curAudioSource.volume = volume;
+            curAudioSource.loop = loop;
+            curAudioSource.Play();
         }
     }
 
     public void PlaySound(AudioClip[] sound, float pitch = 1f, float volume = 1f)
     {
-        if (audioSource != null && sound != null)
+        PlaySound(sound[Random.Range(0, sound.Length)], pitch, volume);
+    }
+
+    public AudioSource FadeInSound(AudioClip sound, float fadeTime, float pitch = 1f, float volume = 1f, bool loop = false)
+    {
+        if (sound != null)
         {
-            audioSource.clip = sound[Random.Range(0, sound.Length)];
-            audioSource.pitch = Time.timeScale * pitch;
-            audioSource.volume = volume;
-            audioSource.Play();
+            AudioSource curAudioSource;
+            int loopChecker = 0;
+
+            do
+            {
+                curAudioSource = audioSources[nextChannel];
+                nextChannel = (nextChannel + 1) % audioChannels;
+                loopChecker++;
+            } while (curAudioSource.clip != sound && curAudioSource.isPlaying && loopChecker < audioChannels);
+
+            curAudioSource.clip = sound;
+            curAudioSource.pitch = Time.timeScale * pitch;
+            curAudioSource.loop = loop;
+            curAudioSource.volume = 0;
+            curAudioSource.Play();
+            curAudioSource.DOFade(volume, fadeTime).SetUpdate(UpdateType.Normal, true);
+            return curAudioSource;
+        }
+        return null;
+    }
+
+    public void StopSound(AudioClip sound)
+    {
+        foreach (AudioSource channel in audioSources)
+        {
+            if (channel.clip == sound)
+            {
+                channel.Stop();
+            }
         }
     }
+
+    public void StopSound(AudioClip sound, float fadeTime)
+    {
+        foreach (AudioSource channel in audioSources)
+        {
+            if (channel.clip == sound)
+            {
+                channel.DOFade(0, fadeTime).SetUpdate(UpdateType.Normal, true).OnComplete(() =>
+                {
+                    channel.Stop();
+                });
+            }
+        }
+    }
+
+    public void StopChannel(AudioSource channel, float fadeTime)
+    {
+        channel.DOFade(0, fadeTime).SetUpdate(UpdateType.Normal, true).OnComplete(() =>
+        {
+            channel.Stop();
+        });
+    }
+
     protected void OnDestroy()
     {
         if (mgr == null) return;

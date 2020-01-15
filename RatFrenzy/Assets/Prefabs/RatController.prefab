@@ -651,6 +651,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   collisionSound: {fileID: 0}
   deathSound: {fileID: 8300000, guid: 19583e46b5c921e47aa32755c1d1de75, type: 3}
+  jumpSound: {fileID: 8300000, guid: 70fdc07e5e51cfd4899898d208e7170a, type: 3}
   squeakSounds:
   - {fileID: 8300000, guid: a5f2665fb51f26b4f8bdd44c02bf8e01, type: 3}
   - {fileID: 8300000, guid: 32282e6100fed5e49aee6ec6c7ddb7ab, type: 3}
@@ -658,7 +659,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5d6e2b101b314e74393a6a3f44eb542b, type: 3}
   - {fileID: 8300000, guid: 4fc1b8d808edadc44b526dbe95c414df, type: 3}
   - {fileID: 8300000, guid: badfe5c5fa1ff364b8f371f3bce8d22e, type: 3}
+  audioChannels: 5
   vibrateOnCollision: 0
+  slideSound: {fileID: 8300000, guid: 2e3567d343fe6c840863961c849cb9c2, type: 3}
   slapSounds:
   - {fileID: 8300000, guid: 09cb2fb8d32b144429f94153437a26c8, type: 3}
   - {fileID: 8300000, guid: 2e3534b15c743be499d411796db8dea4, type: 3}
@@ -682,6 +685,8 @@ MonoBehaviour:
   actionButton: 0
   hurtBox: {fileID: 1152556845464382258}
   holdingPoint: {fileID: 1271758229837661957}
+  turningSpeed: 6
+  slideParticles: {fileID: 0}
   canGetPoint: 1
   heldObject: {fileID: 0}
 --- !u!54 &4497655283208819181
