@@ -266,7 +266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   decalProjector: {fileID: 998704045}
-  contactForce: 500
+  contactForce: 50
   explosionRadius: 50
   upwardsForce: 0
 --- !u!114 &270032602
@@ -29233,6 +29233,7 @@ MonoBehaviour:
   timeLimit: 0
   startTimeLimitOnStart: 0
   initialCountdown: 0
+  levelMusic: {fileID: 0}
   survivorType: 1
 --- !u!4 &1532333906
 Transform:
@@ -45978,6 +45979,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   collisionSound: {fileID: 0}
   deathSound: {fileID: 0}
+  jumpSound: {fileID: 0}
   squeakSounds:
   - {fileID: 8300000, guid: a5f2665fb51f26b4f8bdd44c02bf8e01, type: 3}
   - {fileID: 8300000, guid: 32282e6100fed5e49aee6ec6c7ddb7ab, type: 3}
@@ -45985,7 +45987,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5d6e2b101b314e74393a6a3f44eb542b, type: 3}
   - {fileID: 8300000, guid: 4fc1b8d808edadc44b526dbe95c414df, type: 3}
   - {fileID: 8300000, guid: badfe5c5fa1ff364b8f371f3bce8d22e, type: 3}
+  audioChannels: 5
   vibrateOnCollision: 0
+  slideSound: {fileID: 0}
   slapSounds: []
   hurtSounds: []
   groundSpeed: 100
@@ -46000,8 +46004,12 @@ MonoBehaviour:
   isFixed: 0
   controlledJump: 0
   actionButton: 3
+  hurtBox: {fileID: 0}
+  holdingPoint: {fileID: 0}
+  turningSpeed: 6
+  slideParticles: {fileID: 0}
   canGetPoint: 1
-  boostMeter: 100
+  heldObject: {fileID: 0}
 --- !u!114 &5744527926448874171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46034,6 +46042,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   collisionSound: {fileID: 0}
   deathSound: {fileID: 0}
+  jumpSound: {fileID: 0}
   squeakSounds:
   - {fileID: 8300000, guid: a5f2665fb51f26b4f8bdd44c02bf8e01, type: 3}
   - {fileID: 8300000, guid: 32282e6100fed5e49aee6ec6c7ddb7ab, type: 3}
@@ -46041,7 +46050,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5d6e2b101b314e74393a6a3f44eb542b, type: 3}
   - {fileID: 8300000, guid: 4fc1b8d808edadc44b526dbe95c414df, type: 3}
   - {fileID: 8300000, guid: badfe5c5fa1ff364b8f371f3bce8d22e, type: 3}
+  audioChannels: 5
   vibrateOnCollision: 0
+  slideSound: {fileID: 0}
   slapSounds: []
   hurtSounds: []
   groundSpeed: 100
@@ -46056,8 +46067,12 @@ MonoBehaviour:
   isFixed: 0
   controlledJump: 0
   actionButton: 3
+  hurtBox: {fileID: 0}
+  holdingPoint: {fileID: 0}
+  turningSpeed: 6
+  slideParticles: {fileID: 0}
   canGetPoint: 1
-  boostMeter: 100
+  heldObject: {fileID: 0}
 --- !u!114 &5744527927527392476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46090,6 +46105,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   collisionSound: {fileID: 0}
   deathSound: {fileID: 0}
+  jumpSound: {fileID: 0}
   squeakSounds:
   - {fileID: 8300000, guid: a5f2665fb51f26b4f8bdd44c02bf8e01, type: 3}
   - {fileID: 8300000, guid: 32282e6100fed5e49aee6ec6c7ddb7ab, type: 3}
@@ -46097,7 +46113,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5d6e2b101b314e74393a6a3f44eb542b, type: 3}
   - {fileID: 8300000, guid: 4fc1b8d808edadc44b526dbe95c414df, type: 3}
   - {fileID: 8300000, guid: badfe5c5fa1ff364b8f371f3bce8d22e, type: 3}
+  audioChannels: 5
   vibrateOnCollision: 0
+  slideSound: {fileID: 0}
   slapSounds: []
   hurtSounds: []
   groundSpeed: 100
@@ -46112,8 +46130,12 @@ MonoBehaviour:
   isFixed: 0
   controlledJump: 0
   actionButton: 3
+  hurtBox: {fileID: 0}
+  holdingPoint: {fileID: 0}
+  turningSpeed: 6
+  slideParticles: {fileID: 0}
   canGetPoint: 1
-  boostMeter: 100
+  heldObject: {fileID: 0}
 --- !u!114 &5744527927729729836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46146,6 +46168,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   collisionSound: {fileID: 0}
   deathSound: {fileID: 0}
+  jumpSound: {fileID: 0}
   squeakSounds:
   - {fileID: 8300000, guid: a5f2665fb51f26b4f8bdd44c02bf8e01, type: 3}
   - {fileID: 8300000, guid: 32282e6100fed5e49aee6ec6c7ddb7ab, type: 3}
@@ -46153,7 +46176,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5d6e2b101b314e74393a6a3f44eb542b, type: 3}
   - {fileID: 8300000, guid: 4fc1b8d808edadc44b526dbe95c414df, type: 3}
   - {fileID: 8300000, guid: badfe5c5fa1ff364b8f371f3bce8d22e, type: 3}
+  audioChannels: 5
   vibrateOnCollision: 0
+  slideSound: {fileID: 0}
   slapSounds: []
   hurtSounds: []
   groundSpeed: 100
@@ -46168,8 +46193,12 @@ MonoBehaviour:
   isFixed: 0
   controlledJump: 0
   actionButton: 3
+  hurtBox: {fileID: 0}
+  holdingPoint: {fileID: 0}
+  turningSpeed: 6
+  slideParticles: {fileID: 0}
   canGetPoint: 1
-  boostMeter: 100
+  heldObject: {fileID: 0}
 --- !u!1 &5768919219537990040
 GameObject:
   m_ObjectHideFlags: 0

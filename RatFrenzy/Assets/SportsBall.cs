@@ -32,8 +32,9 @@ public class SportsBall : MonoBehaviour
     {
         if (collision.collider.GetComponent<GenericController>() != null)
         {
-            Debug.Log("Contact");
-            rb.AddExplosionForce(contactForce, collision.GetContact(0).point, explosionRadius, upwardsForce);
+            float force = Mathf.Clamp(contactForce * collision.relativeVelocity.magnitude, 250, 750);
+            Debug.Log("Contact force : " + force);
+            rb.AddExplosionForce(force, collision.GetContact(0).point, explosionRadius, upwardsForce);
         }
     }
     public void Goal()
