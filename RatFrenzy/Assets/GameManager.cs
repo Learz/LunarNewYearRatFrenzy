@@ -152,6 +152,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadSceneAsync(1);
         scores = new int[4];
         Physics.gravity = new Vector3(0, -9.81f, 0);
+        RemoveAllPlayers();
 
     }
     private void SetMoonGravity()
