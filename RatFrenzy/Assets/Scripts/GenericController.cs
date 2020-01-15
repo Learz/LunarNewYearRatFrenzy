@@ -34,6 +34,12 @@ public class GenericController : MonoBehaviour
     protected ParticleSystem ps;
     protected Cinemachine.CinemachineImpulseSource impulse;
 
+    protected virtual void Awake()
+    {
+        if (identity != Player.Identity.Leader) return;
+        if (GameManager.instance != null) identity = GameManager.instance.GetLeader();
+        else identity = Player.Identity.Player1;
+    }
     // Start is called before the first frame update
     protected virtual void Start()
     {
@@ -76,7 +82,7 @@ public class GenericController : MonoBehaviour
         }
         if (respawn) Invoke("Respawn", respawnTime);
         VibrateGamepad(0.1f, 1f);
-        
+
         // Moved CapsuleCollider related stuff to RatController
         // GetComponent<CapsuleCollider>().enabled = false;
     }

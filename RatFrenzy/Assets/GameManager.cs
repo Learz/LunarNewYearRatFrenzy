@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     public AudioSource audioSource;
     private int[] scores;
     private int roundCounter;
-    private int showScoreEveryXRounds = 5;
+    private int showScoreEveryXRounds = 5, winningScore = 10;
     // Start is called before the first frame update
     void Awake()
     {
@@ -80,8 +80,27 @@ public class GameManager : MonoBehaviour
         roundCounter++;
         scores[(int)id]++;
         playerHUDs[(int)id].ShowWinAnimation();
-        if (roundCounter % showScoreEveryXRounds == 0) graph.GoToNodeByName("DisplayScore");
+        if (roundCounter % showScoreEveryXRounds == 0)
+        {
+            int highScore = 0;
+            for (int i = 0; i < 4; i++)
+            {
+                if (scores[i] > highScore) highScore = scores[i];
+            }
+            if (highScore >= winningScore) graph.GoToNodeByName("WinScreen");
+            else graph.GoToNodeByName("DisplayScore");
+        }
         else graph.GoToNodeByName("RoundEnd");
+    }
+    public Player.Identity GetLeader()
+    {
+        int leader = 0;
+        int highScore = 0;
+        for (int i = 0; i < 4; i++)
+        {
+            if (scores[i] > highScore) { leader = i; highScore = scores[i]; }
+        }
+        return ((Player.Identity)leader);
     }
     //public void AddPoints(Player.Identity id, int ammount) => scores[(int)id] += ammount;
 
@@ -122,12 +141,23 @@ public class GameManager : MonoBehaviour
         Instantiate(Resources.Load("Root"));
         instance.graph.GoToNodeByName("InGame");
     }
-    public void OnReturnToMenu()
+    /*public void GameListenerEvent(string gameEvent)
+    {
+        if (gameEvent == "OnReturnToMenu") OnReturnToMenu();
+        else if (gameEvent == "SetMoonGravity") SetMoonGravity();
+    }*/
+    private void OnReturnToMenu()
     {
         Debug.Log("Unloading active scene");
         SceneManager.LoadSceneAsync(1);
         scores = new int[4];
+        Physics.gravity = new Vector3(0, -9.81f, 0);
 
+    }
+    private void SetMoonGravity()
+    {
+        Debug.Log("Setting moon gravity");
+        Physics.gravity = new Vector3(0, -1.62f, 0);
     }
     public void UpdateAliveStatus(Player.Identity id, bool isAlive)
     {
@@ -169,13 +199,13 @@ public class GameManager : MonoBehaviour
         if (audioSource.clip == clip) return;
         if (audioSource.isPlaying)
         {
-            audioSource.DOFade(0, 0.2f).SetUpdate(UpdateType.Normal,true).OnComplete(() =>
-            {
-                audioSource.clip = clip;
-                audioSource.Play();
-                audioSource.DOFade(0.4f, 0.2f).SetUpdate(UpdateType.Normal, true);
+            audioSource.DOFade(0, 0.2f).SetUpdate(UpdateType.Normal, true).OnComplete(() =>
+             {
+                 audioSource.clip = clip;
+                 audioSource.Play();
+                 audioSource.DOFade(0.4f, 0.2f).SetUpdate(UpdateType.Normal, true);
 
-            });
+             });
         }
         else
         {
@@ -209,7 +239,8 @@ public class Player
         Player1 = 0,
         Player2 = 1,
         Player3 = 2,
-        Player4 = 3
+        Player4 = 3,
+        Leader
     }
     public enum Color
     {
