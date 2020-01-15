@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class RatController : GenericController
 {
+    public AudioClip slideSound;
     public AudioClip[] slapSounds, hurtSounds;
     public float groundSpeed, airSpeed, jumpHeight, fallSpeed, groundDrag, airDrag, speedOverride;
     public GameObject rat;
@@ -36,6 +37,7 @@ public class RatController : GenericController
     float boostMeter;
     float boostSpeed = 3f, boostDepleteSpeed = 20f;
     Vector3 dir;
+    AudioSource currentSlideChannel;
 
     public enum RatActions
     {
@@ -71,10 +73,15 @@ public class RatController : GenericController
             tracker.SetActive(false);
         }
 
-        if (isSliding && isGrounded) slideTimer += Time.deltaTime;
+        if (isSliding && isGrounded)
+        {
+            if (slideTimer == 0) currentSlideChannel = FadeInSound(slideSound, 0.5f, Random.Range(0.9f, 1.1f), 0.5f, true);
+            slideTimer += Time.deltaTime;
+        }
         if (slideTimer >= slideTime)
         {
             isSliding = false;
+            StopChannel(currentSlideChannel, 0.5f);
             if (slideParticles != null) slideParticles.Stop();
             slideTimer = 0;
         }
@@ -101,8 +108,10 @@ public class RatController : GenericController
 
     protected override void JumpPressed()
     {
+        base.JumpPressed();
         if (!isSliding && !isJumping && isGrounded && jumpHeight > 0)
         {
+            PlaySound(jumpSound, Random.Range(0.9f, 1.1f));
             isFallBoosted = false;
             speed = airSpeed;
             rb.drag = airDrag;
@@ -167,6 +176,7 @@ public class RatController : GenericController
     {
         base.InteractReleased();
         isSliding = false;
+        StopChannel(currentSlideChannel, 0.5f);
         if (isBoosting) MultiplySpeed(1 / boostSpeed);
         isBoosting = false;
         slideTimer = 0;
@@ -234,6 +244,7 @@ public class RatController : GenericController
         base.Kill();
         GetComponent<CapsuleCollider>().enabled = false;
         if (isSliding) slideParticles.Stop();
+        StopChannel(currentSlideChannel, 0.5f);
     }
     public override void Respawn()
     {

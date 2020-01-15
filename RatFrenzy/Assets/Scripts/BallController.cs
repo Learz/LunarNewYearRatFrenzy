@@ -36,6 +36,7 @@ public class BallController : GenericController
         base.JumpPressed();
         if (!isJumping && isGrounded)
         {
+            PlaySound(jumpSound, Random.Range(0.9f, 1.1f));
             rb.AddForce(Vector3.up * jumpHeight);
             isJumping = true;
             rAnim.SetBool("isJumping", isJumping);

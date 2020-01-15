@@ -748,6 +748,7 @@ MonoBehaviour:
   timeLimit: 0
   startTimeLimitOnStart: 0
   initialCountdown: 3
+  levelMusic: {fileID: 0}
 --- !u!4 &700371181
 Transform:
   m_ObjectHideFlags: 0
@@ -808,7 +809,7 @@ PrefabInstance:
     - target: {fileID: 2526243896616515305, guid: 9c46ccacd9385a84aa28dfa98cc55fc5,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2526243896616515316, guid: 9c46ccacd9385a84aa28dfa98cc55fc5,
         type: 3}
@@ -1171,7 +1172,7 @@ PrefabInstance:
     - target: {fileID: 2526243896616515305, guid: 9c46ccacd9385a84aa28dfa98cc55fc5,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2526243896616515316, guid: 9c46ccacd9385a84aa28dfa98cc55fc5,
         type: 3}
@@ -1594,7 +1595,7 @@ PrefabInstance:
     - target: {fileID: 2526243896616515305, guid: 9c46ccacd9385a84aa28dfa98cc55fc5,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2526243896616515316, guid: 9c46ccacd9385a84aa28dfa98cc55fc5,
         type: 3}
