@@ -17,7 +17,11 @@ public class PlayerMarker : MonoBehaviour
     {
         if (GameManager.instance == null) return;
         mgr = GameManager.instance.GetRatManager(identity);
-        if (mgr == null) this.gameObject.SetActive(false);
+        if (mgr == null)
+        {
+            Debug.Log(gameObject.name + " is null, disabling marker");
+            this.gameObject.SetActive(false);
+        }
         else
         {
             this.gameObject.SetActive(true);
@@ -26,5 +30,9 @@ public class PlayerMarker : MonoBehaviour
             arrow.color = col;
             label.color = col;
         }
+    }
+    public void EnableMarker()
+    {
+        OnEnable();
     }
 }

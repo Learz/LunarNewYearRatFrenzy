@@ -74,6 +74,7 @@ public class PlayerSelection : MonoBehaviour
         Debug.Log("Game started");
 
         startGame.ExecuteClick();
+        BackButton.EnableByForce();
         co = null;
     }
     private void OnDisable()

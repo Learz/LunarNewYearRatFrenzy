@@ -56,6 +56,7 @@ public class GenericController : MonoBehaviour
         for (int i = 0; i < audioChannels; i++)
         {
             audioSources[i] = gameObject.AddComponent<AudioSource>();
+            audioSources[i].spatialBlend = 1f;
         }
         rb = GetComponent<Rigidbody>();
         if (respawn) SetRespawnPosition(transform.position, transform.rotation);
@@ -95,6 +96,7 @@ public class GenericController : MonoBehaviour
         isDead = true;
         rb.isKinematic = true;
         rb.velocity = Vector3.zero;
+        PlayerMarkerHandler.instance.EliminatePlayer(identity);
         if (ps != null) ps.Play();
         if (impulse != null) impulse.GenerateImpulse();
         for (int i = 0; i < numberOfRenderersToHideOnKill; i++)

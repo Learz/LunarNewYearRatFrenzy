@@ -50,7 +50,6 @@ public class PlayerHUD : MonoBehaviour
         if (GameManager.instance == null) return;
         mgr = GameManager.instance.GetRatManager(identity);
         if (mgr == null) this.gameObject.SetActive(false);
-
         else
         {
             this.gameObject.SetActive(true);

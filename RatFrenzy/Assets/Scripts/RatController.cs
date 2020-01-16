@@ -239,7 +239,7 @@ public class RatController : GenericController
     {
         base.Kill();
         GetComponent<CapsuleCollider>().enabled = false;
-        if (isSliding) slideParticles.Stop();
+        if (slideParticles != null) slideParticles.Stop();
         StopChannel(currentSlideChannel, 0.5f);
     }
     public override void Respawn()

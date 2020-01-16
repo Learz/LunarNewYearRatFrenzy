@@ -500,7 +500,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 193812541}
   m_LocalRotation: {x: 0.18532293, y: -0.62369406, z: 0.15550438, w: 0.7432897}
-  m_LocalPosition: {x: 4.65, y: 2.99, z: -3.89}
+  m_LocalPosition: {x: 4.65, y: 2.486, z: -3.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 305721195}
@@ -619,7 +619,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -5444,7 +5444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 5.9009986, y: 0.4299997, z: -8.130001}
+  m_FollowOffset: {x: 5.9009986, y: -0.06400025, z: -8.130001}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -5736,6 +5736,11 @@ PrefabInstance:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 56828732}
+    - target: {fileID: 5744527926825360171, guid: e19d7ad38b6f6e3498266bc83101ea9c,
+        type: 3}
+      propertyPath: slideParticles
+      value: 
+      objectReference: {fileID: 212773869}
     - target: {fileID: 6920067572440690728, guid: e19d7ad38b6f6e3498266bc83101ea9c,
         type: 3}
       propertyPath: m_Material
@@ -5860,7 +5865,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -11118,7 +11123,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -16873,7 +16878,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -21660,6 +21665,11 @@ PrefabInstance:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 249521997}
+    - target: {fileID: 5744527926825360171, guid: e19d7ad38b6f6e3498266bc83101ea9c,
+        type: 3}
+      propertyPath: slideParticles
+      value: 
+      objectReference: {fileID: 1613401636}
     - target: {fileID: 6920067572440690728, guid: e19d7ad38b6f6e3498266bc83101ea9c,
         type: 3}
       propertyPath: m_Material
@@ -22025,6 +22035,11 @@ PrefabInstance:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 1607139176}
+    - target: {fileID: 5744527926825360171, guid: e19d7ad38b6f6e3498266bc83101ea9c,
+        type: 3}
+      propertyPath: slideParticles
+      value: 
+      objectReference: {fileID: 400347589}
     - target: {fileID: 6920067572440690728, guid: e19d7ad38b6f6e3498266bc83101ea9c,
         type: 3}
       propertyPath: m_Material
@@ -22333,7 +22348,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2020285602}
   m_LocalRotation: {x: 0.18532293, y: -0.62369406, z: 0.15550438, w: 0.7432897}
-  m_LocalPosition: {x: 4.65, y: 2.99, z: -3.89}
+  m_LocalPosition: {x: 4.65, y: 2.486, z: -3.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

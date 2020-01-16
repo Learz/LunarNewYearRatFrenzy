@@ -21,7 +21,6 @@ public class PlayerMarkerHandler : MonoBehaviour
         if (!markersEnabled) return;
         Vector2 screenPosition = new Vector2((position.x * canvasRect.sizeDelta.x) - (canvasRect.sizeDelta.x * 0.5f),
             (position.y * canvasRect.sizeDelta.y) - (canvasRect.sizeDelta.y * 0.5f));
-        Debug.Log(screenPosition);
         playerMarkers[(int)id].anchoredPosition = screenPosition;
     }
     public void EnableMarkers()
@@ -41,5 +40,9 @@ public class PlayerMarkerHandler : MonoBehaviour
         {
             marker.gameObject.SetActive(false);
         }
+    }
+    public void EliminatePlayer(Player.Identity id)
+    {
+        playerMarkers[(int)id].gameObject.SetActive(false);
     }
 }
