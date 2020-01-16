@@ -36,6 +36,9 @@ public class GenericController : MonoBehaviour
     protected ParticleSystem ps;
     protected Cinemachine.CinemachineImpulseSource impulse;
 
+    public float markerOffset = 0.5f;
+    protected Vector2 viewportPosition;
+
     AudioSource[] audioSources;
     int nextChannel = 0;
 
@@ -76,6 +79,14 @@ public class GenericController : MonoBehaviour
             mgr.onSqueak.AddListener(SqueakPressed);
             UpdateColor();
         }
+    }
+    protected virtual void Update()
+    {
+        viewportPosition = Camera.main.WorldToViewportPoint(new Vector3(
+            this.transform.position.x,
+            this.transform.position.y + markerOffset,
+            this.transform.position.z));
+        PlayerMarkerHandler.instance.UpdatePlayerPosition(identity, viewportPosition);
     }
     public virtual void Kill()
     {

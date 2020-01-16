@@ -25,8 +25,9 @@ public class BallController : GenericController
         base.Start();
     }
 
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         MoveBall();
         AnimateRat();
     }

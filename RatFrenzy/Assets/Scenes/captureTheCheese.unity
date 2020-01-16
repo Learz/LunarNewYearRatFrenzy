@@ -857,6 +857,11 @@ PrefabInstance:
       propertyPath: respawn
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5744527926825360171, guid: e19d7ad38b6f6e3498266bc83101ea9c,
+        type: 3}
+      propertyPath: markerOffset
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6920067572440690728, guid: e19d7ad38b6f6e3498266bc83101ea9c,
         type: 3}
       propertyPath: m_Material
@@ -1179,6 +1184,7 @@ MonoBehaviour:
   timeLimit: 60
   startTimeLimitOnStart: 1
   initialCountdown: 3
+  levelMusic: {fileID: 0}
 --- !u!4 &700371181
 Transform:
   m_ObjectHideFlags: 0
@@ -1732,6 +1738,11 @@ PrefabInstance:
         type: 3}
       propertyPath: respawn
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744527926825360171, guid: e19d7ad38b6f6e3498266bc83101ea9c,
+        type: 3}
+      propertyPath: markerOffset
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6920067572440690728, guid: e19d7ad38b6f6e3498266bc83101ea9c,
         type: 3}
@@ -2464,6 +2475,11 @@ PrefabInstance:
       propertyPath: respawn
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5744527926825360171, guid: e19d7ad38b6f6e3498266bc83101ea9c,
+        type: 3}
+      propertyPath: markerOffset
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6920067572440690728, guid: e19d7ad38b6f6e3498266bc83101ea9c,
         type: 3}
       propertyPath: m_Material
@@ -2742,6 +2758,11 @@ PrefabInstance:
         type: 3}
       propertyPath: respawn
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744527926825360171, guid: e19d7ad38b6f6e3498266bc83101ea9c,
+        type: 3}
+      propertyPath: markerOffset
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6920067572440690728, guid: e19d7ad38b6f6e3498266bc83101ea9c,
         type: 3}

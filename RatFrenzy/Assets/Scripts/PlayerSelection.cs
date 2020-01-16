@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Doozy.Engine.UI;
+using Doozy.Engine.UI.Input;
 using Doozy.Engine.Nody;
 
 public class PlayerSelection : MonoBehaviour
@@ -14,7 +15,7 @@ public class PlayerSelection : MonoBehaviour
     public TMPro.TMP_Text countdown;
     private Coroutine co;
     private int readyPlayers = 0, numPlayers = 0;
-    public UIButton startGame;
+    public UIButton startGame, returnToMenu;
     public List<Player.Color> selectedColors;
     // Start is called before the first frame update
     void Start()
@@ -24,16 +25,24 @@ public class PlayerSelection : MonoBehaviour
         GameManager.instance.playerLeft.AddListener(OnPlayerLeft);
         selectedColors = new List<Player.Color>();
         instance = this;
+        BackButton.Init();
     }
     void OnPlayerJoined(PlayerInput input)
     {
         //players[input.playerIndex].PlayerJoined(input);
         numPlayers++;
+        BackButton.Disable();
+        Debug.Log("Disabled back button");
     }
     void OnPlayerLeft(PlayerInput input)
     {
         //players[input.playerIndex].PlayerLeft();
         numPlayers--;
+        if (numPlayers <= 0)
+        {
+            BackButton.EnableByForce();
+            Debug.Log("Enabled back button");
+        }
     }
     public void PlayerReady()
     {
@@ -75,5 +84,12 @@ public class PlayerSelection : MonoBehaviour
         co = null;
         countdown.text = "";
 
+    }
+    private void OnBack()
+    {
+        Debug.Log("I hope there's no one here");
+        if (GameManager.instance.numPlayers > 0) return;
+        Debug.Log("Ya there's no one here");
+        returnToMenu.ExecuteClick();
     }
 }

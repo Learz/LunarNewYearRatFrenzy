@@ -6521,6 +6521,11 @@ PrefabInstance:
       propertyPath: identity
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5744527926825360171, guid: e19d7ad38b6f6e3498266bc83101ea9c,
+        type: 3}
+      propertyPath: markerOffset
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e19d7ad38b6f6e3498266bc83101ea9c, type: 3}
 --- !u!1 &808928278
@@ -6647,6 +6652,11 @@ PrefabInstance:
         type: 3}
       propertyPath: identity
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744527926825360171, guid: e19d7ad38b6f6e3498266bc83101ea9c,
+        type: 3}
+      propertyPath: markerOffset
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e19d7ad38b6f6e3498266bc83101ea9c, type: 3}
@@ -20992,6 +21002,11 @@ PrefabInstance:
       propertyPath: isFixed
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5744527926825360171, guid: e19d7ad38b6f6e3498266bc83101ea9c,
+        type: 3}
+      propertyPath: markerOffset
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e19d7ad38b6f6e3498266bc83101ea9c, type: 3}
 --- !u!1 &1504458135
@@ -22349,6 +22364,11 @@ PrefabInstance:
         type: 3}
       propertyPath: identity
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744527926825360171, guid: e19d7ad38b6f6e3498266bc83101ea9c,
+        type: 3}
+      propertyPath: markerOffset
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e19d7ad38b6f6e3498266bc83101ea9c, type: 3}

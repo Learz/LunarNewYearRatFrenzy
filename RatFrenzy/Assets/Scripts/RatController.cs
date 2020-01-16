@@ -57,8 +57,9 @@ public class RatController : GenericController
         rat.GetComponentInChildren<Renderer>().material.SetColor("_EmissiveColor", ColorPalette.GetColor(Player.Color.Blue)*150);*/
     }
 
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         MoveRat();
 
         tracker.transform.eulerAngles = new Vector3(0, 180, 0);
@@ -99,11 +100,6 @@ public class RatController : GenericController
 
         rAnim.SetBool("isJumping", isJumping);
         rAnim.SetBool("isSliding", isSliding);
-    }
-
-    private void FixedUpdate()
-    {
-        //if (rb.velocity.y <= 0) rb.detectCollisions = true;
     }
 
     protected override void JumpPressed()

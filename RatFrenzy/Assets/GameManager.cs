@@ -43,12 +43,14 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Player " + (input.playerIndex + 1) + " has joined!");
         players[input.playerIndex] = (input);
+        numPlayers++;
         playerJoined.Invoke(input);
     }
     void OnPlayerLeft(PlayerInput input)
     {
         Debug.Log("Player " + (input.playerIndex + 1) + " has left!");
         players[input.playerIndex] = null;
+        numPlayers--;
         playerLeft.Invoke(input);
     }
     public RatManager GetRatManager(Player.Identity id)
@@ -151,6 +153,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Unloading active scene");
         SceneManager.LoadSceneAsync(1);
         scores = new int[4];
+        roundCounter = 0;
         Physics.gravity = new Vector3(0, -9.81f, 0);
         RemoveAllPlayers();
 
