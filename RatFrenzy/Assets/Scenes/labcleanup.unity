@@ -21266,7 +21266,7 @@ MonoBehaviour:
   timeLimit: 60
   startTimeLimitOnStart: 1
   initialCountdown: 3
-  levelMusic: {fileID: 0}
+  levelMusic: {fileID: 8300000, guid: 967eb37be2947fe459ff1fc1f05e306f, type: 3}
 --- !u!4 &1532333906
 Transform:
   m_ObjectHideFlags: 0

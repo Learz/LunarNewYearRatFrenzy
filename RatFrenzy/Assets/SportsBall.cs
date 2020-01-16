@@ -8,6 +8,7 @@ public class SportsBall : MonoBehaviour
     private Rigidbody rb;
     public DecalProjector decalProjector;
     public float contactForce, explosionRadius, upwardsForce;
+    public AudioSource audioSource;
     private Cinemachine.CinemachineImpulseSource impulse;
     private Vector3 spawnPos;
     private Renderer rend;
@@ -35,6 +36,8 @@ public class SportsBall : MonoBehaviour
             float force = Mathf.Clamp(contactForce * collision.relativeVelocity.magnitude, 250, 750);
             Debug.Log("Contact force : " + force);
             rb.AddExplosionForce(force, collision.GetContact(0).point, explosionRadius, upwardsForce);
+            audioSource.volume = Mathf.Clamp(collision.relativeVelocity.magnitude / 10, 0, 1);
+            audioSource.Play();
         }
     }
     public void Goal()
