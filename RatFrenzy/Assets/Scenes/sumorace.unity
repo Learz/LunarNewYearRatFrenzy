@@ -895,7 +895,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 369318141}
-  m_LocalRotation: {x: 0.19868368, y: -0.000000012795863, z: -0.000000033545977, w: 0.98006374}
+  m_LocalRotation: {x: 0.19868365, y: -0.0000000030138496, z: -0.000000035529037,
+    w: 0.98006374}
   m_LocalPosition: {x: 0.47776082, y: 7, z: -14.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1002,7 +1003,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 503838648}
-  m_LocalRotation: {x: 0.19868368, y: -0.000000012795863, z: -0.000000033545977, w: 0.98006374}
+  m_LocalRotation: {x: 0.19868365, y: -0.0000000030138496, z: -0.000000035529037,
+    w: 0.98006374}
   m_LocalPosition: {x: 0.47776082, y: 7, z: -14.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -2040,8 +2042,8 @@ MonoBehaviour:
   m_ScreenY: 0.5
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
-  m_SoftZoneWidth: 0.8
-  m_SoftZoneHeight: 0.8
+  m_SoftZoneWidth: 0.6
+  m_SoftZoneHeight: 0.6
   m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1

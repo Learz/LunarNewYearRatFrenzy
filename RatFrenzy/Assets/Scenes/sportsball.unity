@@ -10785,8 +10785,8 @@ MonoBehaviour:
   m_VerticalDamping: 0.5
   m_ScreenX: 0.5
   m_ScreenY: 0.5
-  m_DeadZoneWidth: 0
-  m_DeadZoneHeight: 0
+  m_DeadZoneWidth: 0.3
+  m_DeadZoneHeight: 0.3
   m_SoftZoneWidth: 0.8
   m_SoftZoneHeight: 0.8
   m_BiasX: 0
@@ -30445,7 +30445,7 @@ MonoBehaviour:
   timeLimit: 0
   startTimeLimitOnStart: 0
   initialCountdown: 0
-  levelMusic: {fileID: 0}
+  levelMusic: {fileID: 8300000, guid: d8ebb0190cd48e94ea21267e4afc46ec, type: 3}
   survivorType: 1
 --- !u!4 &1532333906
 Transform:
@@ -43833,6 +43833,7 @@ GameObject:
   - component: {fileID: 4497655284989840922}
   - component: {fileID: 543469395620261944}
   - component: {fileID: 2617024737623700555}
+  - component: {fileID: 2617024737623700556}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Player
@@ -43936,6 +43937,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &2617024737623700556
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2617024737623700554}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.311773, y: 0.34752154, z: 0.25873852}
+  m_Center: {x: 0, y: 0.18118167, z: 0.21067476}
 --- !u!4 &2617024737687667128
 Transform:
   m_ObjectHideFlags: 0
@@ -43966,6 +43980,7 @@ GameObject:
   - component: {fileID: 4497655284516961258}
   - component: {fileID: 543469395013076424}
   - component: {fileID: 2617024737687667131}
+  - component: {fileID: 2617024737687667132}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player
@@ -44069,6 +44084,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &2617024737687667132
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2617024737687667130}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.311773, y: 0.34752154, z: 0.25873852}
+  m_Center: {x: 0, y: 0.18118167, z: 0.21067476}
 --- !u!4 &2617024738276448401
 Transform:
   m_ObjectHideFlags: 0
@@ -44099,6 +44127,7 @@ GameObject:
   - component: {fileID: 4497655283998433987}
   - component: {fileID: 543469396608490721}
   - component: {fileID: 2617024738276448404}
+  - component: {fileID: 2617024738276448405}
   m_Layer: 0
   m_Name: Player3
   m_TagString: Player
@@ -44202,6 +44231,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &2617024738276448405
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2617024738276448403}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.311773, y: 0.34752154, z: 0.25873852}
+  m_Center: {x: 0, y: 0.18118167, z: 0.21067476}
 --- !u!1 &2617024738700513837
 GameObject:
   m_ObjectHideFlags: 0
@@ -44215,6 +44257,7 @@ GameObject:
   - component: {fileID: 4497655283902146685}
   - component: {fileID: 543469396704810591}
   - component: {fileID: 2617024738700513838}
+  - component: {fileID: 2617024738700513840}
   m_Layer: 0
   m_Name: Player4
   m_TagString: Player
@@ -44335,6 +44378,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!65 &2617024738700513840
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2617024738700513837}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.311773, y: 0.34752154, z: 0.25873852}
+  m_Center: {x: 0, y: 0.18118167, z: 0.21067476}
 --- !u!4 &2651857650264658611
 Transform:
   m_ObjectHideFlags: 0
