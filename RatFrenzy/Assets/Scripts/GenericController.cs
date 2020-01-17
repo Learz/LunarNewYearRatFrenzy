@@ -56,7 +56,7 @@ public class GenericController : MonoBehaviour
         for (int i = 0; i < audioChannels; i++)
         {
             audioSources[i] = gameObject.AddComponent<AudioSource>();
-            audioSources[i].spatialBlend = 1f;
+            audioSources[i].spatialBlend = 0.3f;
         }
         rb = GetComponent<Rigidbody>();
         if (respawn) SetRespawnPosition(transform.position, transform.rotation);
@@ -122,6 +122,7 @@ public class GenericController : MonoBehaviour
             renderers[i].renderer.enabled = true;
         }
         rb.isKinematic = false;
+        if (targetGroup != null) targetGroup.AddMember(this.transform, 1, 2);
     }
     public virtual void SetRespawnPosition(Vector3 pos, Quaternion rot)
     {
