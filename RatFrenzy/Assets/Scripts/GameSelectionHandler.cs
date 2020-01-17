@@ -42,6 +42,10 @@ public class GameSelectionHandler : MonoBehaviour
             });
         }
         selectors[0].GetComponent<Button>().Select();
+        Navigation nav = new Navigation();
+        nav.mode = Navigation.Mode.Explicit;
+        nav.selectOnDown = selectors[1].GetComponent<Button>();
+        selectors[0].GetComponent<Button>().navigation = nav;
     }
     public void SelectLastButton()
     {
