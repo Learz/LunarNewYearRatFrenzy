@@ -82,6 +82,9 @@ public class GameManager : MonoBehaviour
         roundCounter++;
         scores[(int)id]++;
         playerHUDs[(int)id].ShowWinAnimation();
+    }
+    public void EndGame()
+    {
         if (roundCounter % showScoreEveryXRounds == 0)
         {
             int highScore = 0;

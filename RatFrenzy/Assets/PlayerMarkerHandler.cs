@@ -41,8 +41,12 @@ public class PlayerMarkerHandler : MonoBehaviour
             marker.gameObject.SetActive(false);
         }
     }
-    public void EliminatePlayer(Player.Identity id)
+    public void HideMarker(Player.Identity id)
     {
         playerMarkers[(int)id].gameObject.SetActive(false);
+    }
+    public void ShowMarker(Player.Identity id)
+    {
+        playerMarkers[(int)id].gameObject.SetActive(true);
     }
 }

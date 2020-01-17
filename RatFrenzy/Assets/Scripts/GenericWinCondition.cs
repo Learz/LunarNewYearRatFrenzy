@@ -78,6 +78,7 @@ public class GenericWinCondition : MonoBehaviour
         //GameManager.instance.DisplayScore();
         if (cdRoutine != null) StopCoroutine(cdRoutine);
         GameManager.instance.UpdateTimeLeft(0);
+        GameManager.instance.EndGame();
     }
 
     protected virtual void EndGame(List<Player.Identity> winners)
@@ -93,6 +94,7 @@ public class GenericWinCondition : MonoBehaviour
         }
         if (cdRoutine != null) StopCoroutine(cdRoutine);
         GameManager.instance.UpdateTimeLeft(0);
+        GameManager.instance.EndGame();
     }
 
     protected IEnumerator InitialCountDown(float timeLeft)

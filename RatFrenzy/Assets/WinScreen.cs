@@ -9,6 +9,7 @@ public class WinScreen : MonoBehaviour
     private void Start()
     {
         GameManager.instance.PlayMusic(song);
+        Physics.gravity = new Vector3(0, -1.62f, 0);
     }
     private void FadeToBlack()
     {

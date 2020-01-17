@@ -40,13 +40,13 @@ public class ScoreWinCondition : GenericWinCondition
         int currentHighScore = 0;
         for (int i = 0; i < scores.Length; i++)
         {
-            if (scores[i] > scores[currentHighScore])
+            if (scores[i] > currentHighScore)
             {
                 winners.Clear();
                 winners.Add((Player.Identity)i);
                 currentHighScore = scores[i];
             }
-            if (scores[i] == scores[currentHighScore])
+            if (scores[i] == currentHighScore)
             {
                 winners.Add((Player.Identity)i);
             }

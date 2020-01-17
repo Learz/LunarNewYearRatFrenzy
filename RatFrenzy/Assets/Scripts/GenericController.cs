@@ -96,7 +96,7 @@ public class GenericController : MonoBehaviour
         isDead = true;
         rb.isKinematic = true;
         rb.velocity = Vector3.zero;
-        PlayerMarkerHandler.instance.EliminatePlayer(identity);
+        PlayerMarkerHandler.instance.HideMarker(identity);
         if (ps != null) ps.Play();
         if (impulse != null) impulse.GenerateImpulse();
         for (int i = 0; i < numberOfRenderersToHideOnKill; i++)
@@ -104,6 +104,7 @@ public class GenericController : MonoBehaviour
             renderers[i].renderer.enabled = false;
         }
         if (respawn) Invoke("Respawn", respawnTime);
+        if (targetGroup != null) targetGroup.RemoveMember(this.transform);
         VibrateGamepad(0.1f, 1f);
 
         // Moved CapsuleCollider related stuff to RatController
@@ -115,6 +116,7 @@ public class GenericController : MonoBehaviour
         isDead = false;
         transform.position = respawnPosition;
         transform.rotation = respawnRotation;
+        PlayerMarkerHandler.instance.ShowMarker(identity);
         for (int i = 0; i < numberOfRenderersToHideOnKill; i++)
         {
             renderers[i].renderer.enabled = true;

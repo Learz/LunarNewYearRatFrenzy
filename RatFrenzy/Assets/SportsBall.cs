@@ -37,6 +37,7 @@ public class SportsBall : MonoBehaviour
             Debug.Log("Contact force : " + force);
             rb.AddExplosionForce(force, collision.GetContact(0).point, explosionRadius, upwardsForce);
             audioSource.volume = Mathf.Clamp(collision.relativeVelocity.magnitude / 10, 0, 1);
+            audioSource.pitch = Random.Range(0.9f, 1.1f);
             audioSource.Play();
         }
     }
