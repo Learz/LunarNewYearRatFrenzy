@@ -102,6 +102,7 @@ public class RatController : GenericController
         rAnim.SetBool("isSliding", isSliding);
     }
 
+
     protected override void JumpPressed()
     {
         base.JumpPressed();
@@ -201,6 +202,7 @@ public class RatController : GenericController
             rAnim.SetFloat("velocity", rb.velocity.magnitude);
         }
     }
+
     public void MultiplySpeed(float mul)
     {
         groundSpeed *= mul;
@@ -230,23 +232,28 @@ public class RatController : GenericController
     {
         if (canGetPoint) base.AddPoint();
     }
+
     public void AddBoost(float ammount)
     {
         boostMeter = Mathf.Clamp(boostMeter + ammount, 0, 100);
         winCondition.SetScore(identity, boostMeter);
     }
+
     public override void Kill()
     {
         base.Kill();
         GetComponent<CapsuleCollider>().enabled = false;
         if (slideParticles != null) slideParticles.Stop();
+        if(heldObject != null) heldObject.Drop();
         StopChannel(currentSlideChannel, 0.5f);
     }
+
     public override void Respawn()
     {
         GetComponent<CapsuleCollider>().enabled = true;
         base.Respawn();
     }
+
     protected override void OnCollisionEnter(Collision collision)
     {
         base.OnCollisionEnter(collision);

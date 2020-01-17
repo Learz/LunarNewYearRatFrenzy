@@ -16,6 +16,8 @@ public class SpawnObject : MonoBehaviour
     public float rateVariance;
     [Tooltip("Rate increase per second")]
     public float rateInterpolationTime;
+
+    public bool modifyFirstChildScale = false;
     public Vector3 sizeVariance = new Vector3(1, 1, 1);
     public Vector3 minimumSize = new Vector3(1, 1, 1);
     public Vector3 maximumSize = new Vector3(1, 1, 1);
@@ -98,12 +100,15 @@ public class SpawnObject : MonoBehaviour
         }
 
         Rigidbody rb = objToSpawn.GetComponent<Rigidbody>();
-        if (resetter != null) resetter.ResetOnSpawn();
+        Transform trans = objToSpawn.transform;
+        if (modifyFirstChildScale) trans = trans.GetChild(0);
         objToSpawn.transform.position = pos;
         objToSpawn.transform.rotation = rot;
-        objToSpawn.transform.localScale = Vector3.Scale(originalScales[i], scale);
+        trans.localScale = Vector3.Scale(originalScales[i], scale);
         currentObjectInPool[i] = (currentObjectInPool[i] + 1) % poolSize;
         if (rb != null) rb.velocity = Vector3.zero;
+
+        if (resetter != null) resetter.ResetOnSpawn();
         return objToSpawn;
     }
 

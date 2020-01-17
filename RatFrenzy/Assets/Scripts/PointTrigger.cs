@@ -32,9 +32,9 @@ public class PointTrigger : ResettingMonoBehaviour
                 break;
             case pointType.item:
                 HoldableObject obj = other.GetComponent<HoldableObject>();
-                if (obj != null && (playerSpecific && obj.lastHolder && obj.lastHolder.identity == identity))
+                if (obj != null && (playerSpecific && obj.LastHolder && obj.LastHolder.identity == identity))
                 {
-                    obj.lastHolder.AddPoint();
+                    obj.LastHolder.AddPoint();
                     obj.readyToRespawn = true;
                     obj.Drop();
                     obj.transform.position = new Vector3(-500, -500, -500);

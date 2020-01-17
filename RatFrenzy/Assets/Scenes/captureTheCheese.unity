@@ -1151,8 +1151,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 50, y: 10, z: 50}
-  m_Center: {x: 0, y: -7.1225433, z: 0}
+  m_Size: {x: 50, y: 5, z: 50}
+  m_Center: {x: 0, y: -3, z: 0}
 --- !u!114 &700371179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1165,7 +1165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e0fe37748d41b84189fdf64af974559, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  winCondition: {fileID: 0}
+  winCondition: {fileID: 700371180}
   eliminatePlayer: 0
 --- !u!114 &700371180
 MonoBehaviour:
@@ -1182,7 +1182,7 @@ MonoBehaviour:
   displayType: 1
   maxScore: 0
   timeLimit: 60
-  startTimeLimitOnStart: 1
+  startTimeLimitOnStart: 0
   initialCountdown: 3
   levelMusic: {fileID: 8300000, guid: 221a4258e43154f4c9bd37b996d2abf1, type: 3}
 --- !u!4 &700371181
