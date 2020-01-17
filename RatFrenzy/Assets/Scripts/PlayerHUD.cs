@@ -62,7 +62,7 @@ public class PlayerHUD : MonoBehaviour
         float startingHeight = pointMarker.localPosition.y;
         pointMarker.localRotation = Quaternion.Euler(0, 0, 15);
         DOTween.Sequence()
-            .Append(pointMarker.DOLocalMoveY(targetPointMarkerHeight + startingHeight, moveDuration).SetEase(moveEase).SetUpdate(UpdateType.Normal,true).SetLoops(2, LoopType.Yoyo))
+            .Append(pointMarker.DOLocalMoveY(targetPointMarkerHeight + startingHeight, moveDuration).SetEase(moveEase).SetUpdate(UpdateType.Normal, true).SetLoops(2, LoopType.Yoyo))
             .Join(pointMarker.DORotate(new Vector3(0, 0, -15), moveDuration * 2).SetEase(Ease.Linear).SetUpdate(UpdateType.Normal, true))
             .Join(pointMarker.GetComponent<CanvasGroup>().DOFade(1, moveDuration).SetEase(moveEase).SetUpdate(UpdateType.Normal, true).SetLoops(2, LoopType.Yoyo));
         pointMarker.GetComponent<CanvasGroup>().alpha = 0;
@@ -75,12 +75,15 @@ public class PlayerHUD : MonoBehaviour
                 scoreLabel.text = "" + score;
                 break;
             case DisplayType.ProgressLap:
+                if (score > maxScore) break;
                 scoreLabel.text = score + "/" + maxScore;
                 break;
             case DisplayType.ProgressPercent:
+                if (score > maxScore) break;
                 scoreLabel.text = (score / maxScore * 100).ToString("0.0") + "%";
                 break;
             case DisplayType.ProgressBar:
+                if (score > maxScore) break;
                 float width = progressBar.parent.GetComponent<RectTransform>().rect.width;
                 progressBar.offsetMax = new Vector2(-width + (score * width / (float)maxScore), 0);
                 break;

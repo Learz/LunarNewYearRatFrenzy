@@ -39,7 +39,6 @@ public class GenericWinCondition : MonoBehaviour
     {
         scores[(int)id]++;
         Debug.Log("Score : " + scores[(int)id]);
-        if (scores[(int)id] > maxScore) return;
         GameManager.instance.UpdateMinigameScore(id, scores[(int)id]);
     }
     public virtual void SetScore(Player.Identity id, float ammount)
