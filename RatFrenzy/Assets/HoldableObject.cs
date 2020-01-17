@@ -9,7 +9,7 @@ public class HoldableObject : ResettingMonoBehaviour
     public bool changeToPlayerColor;
 
     [HideInInspector]
-    public RatController lastHolder { get; private set; }
+    public RatController LastHolder { get; private set; }
 
     private RatController heldBy;
     private Collider ignoredCollision;
@@ -45,7 +45,7 @@ public class HoldableObject : ResettingMonoBehaviour
 
     public void Drop()
     {
-        if (heldBy)
+        if (heldBy != null)
         {
             holdingCooldown = 2;
             heldBy.heldObject = null;
@@ -62,20 +62,22 @@ public class HoldableObject : ResettingMonoBehaviour
             Physics.IgnoreCollision(GetComponent<Collider>(), collision.collider);
             ignoredCollision = collision.collider;
             heldBy = player;
-            lastHolder = player;
+            LastHolder = player;
             player.heldObject = this;
             rb.isKinematic = true;
             readyToRespawn = false;
-            Color col = lastHolder.mgr.GetPlayerColor();
+            Color col = LastHolder.mgr.GetPlayerColor();
             rend.material.SetColor("_BaseColor", col);
         }
     }
 
     public override void ResetOnSpawn()
     {
-        rb.velocity = Vector3.zero;
         Drop();
-        lastHolder = null;
+        Physics.IgnoreCollision(GetComponent<Collider>(), ignoredCollision, false);
+        ignoredCollision = null;
+        rb.velocity = Vector3.zero;
+        LastHolder = null;
         rend.material.SetColor("_BaseColor", Color.white);
     }
 }
