@@ -1182,7 +1182,7 @@ MonoBehaviour:
   displayType: 1
   maxScore: 0
   timeLimit: 60
-  startTimeLimitOnStart: 0
+  startTimeLimitOnStart: 1
   initialCountdown: 3
   levelMusic: {fileID: 8300000, guid: 221a4258e43154f4c9bd37b996d2abf1, type: 3}
 --- !u!4 &700371181
