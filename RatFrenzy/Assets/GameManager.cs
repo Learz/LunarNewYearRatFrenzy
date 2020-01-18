@@ -107,6 +107,25 @@ public class GameManager : MonoBehaviour
         }
         return ((Player.Identity)leader);
     }
+    public List<Player.Identity> GetLeaders()
+    {
+        List<Player.Identity> winners = new List<Player.Identity>();
+        int currentHighScore = 0;
+        for (int i = 0; i < scores.Length; i++)
+        {
+            if (scores[i] > currentHighScore)
+            {
+                winners.Clear();
+                winners.Add((Player.Identity)i);
+                currentHighScore = scores[i];
+            }
+            if (scores[i] == currentHighScore)
+            {
+                winners.Add((Player.Identity)i);
+            }
+        }
+        return winners;
+    }
     //public void AddPoints(Player.Identity id, int ammount) => scores[(int)id] += ammount;
 
     public int GetScore(Player.Identity id) => scores[(int)id];
