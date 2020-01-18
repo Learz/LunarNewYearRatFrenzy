@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour
     public List<Player.Identity> GetLeaders()
     {
         List<Player.Identity> winners = new List<Player.Identity>();
-        int currentHighScore = 0;
+        int currentHighScore = -1;
         for (int i = 0; i < scores.Length; i++)
         {
             if (scores[i] > currentHighScore)
@@ -135,17 +135,18 @@ public class GameManager : MonoBehaviour
     }
     public void LoadNextScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
         // TODO : LoadScreen with Input mapping chart
     }
     public void LoadSceneID(int index)
     {
-        SceneManager.LoadScene(index);
+        SceneManager.LoadSceneAsync(index);
         // TODO : LoadScreen with Input mapping chart
     }
     public void LoadSceneName(string name)
     {
-        SceneManager.LoadScene(name);
+        SceneManager.LoadSceneAsync(name);
+        graph.GoToNodeByName("InGame");
     }
     public List<string> GetScenes()
     {

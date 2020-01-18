@@ -23,8 +23,6 @@ public class GameSelectionHandler : MonoBehaviour
         foreach (MiniGame game in GameManager.instance.miniGames.gamesList)
         {
             GameObject selector = Instantiate(gameSelectorPrefab, content);
-            selectors.Add(selector);
-            selector.GetComponentInChildren<TMPro.TMP_Text>().text = game.gameName;
             Button button = selector.GetComponent<Button>();
             button.onClick.AddListener(() =>
             {
@@ -32,6 +30,9 @@ public class GameSelectionHandler : MonoBehaviour
                 GameManager.instance.LoadSceneName(game.sceneName);
                 gameSelectView.Hide();
             });
+            selectors.Add(selector);
+            selector.GetComponentInChildren<TMPro.TMP_Text>().text = game.gameName;
+
             selector.GetComponent<UIButton>().OnSelected.OnTrigger.Event.AddListener(() =>
             {
                 DisplayMiniGameInfo(game);
