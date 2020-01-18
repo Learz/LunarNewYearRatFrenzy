@@ -16,7 +16,7 @@ MonoBehaviour:
   - gameName: Sumo Arena
     description: Knock players out of the arena until you are the last one standing.
       Watch out! The arena will shrink over time!
-    thumbnail: {fileID: 21300000, guid: 4a934349e5ae5564abc957af4d5e821c, type: 3}
+    thumbnail: {fileID: 21300000, guid: 609ff2e836120f549978f5b5f6c9aeba, type: 3}
     sceneName: sumoarena
     bindings:
     - action: 2
@@ -25,7 +25,7 @@ MonoBehaviour:
       description: Jump
   - gameName: Tower Climb
     description: Climb the tower! Highest player wins!
-    thumbnail: {fileID: 0}
+    thumbnail: {fileID: 21300000, guid: 14ead936a38eb0849bb3f4a4a093e430, type: 3}
     sceneName: towerClimb
     bindings:
     - action: 2
@@ -34,7 +34,7 @@ MonoBehaviour:
       description: Jump
   - gameName: Obstacle Run
     description: Avoid the pipes! Red means duck, blue means jump!
-    thumbnail: {fileID: 0}
+    thumbnail: {fileID: 21300000, guid: 994a4ee0bf7ec0446be63590de4b1206, type: 3}
     sceneName: twistedSystem
     bindings:
     - action: 0
@@ -54,7 +54,7 @@ MonoBehaviour:
   - gameName: Ball Race
     description: Race around the track! Careful not to fall off. First to 3 laps
       wins!
-    thumbnail: {fileID: 0}
+    thumbnail: {fileID: 21300000, guid: d9b8d35ee40ab624aafa501f350eedbf, type: 3}
     sceneName: sumorace
     bindings:
     - action: 2
@@ -63,7 +63,7 @@ MonoBehaviour:
     description: It's Sports Ball time! Defend your goal against other players. If
       the ball enters your goal, you are eliminated! Collect the radioactive goo
       to add to your boost meter.
-    thumbnail: {fileID: 0}
+    thumbnail: {fileID: 21300000, guid: a077b59515a38954984b2293c78504f2, type: 3}
     sceneName: sportsball
     bindings:
     - action: 2
@@ -75,7 +75,7 @@ MonoBehaviour:
   - gameName: Collect-a-thon
     description: Bring the most balls to your goal! Play fair or steal from your
       opponents!
-    thumbnail: {fileID: 0}
+    thumbnail: {fileID: 21300000, guid: 4490a4121e2340d4080a2d6197aa7621, type: 3}
     sceneName: captureTheCheese
     bindings:
     - action: 2
