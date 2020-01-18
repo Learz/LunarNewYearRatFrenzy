@@ -11,6 +11,7 @@ public class PlayerHUD : MonoBehaviour
     public TMPro.TMP_Text scoreLabel;
     public Image poseImage;
     public RectTransform deadIndicator, progressBar, progressBarContainer, pointMarker;
+    public AudioSource pointSound;
     [SerializeField]
     private float targetPointMarkerHeight;
     [SerializeField]
@@ -61,11 +62,21 @@ public class PlayerHUD : MonoBehaviour
     {
         float startingHeight = pointMarker.localPosition.y;
         pointMarker.localRotation = Quaternion.Euler(0, 0, 15);
+
         DOTween.Sequence()
             .Append(pointMarker.DOLocalMoveY(targetPointMarkerHeight + startingHeight, moveDuration).SetEase(moveEase).SetUpdate(UpdateType.Normal, true).SetLoops(2, LoopType.Yoyo))
             .Join(pointMarker.DORotate(new Vector3(0, 0, -15), moveDuration * 2).SetEase(Ease.Linear).SetUpdate(UpdateType.Normal, true))
-            .Join(pointMarker.GetComponent<CanvasGroup>().DOFade(1, moveDuration).SetEase(moveEase).SetUpdate(UpdateType.Normal, true).SetLoops(2, LoopType.Yoyo));
-        pointMarker.GetComponent<CanvasGroup>().alpha = 0;
+            .Join(pointMarker.GetComponent<CanvasGroup>().DOFade(1, moveDuration).SetEase(moveEase).SetUpdate(UpdateType.Normal, true).SetLoops(2, LoopType.Yoyo))
+            .OnComplete(() =>
+            {
+                pointMarker.GetComponent<CanvasGroup>().alpha = 0;
+            });
+        Invoke("PlaySound", moveDuration / 2);
+
+    }
+    private void PlaySound()
+    {
+        pointSound.Play();
     }
     public void SetScore(int score)
     {
