@@ -251,14 +251,16 @@ public class Player
     }
     public enum Color
     {
-        Red = 8,
+        Red = 26,
         Blue = 17,
+        DarkBlue = 16,
         Yellow = 11,
         Green = 12,
         Pink = 29,
         Purple = 28,
-        Orange = 9,
-        Teal = 16
+        Orange = 9
+        //White = 19
+        //Black = 25
     }
     public enum CharacterPose
     {
@@ -292,38 +294,38 @@ public class ColorPalette
 {
     private static readonly Color[] pal = new Color[32]
     {
-        new Color(190, 74, 47) ,
-        new Color(215,118,67) ,
-        new Color(234,212,170) ,
-        new Color(228,166,114) ,
-        new Color(184,111,80) ,
-        new Color(115,62,57) ,
-        new Color(62,39,49) ,
-        new Color(162,38,51) ,
-        new Color(228, 59, 68) ,
-        new Color(247, 118, 34) ,
-        new Color(254,174,52) ,
-        new Color(254, 231, 97) ,
-        new Color(99, 199, 77) ,
-        new Color(62,137,72) ,
-        new Color(38,92,66) ,
-        new Color(25,60,62) ,
-        new Color(18, 78, 137) ,
-        new Color(0, 153, 219) ,
-        new Color(44,232,245) ,
-        new Color(255,255,255) ,
-        new Color(192,203,220) ,
-        new Color(139,155,180) ,
-        new Color(90,105,136) ,
-        new Color(58,68,102) ,
-        new Color(38,43,68) ,
-        new Color(24,20,37) ,
-        new Color(255,0,68) ,
-        new Color(104,56,108) ,
-        new Color(181,80,136) ,
-        new Color(246,117,122) ,
-        new Color(232,183,150) ,
-        new Color(194,133,105)
+        new Color(190, 74, 47) ,    //0
+        new Color(215,118,67) ,     //1
+        new Color(234,212,170) ,    //2
+        new Color(228,166,114) ,    //3
+        new Color(184,111,80) ,     //4
+        new Color(115,62,57) ,      //5
+        new Color(62,39,49) ,       //6
+        new Color(162,38,51) ,      //7
+        new Color(228, 59, 68) ,    //8
+        new Color(247, 118, 34) ,   //9
+        new Color(254,174,52) ,     //10
+        new Color(255, 218, 36) ,   //11
+        new Color(99, 199, 77) ,    //12
+        new Color(62,137,72) ,      //13
+        new Color(38,92,66) ,       //14
+        new Color(25,60,62) ,       //15 
+        new Color(0, 21, 255) ,    //16
+        new Color(0, 153, 219) ,    //17
+        new Color(44,232,245) ,     //18
+        new Color(255,255,255) ,    //19
+        new Color(192,203,220) ,    //20
+        new Color(139,155,180) ,    //21
+        new Color(90,105,136) ,     //22
+        new Color(58,68,102) ,      //23
+        new Color(38,43,68) ,       //24
+        new Color(0,0,0) ,          //25
+        new Color(255,0,68) ,       //26
+        new Color(104,56,108) ,     //27
+        new Color(181,80,136) ,     //28
+        new Color(255,69,246) ,     //29
+        new Color(232,183,150) ,    //30
+        new Color(194,133,105)      //31
     };
 
     public static Color GetColor(int col)

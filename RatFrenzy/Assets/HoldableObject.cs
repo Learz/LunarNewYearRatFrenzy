@@ -74,7 +74,7 @@ public class HoldableObject : ResettingMonoBehaviour
     public override void ResetOnSpawn()
     {
         Drop();
-        Physics.IgnoreCollision(GetComponent<Collider>(), ignoredCollision, false);
+        if(ignoredCollision != null) Physics.IgnoreCollision(GetComponent<Collider>(), ignoredCollision, false);
         ignoredCollision = null;
         rb.velocity = Vector3.zero;
         LastHolder = null;
