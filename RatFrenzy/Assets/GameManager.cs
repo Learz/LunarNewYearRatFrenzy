@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
             if (highScore >= winningScore) graph.GoToNodeByName("WinScreen");
             else graph.GoToNodeByName("DisplayScore");
         }
-        else graph.GoToNodeByName("ShowWinner");
+        else graph.GoToNodeByName("RoundEnd");
     }
     public Player.Identity GetLeader()
     {
