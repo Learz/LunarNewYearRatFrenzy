@@ -24,3 +24,4 @@ MonoBehaviour:
   - Score
   - GameSelect
   - InGame
+  - Winner
