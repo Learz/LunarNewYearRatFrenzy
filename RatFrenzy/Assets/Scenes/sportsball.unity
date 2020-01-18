@@ -10497,7 +10497,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 513775314}
-  m_LocalRotation: {x: 0.14730467, y: 0.8526846, z: -0.35209483, w: 0.35673466}
+  m_LocalRotation: {x: 0.14730467, y: 0.8526846, z: -0.35209477, w: 0.35673472}
   m_LocalPosition: {x: -6.973548, y: 12, z: 6.8755083}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -30266,7 +30266,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1504458135}
-  m_LocalRotation: {x: 0.14730467, y: 0.8526846, z: -0.35209483, w: 0.35673466}
+  m_LocalRotation: {x: 0.14730467, y: 0.8526846, z: -0.35209477, w: 0.35673472}
   m_LocalPosition: {x: -8.065748, y: 13.52705, z: 7.952354}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -30444,7 +30444,7 @@ MonoBehaviour:
   maxScore: 100
   timeLimit: 0
   startTimeLimitOnStart: 0
-  initialCountdown: 0
+  initialCountdown: 3
   levelMusic: {fileID: 8300000, guid: d8ebb0190cd48e94ea21267e4afc46ec, type: 3}
   survivorType: 1
 --- !u!4 &1532333906
