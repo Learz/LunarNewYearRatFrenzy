@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public Sprite[] playerPoses;
     public UnityEngine.UI.Text timeLeftLabel;
     public AudioSource audioSource;
+    public string roundWinMessage;
     private int[] scores;
     private int roundCounter;
     private int showScoreEveryXRounds = 5, winningScore = 10;
@@ -79,12 +80,12 @@ public class GameManager : MonoBehaviour
 
     public void AddPoint(Player.Identity id)
     {
-        roundCounter++;
         scores[(int)id]++;
         playerHUDs[(int)id].ShowWinAnimation();
     }
     public void EndGame()
     {
+        roundCounter++;
         if (roundCounter % showScoreEveryXRounds == 0)
         {
             int highScore = 0;
@@ -95,7 +96,7 @@ public class GameManager : MonoBehaviour
             if (highScore >= winningScore) graph.GoToNodeByName("WinScreen");
             else graph.GoToNodeByName("DisplayScore");
         }
-        else graph.GoToNodeByName("RoundEnd");
+        else graph.GoToNodeByName("ShowWinner");
     }
     public Player.Identity GetLeader()
     {
@@ -126,6 +127,7 @@ public class GameManager : MonoBehaviour
         }
         return winners;
     }
+
     //public void AddPoints(Player.Identity id, int ammount) => scores[(int)id] += ammount;
 
     public int GetScore(Player.Identity id) => scores[(int)id];
@@ -270,7 +272,7 @@ public class Player
     }
     public enum Color
     {
-        Red = 26,
+        Red = 8,
         Blue = 17,
         DarkBlue = 16,
         Yellow = 11,

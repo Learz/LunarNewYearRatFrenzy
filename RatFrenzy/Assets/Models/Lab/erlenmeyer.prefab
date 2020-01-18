@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 52396999146316474}
   - component: {fileID: 6503451689967990441}
   - component: {fileID: 4559162799373735142}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: erlenmeyer
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -74,6 +74,7 @@ public class GenericWinCondition : MonoBehaviour
         if (gameEnded) return;
         gameEnded = true;
         Debug.Log(winner + " wins!");
+        GameManager.instance.roundWinMessage = "Player " + ((int)winner + 1) + " wins!";
         GameManager.instance.AddPoint(winner);
         //GameManager.instance.DisplayScore();
         if (cdRoutine != null) StopCoroutine(cdRoutine);
@@ -85,10 +86,10 @@ public class GenericWinCondition : MonoBehaviour
     {
         if (gameEnded) return;
         gameEnded = true;
-        Debug.Log("It's a tie! ");
+        Debug.Log("It's a tie!");
+        GameManager.instance.roundWinMessage = "It's a tie!";
         foreach (Player.Identity winner in winners)
         {
-
             Debug.Log(winner + " wins!");
             GameManager.instance.AddPoint(winner);
         }

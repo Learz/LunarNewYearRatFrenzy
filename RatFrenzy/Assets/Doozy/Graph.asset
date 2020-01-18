@@ -864,7 +864,7 @@ MonoBehaviour:
   m_debugMode: 0
   m_useFixedUpdate: 0
   m_useLateUpdate: 0
-  m_useUpdate: 0
+  m_useUpdate: 1
   m_height: 128
   m_width: 216
   m_x: 470.51062
@@ -875,10 +875,19 @@ MonoBehaviour:
   m_id: c04c4b8f-0eab-4740-9393-aaf56e898abb
   m_name: ShowWinner
   m_notes: 
-  m_onEnterShowViews: []
-  m_onEnterHideViews: []
+  m_onEnterShowViews:
+  - Category: General
+    InstantAction: 0
+    Name: Winner
+  m_onEnterHideViews:
+  - Category: General
+    InstantAction: 0
+    Name: InGame
   m_onExitShowViews: []
-  m_onExitHideViews: []
+  m_onExitHideViews:
+  - Category: General
+    InstantAction: 0
+    Name: Winner
 --- !u!114 &-4441408095056094010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2950,10 +2959,7 @@ MonoBehaviour:
   m_onEnterShowViews: []
   m_onEnterHideViews: []
   m_onExitShowViews: []
-  m_onExitHideViews:
-  - Category: General
-    InstantAction: 0
-    Name: InGame
+  m_onExitHideViews: []
 --- !u!114 &5470898015710970898
 MonoBehaviour:
   m_ObjectHideFlags: 1

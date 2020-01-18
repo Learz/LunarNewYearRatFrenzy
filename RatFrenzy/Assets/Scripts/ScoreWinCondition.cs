@@ -25,12 +25,7 @@ public class ScoreWinCondition : GenericWinCondition
         playersAlive.Remove(id);
         if (playersAlive.Count == 0)
         {
-            int winner = 0;
-            for (int i = 0; i < scores.Length; i++)
-            {
-                if (scores[i] > scores[winner]) winner = i;
-            }
-            EndGame((Player.Identity)winner);
+            EndGame();
         }
     }
 
@@ -46,12 +41,13 @@ public class ScoreWinCondition : GenericWinCondition
                 winners.Add((Player.Identity)i);
                 currentHighScore = scores[i];
             }
-            if (scores[i] == currentHighScore)
+            else if (scores[i] == currentHighScore)
             {
                 winners.Add((Player.Identity)i);
             }
         }
-        EndGame(winners);
+        if (winners.Count > 1) EndGame(winners);
+        else EndGame(winners[0]);
     }
 
     protected override void OnPlayerJoined(PlayerInput input)
