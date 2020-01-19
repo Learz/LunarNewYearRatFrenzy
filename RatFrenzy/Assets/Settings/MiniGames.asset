@@ -24,7 +24,8 @@ MonoBehaviour:
     - action: 0
       description: Jump
   - gameName: Tower Climb
-    description: Climb the tower! Highest player wins!
+    description: The acid is quickly filling up the room. Be the last one to survive
+      by climbing on the shelves!
     thumbnail: {fileID: 21300000, guid: 14ead936a38eb0849bb3f4a4a093e430, type: 3}
     sceneName: towerClimb
     bindings:
@@ -33,7 +34,7 @@ MonoBehaviour:
     - action: 0
       description: Jump
   - gameName: Obstacle Run
-    description: Avoid the pipes! Red means duck, blue means jump!
+    description: Avoid the pipes! Slide under red pipes and jump over blue pipes!
     thumbnail: {fileID: 21300000, guid: 994a4ee0bf7ec0446be63590de4b1206, type: 3}
     sceneName: twistedSystem
     bindings:
