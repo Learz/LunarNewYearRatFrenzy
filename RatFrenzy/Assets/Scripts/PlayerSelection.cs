@@ -60,9 +60,11 @@ public class PlayerSelection : MonoBehaviour
     {
         countdown.text = "";
         if (co != null) StopCoroutine(co);
+        PlayerInputManager.instance.EnableJoining();
     }
     IEnumerator Countdown()
     {
+        PlayerInputManager.instance.DisableJoining();
         int timeLeft = 3;
         while (timeLeft > 0)
         {
@@ -79,6 +81,7 @@ public class PlayerSelection : MonoBehaviour
     }
     private void OnDisable()
     {
+        PlayerInputManager.instance.DisableJoining();
         selectedColors.Clear();
         if (co == null) return;
         StopCoroutine(co);
